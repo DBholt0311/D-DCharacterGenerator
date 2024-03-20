@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './CharacterList.css';
-
+import { Link } from "react-router-dom";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -52,8 +52,10 @@ function CharacterList() {
                     <TableCell>{character.character_name}</TableCell>
                     <TableCell>{character.race}</TableCell>
                     <TableCell>{character.class}</TableCell>
+                    <TableCell><button>Select</button>></TableCell>
                   </TableRow>
                 ))}
+                <button><Link to="/AbilityScores">New Character</Link></button>
               </TableBody>
             </Table>
           </TableContainer>

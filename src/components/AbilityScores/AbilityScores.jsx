@@ -1,0 +1,124 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
+
+function AbilityScores() {
+  const dispatch = useDispatch();
+  let [abilityScores, setAbilityScores] = useState({
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    wisdom: 0,
+    intelligence: 0,
+    charisma: 0,
+  });
+
+  const handleStrengthChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      strength: event.target.value,
+    });
+  };
+
+  const handleDexterityChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      dexterity: event.target.value,
+    });
+  };
+
+  const handleConstitutionChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      constitution: event.target.value,
+    });
+  };
+
+  const handleWisdomChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      wisdom: event.target.value,
+    });
+  };
+
+  const handleIntelligenceChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      intelligence: event.target.value,
+    });
+  };
+
+  const handleCharismaChange = (event) => {
+    setAbilityScores({
+      ...abilityScores,
+      charisma: event.target.value,
+    });
+  };
+
+  const handleRandomAbilities = () => {
+    setAbilityScores({
+        ...abilityScores,
+        strength: abilityScoreGenerator(),
+        dexterity: abilityScoreGenerator(),
+        constitution: abilityScoreGenerator(),
+        wisdom: abilityScoreGenerator(),
+        intelligence: abilityScoreGenerator(),
+        charisma: abilityScoreGenerator(),
+    });
+    console.log(abilityScores);
+  }
+
+  const addAbilityScores = () => {
+    dispatch({ type: "ABILITY_SCORES", payload: abilityScores });
+    console.log(abilityScores);
+  };
+
+  return (
+    <div>
+      <h1>Ability Scores</h1>
+      <form>
+        <input
+          onChange={handleStrengthChange}
+          placeholder="0"
+          id="strength"
+        ></input>
+        <label>Strength</label>
+        <input
+          onChange={handleDexterityChange}
+          placeholder="0"
+          id="dexterity"
+        ></input>
+        <label>Dexterity</label>
+        <input
+          onChange={handleConstitutionChange}
+          placeholder="0"
+          id="constitution"
+        ></input>
+        <label>Constitution</label>
+        <input
+          onChange={handleWisdomChange}
+          placeholder="0"
+          id="Wisdom"
+        ></input>
+        <label>Wisdom</label>
+        <input
+          onChange={handleIntelligenceChange}
+          placeholder="0"
+          id="intelligence"
+        ></input>
+        <label>Intelligence</label>
+        <input
+          onChange={handleCharismaChange}
+          placeholder="0"
+          id="charisma"
+        ></input>
+        <label>Charisma</label>
+        <button>Next</button>
+        <button onClick={handleRandomAbilities}>Random</button>
+      </form>
+    </div>
+  );
+}
+
+export default AbilityScores;
