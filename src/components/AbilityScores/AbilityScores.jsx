@@ -80,41 +80,41 @@ function AbilityScores() {
       <form>
         <input
           onChange={handleStrengthChange}
-          placeholder="0"
+          placeholder={abilityScores.strength}
           id="strength"
         ></input>
         <label>Strength</label>
         <input
           onChange={handleDexterityChange}
-          placeholder="0"
+          placeholder={abilityScores.dexterity}
           id="dexterity"
         ></input>
         <label>Dexterity</label>
         <input
           onChange={handleConstitutionChange}
-          placeholder="0"
+          placeholder={abilityScores.constitution}
           id="constitution"
         ></input>
         <label>Constitution</label>
         <input
           onChange={handleWisdomChange}
-          placeholder="0"
+          placeholder={abilityScores.wisdom}
           id="Wisdom"
         ></input>
         <label>Wisdom</label>
         <input
           onChange={handleIntelligenceChange}
-          placeholder="0"
+          placeholder={abilityScores.intelligence}
           id="intelligence"
         ></input>
         <label>Intelligence</label>
         <input
           onChange={handleCharismaChange}
-          placeholder="0"
+          placeholder={abilityScores.charisma}
           id="charisma"
         ></input>
         <label>Charisma</label>
-        <button>Next</button>
+        <button type="submit" onClick={addAbilityScores}>Next</button>
         <button onClick={handleRandomAbilities}>Random</button>
       </form>
     </div>
