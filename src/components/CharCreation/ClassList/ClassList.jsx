@@ -1,13 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 import './ClassList.css';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
 
 function RaceList() {
@@ -33,28 +28,21 @@ function RaceList() {
 
   return (
     <div>
-      <h1>Classes</h1>
-      <div className="table-container">
-        <Paper elevation={14}>
-          <TableContainer className="table-style">
-            <Table className="table-style">
-              <TableRow>
-                <TableCell>Level</TableCell>
-                <TableCell>Name</TableCell>
-              </TableRow>
-              <TableBody>
-              {classes.map((charClass) => (
-                  <TableRow key={charClass.id}>
-                    <TableCell>{charClass.name}</TableCell>
-                    <TableCell><button>Select</button></TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      </div>
-    </div>
+    <h1>backgrounds</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+      </tr>
+      {classes.map((charClass) => (
+        <tr key={charClass.id}>
+          <td>{charClass.name}</td>
+          <td>
+            <button>Select</button>
+          </td>
+        </tr>
+      ))}
+    </table>
+  </div>
   );
 }
 export default RaceList;
