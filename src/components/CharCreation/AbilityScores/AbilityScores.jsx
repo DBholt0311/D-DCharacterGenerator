@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
+import { abilityScoreGenerator } from "../../DiceRollers/DiceRoller";
 
 function AbilityScores() {
   const dispatch = useDispatch();
@@ -69,8 +68,12 @@ function AbilityScores() {
     console.log(abilityScores);
   }
 
+  useEffect(() => {
+    setAbilityScores([]);
+  }, []);
+
   const addAbilityScores = () => {
-    dispatch({ type: "ABILITY_SCORES", payload: abilityScores });
+    dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
     console.log(abilityScores);
   };
 
@@ -118,7 +121,7 @@ function AbilityScores() {
         <button onClick={handleRandomAbilities}>Random</button>
       </form>
     </div>
-  );
+  )
 }
 
 export default AbilityScores;

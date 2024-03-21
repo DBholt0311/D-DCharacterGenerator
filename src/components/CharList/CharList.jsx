@@ -55,7 +55,7 @@ function CharList() {
                     <TableCell><button>Select</button></TableCell>
                   </TableRow>
                 ))}
-                <button><Link to="CharCreationRace">New Char</Link></button>
+                <button><Link to="/PageOne">New Char</Link></button>
               </TableBody>
             </Table>
           </TableContainer>
