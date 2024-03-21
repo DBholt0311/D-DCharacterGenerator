@@ -4,12 +4,11 @@ const router = express.Router();
 
 
 router.get("/", (req, res) => {
-
     let query = `
-    SELECT * FROM "characters"
-    WHERE characters.user_id = $1;`;
+    SELECT * FROM "classes";
+    `;
     pool
-    .query(query, [req.user.id])
+    .query(query)
     .then((result) => {
         res.send(result.rows);
     })    

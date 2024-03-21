@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import Class from "../Class/Class";
+import ClassList from "../ClassList/ClassList";
 import RaceList from "../RaceList/RaceList";
-import Background from "../Background/Background";
+import BackgroundList from "../BackgroundList/BackgroundList";
 
 function PageOne() {
     return (
         <div>
-            <Class/>
+            <ClassList/>
             <RaceList/>
-            <Background/>
+            <BackgroundList/>
             <Link to="/PageTwo">Next</Link>
         </div>
     )
