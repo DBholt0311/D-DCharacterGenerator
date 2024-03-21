@@ -38,7 +38,8 @@ CREATE TABLE "races" (
 
 CREATE TABLE "classes" (
     "id" SERIAL PRIMARY KEY,
-	"name" VARCHAR (15)
+	"name" VARCHAR (15),
+    "hit_die" INT
 );
 
 CREATE TABLE "backgrounds" (
@@ -68,19 +69,19 @@ VALUES ('dragonborn'),
 ('human'),
 ('tiefling');
 
-INSERT INTO "classes" ("name")
-VALUES ('barbarian'),
-('bard'),
-('cleric'),
-('druid'),
-('fighter'),
-('monk'),
-('paladin'),
-('ranger'),
-('rogue'),
-('sorcerer'),
-('warlock'),
-('wizard');
+INSERT INTO "classes" ("name", "hit_die")
+VALUES ('barbarian', 12),
+('bard', 8),
+('cleric', 8),
+('druid', 8),
+('fighter', 10),
+('monk', 8),
+('paladin', 10),
+('ranger', 10),
+('rogue', 8),
+('sorcerer', 6),
+('warlock', 8),
+('wizard', 6);
 
 INSERT INTO "backgrounds" ("name")
 VALUES ('acolyte'),

@@ -26,6 +26,11 @@ function RaceList() {
     fetchClasses();
   }, []);
 
+  function addClass() {
+    event.preventDefault();
+      dispatch({type: "CLASS_TO_ADD", payload: newList })
+  }
+
   return (
     <div>
     <h1>backgrounds</h1>
@@ -37,7 +42,7 @@ function RaceList() {
         <tr key={charClass.id}>
           <td>{charClass.name}</td>
           <td>
-            <button>Select</button>
+            <button onClick={addClass}>Select</button>
           </td>
         </tr>
       ))}

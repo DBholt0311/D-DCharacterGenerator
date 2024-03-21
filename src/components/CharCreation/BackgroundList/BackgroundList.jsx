@@ -25,6 +25,10 @@ function BackgroundsList() {
     fetchBackGrounds();
   }, []);
 
+  const handleAddBackground() {
+    
+  }
+
   return (
     <div>
       <h1>backgrounds</h1>
