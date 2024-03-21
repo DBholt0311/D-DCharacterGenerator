@@ -12,15 +12,14 @@ function CharCreationRace() {
     .get("https://www.dnd5eapi.co/api/races")
     .then((raceResponse) => {
         setRaces(raceResponse.data)
-        console.log(races)
     })
     .catch((error) => {
         console.log('error retrieving races', error);
     });
 }
-
+console.log(races);
 useEffect(() => {
-    fetchRaces();
+    fetchRaces(races);
   }, []);
 
   return <p>races here</p>
