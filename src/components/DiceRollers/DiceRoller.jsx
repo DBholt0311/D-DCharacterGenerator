@@ -10,5 +10,9 @@ export function abilityScoreGenerator() {
     return diceRoller(6) + diceRoller(6) + diceRoller(6);
 };
 
+export function hitPointCalc(hitDie) {
+  return diceRoller(hitDie);
+}
+
 
 
