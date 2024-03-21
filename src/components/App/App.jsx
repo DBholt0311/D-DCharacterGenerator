@@ -19,7 +19,7 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import AbilityScores from "../AbilityScores/AbilityScores";
+import CharCreationRace from "../CharCreationRace/CharCreationRace";
 import "./App.css";
 
 function App() {
@@ -59,15 +59,16 @@ function App() {
           >
             <UserPage />
           </ProtectedRoute>
-          <ProtectedRoute exact path="/abilityScores">
-            <AbilityScores />
-          </ProtectedRoute>
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/CharCreationRace'
+          >
+            <CharCreationRace />
           </ProtectedRoute>
 
           <Route exact path="/login">

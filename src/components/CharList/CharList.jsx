@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './CharacterList.css';
+import './CharList.css';
 import { Link } from "react-router-dom";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-function CharacterList() {
+function CharList() {
   const [characters, setCharacters] = useState([]);
 
   const fetchCharacters = () => {
@@ -52,10 +52,10 @@ function CharacterList() {
                     <TableCell>{character.character_name}</TableCell>
                     <TableCell>{character.race}</TableCell>
                     <TableCell>{character.class}</TableCell>
-                    <TableCell><button>Select</button>></TableCell>
+                    <TableCell><button>Select</button></TableCell>
                   </TableRow>
                 ))}
-                <button><Link to="/AbilityScores">New Character</Link></button>
+                <button><Link to="CharCreationRace">New Char</Link></button>
               </TableBody>
             </Table>
           </TableContainer>
@@ -64,4 +64,4 @@ function CharacterList() {
     </div>
   );
 }
-export default CharacterList;
+export default CharList;
