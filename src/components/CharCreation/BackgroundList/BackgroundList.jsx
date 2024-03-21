@@ -8,7 +8,7 @@ function BackgroundsList() {
   const [backgrounds, setBackgrounds] = useState([]);
 
   const fetchBackGrounds = () => {
-    console.log("in fetchbackgrounds function");
+    console.log("in fetchBackgrounds function");
 
     axios
       .get("/api/backgrounds")

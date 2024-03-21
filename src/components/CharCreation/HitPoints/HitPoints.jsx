@@ -26,6 +26,7 @@ function HitPoints() {
         <div>
             <p>HP here</p>
             <form>
+              <label>HP</label>
             <input
             onChange={handleHpChange}
             placeholder={hitPoints}

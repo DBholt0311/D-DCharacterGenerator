@@ -1,9 +1,9 @@
-const raceList = (state = [], action) => {
-    if (action.type === 'RACE_OPTIONS') {
+const race = (state = [], action) => {
+    if (action.type === 'RACE_TO_ADD') {
   
       return action.payload;
     }
     return state;
   };
 
-  export default raceList;
+  export default race;

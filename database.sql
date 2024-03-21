@@ -46,6 +46,12 @@ CREATE TABLE "backgrounds" (
 	"name" VARCHAR (15)
 );
 
+CREATE TABLE "ability_score" (
+    "id" SERIAL PRIMARY KEY,
+    "score" INT,
+    "modifier" INT
+);
+
 INSERT INTO "characters" ("character_name", "class", "level", "background", "race", "alignment", "experience_points", "Strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
 )
 VALUES ('claude','ranger', 1, 'scholar', 'human', 'lawfull good', 0, 11, 12, 13, 14, 15, 17, 10, 1),
@@ -83,3 +89,25 @@ VALUES ('acolyte'),
 ('nobel'),
 ('sage'),
 ('soldier');
+
+INSERT INTO "ability_score" ("score", "modifier")
+VALUES (1, -5),
+(2, -4),
+(3, -4),
+(4, -3),
+(5, -3),
+(6, -2),
+(7, -2),
+(8, -1),
+(9, -1),
+(10, 0),
+(11, 0),
+(12, 1),
+(13, 1),
+(14, 2),
+(15, 2),
+(16, 3),
+(17, 3),
+(18, 4),
+(19, 4),
+(20, 5);
