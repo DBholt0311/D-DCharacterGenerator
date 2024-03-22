@@ -18,6 +18,7 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
+import Name from "../CharCreation/Name/Name";
 import PageOne from "../CharCreation/PageOne/PageOne";
 import PageTwo from "../CharCreation/PageTwo/PageTwo";
 import CharConfirmation from "../CharCreation/CharConfirmation/CharConfirmation";
@@ -54,16 +55,11 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
-          <ProtectedRoute 
-          exact 
-          path="/PageOne">
-            <PageOne />
-          </ProtectedRoute>
-
           <ProtectedRoute
           exact
-          path="/PageTwo">
-            <PageTwo />
+          path="/name"
+          >
+            <Name />
           </ProtectedRoute>
 
           <ProtectedRoute

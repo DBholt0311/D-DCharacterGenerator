@@ -1,8 +1,8 @@
-import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import React from "react";
+import LogOutButton from "../LogOutButton/LogOutButton";
+import { useSelector } from "react-redux";
 
-import CharList from '../CharList/CharList';
+import CharList from "../CharList/CharList";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -11,7 +11,7 @@ function UserPage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Character List</p>
-<CharList/>
+      <CharList />
       <LogOutButton className="btn" />
     </div>
   );

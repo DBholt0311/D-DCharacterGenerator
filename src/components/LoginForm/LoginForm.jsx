@@ -5,14 +5,13 @@ import {useSelector} from 'react-redux';
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
     event.preventDefault();
 
-    if (username && password && email) {
+    if (username && password) {
       dispatch({
         type: 'LOGIN',
         payload: {

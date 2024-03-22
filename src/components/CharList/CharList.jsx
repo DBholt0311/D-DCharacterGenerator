@@ -1,26 +1,26 @@
-import React from 'react';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import './CharList.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
+
+import "./CharList.css";
 
 
 function CharList() {
   const [characters, setCharacters] = useState([]);
+  const user = useSelector((store) => store.user)
+  let newChar = {
+    id: user.id,
+  }
 
   const fetchCharacters = () => {
-    console.log('in fetchOrders function');
+    console.log("in fetchOrders function");
 
     axios
-      .get('/api/characters')
+      .get("/api/characters")
       .then((response) => {
-        console.log('RESPONSE:', response.data);
+        console.log("RESPONSE:", response.data);
         setCharacters(response.data);
       })
       .catch((err) => {
@@ -32,35 +32,44 @@ function CharList() {
     fetchCharacters();
   }, []);
 
+  const createNewChar = () => {
+    axios
+    .post("/api/characters", newChar)
+    .then((response) => {
+      console.log('response:', response.data)
+
+    })
+  };
+
   return (
     <div>
       <h1>Characters</h1>
-      <div className="table-container">
-        <Paper elevation={14}>
-          <TableContainer className="table-style">
-            <Table className="table-style">
-              <TableRow>
-                <TableCell>Level</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Race</TableCell>
-                <TableCell>Class</TableCell>
-              </TableRow>
-              <TableBody>
-                {characters.map((character) => (
-                  <TableRow key={character.id}>
-                    <TableCell>{character.level}</TableCell>
-                    <TableCell>{character.character_name}</TableCell>
-                    <TableCell>{character.race}</TableCell>
-                    <TableCell>{character.class}</TableCell>
-                    <TableCell><button>Select</button></TableCell>
-                  </TableRow>
-                ))}
-                <button><Link to="/PageOne">New Char</Link></button>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      </div>
+      <table>
+        <thead>
+        <tr>
+          <th>level</th>
+          <th>Name</th>
+          <th>race</th>
+          <th>class</th>
+        </tr>
+        </thead>
+        <tbody>
+        {characters.map((char) => (
+          <tr key={char.id}>
+            <td>{char.level}</td>
+            <td>{char.character_name}</td>
+            <td>{char.race}</td>
+            <td>{char.class}</td>
+            <td>
+              <button>Select</button>
+            </td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
+      <button onClick={createNewChar}>
+        <Link to="/Name">New Char</Link>
+      </button>
     </div>
   );
 }
