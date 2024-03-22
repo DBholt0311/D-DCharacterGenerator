@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+
 import { abilityScoreGenerator } from "../../DiceRollers/DiceRoller";
+import { hitPointCalc } from "../../DiceRollers/DiceRoller";
 
 function AbilityScores() {
   const dispatch = useDispatch();
@@ -12,6 +14,7 @@ function AbilityScores() {
     intelligence: 0,
     charisma: 0,
   });
+  let [hitPoints, setHitPoints] = useState();
 
   const handleStrengthChange = (event) => {
     setAbilityScores({
@@ -66,16 +69,27 @@ function AbilityScores() {
         charisma: abilityScoreGenerator(),
     });
     console.log(abilityScores);
-  }
+  };
+
+  const handleHpChange = (event) => {
+    setHitPoints(event.target.value);
+  };
 
   useEffect(() => {
     setAbilityScores([]);
+    setHitPoints([]);
   }, []);
 
-  const addAbilityScores = () => {
-    dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
-    console.log(abilityScores);
-  };
+
+  const handleHpRoll = () => {
+    setHitPoints(hitPointCalc(8) + abilityScores.constitution);
+    console.log(abilityScores, hitPoints)
+}
+
+const handleClickSubmitScores = () => {
+  dispatch({ type: "HIT_POINTS", payload: hitPoints });
+  dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
+}
 
   return (
     <div>
@@ -117,9 +131,19 @@ function AbilityScores() {
           id="charisma"
         />
         <label>Charisma</label>
-        <button type="submit" onClick={addAbilityScores}>Accept</button>
         <button onClick={handleRandomAbilities}>Random</button>
       </form>
+      <p>HP here</p>
+            <form>
+              <label>HP</label>
+            <input
+            onChange={handleHpChange}
+            placeholder={hitPoints}
+            id="hitPoints"
+          />
+          <button onClick={handleHpRoll}>roll</button>
+            </form>
+        <button type="submit" onClick={handleClickSubmitScores}>Accept</button>
     </div>
   )
 }

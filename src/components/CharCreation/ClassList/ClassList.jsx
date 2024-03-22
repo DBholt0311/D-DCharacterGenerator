@@ -1,12 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import './ClassList.css';
 
 
-function RaceList() {
+function ClassList() {
+  const dispatch = useDispatch();
+  const [chosenClass, setChosenClass] = useState('');
   const [classes, setClasses] = useState([]);
+
 
   const fetchClasses = () => {
     console.log('in fetchClasses function');
@@ -24,30 +28,29 @@ function RaceList() {
 
   useEffect(() => {
     fetchClasses();
+    setChosenClass([]);
   }, []);
 
-  function addClass() {
-    event.preventDefault();
-      dispatch({type: "CLASS_TO_ADD", payload: newList })
+  const handleClassSelect = (event) => {
+    setChosenClass(event.target.value);
+    console.log(chosenClass);
+    dispatch({type: "CLASS_TO_ADD", payload: chosenClass });
   }
 
   return (
     <div>
-    <h1>backgrounds</h1>
+    <h1>Classes</h1>
     <table>
       <tr>
         <th>Name</th>
       </tr>
       {classes.map((charClass) => (
         <tr key={charClass.id}>
-          <td>{charClass.name}</td>
-          <td>
-            <button onClick={addClass}>Select</button>
-          </td>
+          <td><button value={charClass.name} onClick={handleClassSelect}>{charClass.name}</button></td>
         </tr>
       ))}
     </table>
   </div>
   );
 }
-export default RaceList;
+export default ClassList;

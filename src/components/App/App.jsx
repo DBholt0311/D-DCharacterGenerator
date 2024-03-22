@@ -20,6 +20,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import PageOne from "../CharCreation/PageOne/PageOne";
 import PageTwo from "../CharCreation/PageTwo/PageTwo";
+import CharConfirmation from "../CharCreation/CharConfirmation/CharConfirmation";
 import "./App.css";
 
 function App() {
@@ -63,6 +64,12 @@ function App() {
           exact
           path="/PageTwo">
             <PageTwo />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/CharConfirmation">
+            <CharConfirmation />
           </ProtectedRoute>
 
           <ProtectedRoute
