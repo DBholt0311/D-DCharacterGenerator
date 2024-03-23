@@ -3,29 +3,33 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 function CharSheet() {
-const charId = useSelector((store) => store.charId);
+  const newId = useSelector((store) => store.CharId);
+  const [char, setChar] = useState(newId);
 
-const fetchCharacter = () => {
-  let chosenChar = charId;
-  console.log(chosenChar);
+  const fetchCharacters = () => {
 
-  axios
-  .get(`/api/characters/`)
-  .then((response) => {
-    console.log('RESPONSE:', response.data);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-}
+    axios
+      .get(`/api/characters/${newId}`, newId)
+      .then((response) => {
+        console.log("RESPONSE:", response.data);
+        let newChar = response.data;
+        setChar(newChar);
+        console.log(newChar)
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-useEffect(() => {
-  fetchCharacter({});
-}, []);
+  useEffect(() => {
+    fetchCharacters();
+    setChar([]);
+  }, [])
 
     return (
       <div>
-        <p>char sheet</p>
+        <p>{char.name}</p>
+
       </div>
     )
 }

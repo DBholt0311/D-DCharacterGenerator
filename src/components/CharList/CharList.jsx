@@ -11,7 +11,6 @@ function CharList() {
   const dispatch = useDispatch();
   const [characters, setCharacters] = useState([]);
   const user = useSelector((store) => store.user)
-  const [char, setChar] = useState(0);
 
   let newChar = {
     id: user.id,
@@ -36,8 +35,9 @@ function CharList() {
   }, []);
 
   const selectChar = (event) => {
-    const id = event.target.innerHTML;
+    const id = Number.parseInt(event.target.innerHTML);
     dispatch({ type: "CHAR_ID", payload: id});
+    console.log(id);
   }
 
   return (

@@ -1,4 +1,4 @@
-const race = (state = [], action) => {
+const race = (state = '', action) => {
     if (action.type === 'RACE_TO_ADD') {
   
       return action.payload;

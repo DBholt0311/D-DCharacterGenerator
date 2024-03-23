@@ -12,15 +12,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-
-  let id = req.body;
+  const charID = req.params.id;
   let query = `
   SELECT * FROM "characters"
-  WHERE characters.user_id = $1
-  && character.id = $2;`;
+  WHERE id = $1;`;
   pool
-  .query(query, [req.user.id, id])
-})
+  .query(query, [charID]).then((result) => {
+    res.send(result.rows);
+  });
+});
 
 router.post('/', (req, res) => {
   const newChar = req.body;

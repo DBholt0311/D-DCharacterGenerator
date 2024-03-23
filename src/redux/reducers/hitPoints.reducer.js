@@ -1,4 +1,4 @@
-const hitPoints = (state = [0], action) => {
+const hitPoints = (state = 0, action) => {
     if (action.type === 'HIT_POINTS') {
       return action.payload;
     }

@@ -1,4 +1,4 @@
-const background = (state = [], action) => {
+const background = (state = '', action) => {
     if (action.type === 'BACKGROUND_TO_ADD') {
   
       return action.payload;
