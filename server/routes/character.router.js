@@ -11,6 +11,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  let query = `
+  SELECT * FROM "characters"
+  WHERE characters.user_id = $1
+  && character.id = $2;`;
+  pool
+  .query(query, [req.user.id])
+})
 
 router.post('/', (req, res) => {
   const newChar = req.body;

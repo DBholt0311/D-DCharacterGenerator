@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 
@@ -8,8 +8,10 @@ import "./CharList.css";
 
 
 function CharList() {
+  const dispatch = useDispatch();
   const [characters, setCharacters] = useState([]);
   const user = useSelector((store) => store.user)
+  const [char, setChar] = useState(0);
 
   let newChar = {
     id: user.id,
@@ -30,8 +32,12 @@ function CharList() {
   };
 
   useEffect(() => {
-    fetchCharacters();
+    fetchCharacters([]);
+    setChar([])
   }, []);
+
+  const selectChar = (event) => {
+  }
 
   return (
     <div>
@@ -52,9 +58,7 @@ function CharList() {
             <td>{char.character_name}</td>
             <td>{char.race}</td>
             <td>{char.class}</td>
-            <td>
-              <button><Link to="/charSheet">Select</Link></button>
-            </td>
+            <td><Link to="/charSheet">Select</Link></td>
           </tr>
         ))}
         </tbody>

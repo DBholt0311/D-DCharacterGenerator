@@ -1,16 +1,22 @@
 import React from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function CharSheet() {
-    const createNewChar = () => {
-        axios
-        .post("/api/characters", newChar)
-        .then((response) => {
-          console.log('response:', response.data)
-    
-        })}
-
+const charId = useSelector((store) => store.charId);
+  axios
+  .get(`/api/characters/${charId}`)
+  .then((response) => {
+    console.log('RESPONSE:', response.data);
+    setChar(response.data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
     return (
-    <p>char sheet</p>
+      <div>
+        <p>char sheet</p>
+      </div>
     )
 }
 
