@@ -54,7 +54,7 @@ const createNewChar = () => {
             <p>Intelligence: {currentAbilityScores.intelligence}</p>
             <p>Charisma: {currentAbilityScores.charisma}</p>
             <p>user: {user.id}</p>
-            <button onClick={createNewChar}><Link to="/charSheet">Accept</Link></button>
+            <button onClick={createNewChar}><Link to="/user">Accept</Link></button>
         </div>
     )
 }

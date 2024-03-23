@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
@@ -40,6 +41,18 @@ function CharSheet() {
     setChar([]);
   }, []);
 
+  const deleteChar = (event) => {
+    const id = newId
+    axios
+      .delete(`/api/characters/${id}`, id)
+      .then((response) => {
+        console.log("RESPONSE:", response.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div>
       <p>name: {char.name}</p>
@@ -56,6 +69,7 @@ function CharSheet() {
       <p>wis: {char.wisdom}</p>
       <p>int: {char.intelligence}</p>
       <p>char: {char.charisma}</p>
+      <button onClick={deleteChar}><Link to="/user">Delete</Link></button>
     </div>
   );
 }

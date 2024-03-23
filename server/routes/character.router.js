@@ -41,5 +41,20 @@ router.post('/', (req, res) => {
       });
 });
 
+router.delete('/:id', (req, res) => {
+  const CharId = req.params.id;
+  const queryText = `DELETE FROM "characters" WHERE id = $1;`;
+
+  pool
+      .query(queryText, [CharId])
+      .then((response) => {
+          res.sendStatus(200);
+      })
+      .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+      });
+});
+
 
 module.exports = router;
