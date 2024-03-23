@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 
 import './ClassList.css';
 
@@ -50,6 +51,7 @@ function ClassList() {
         </tr>
       ))}
     </table>
+    <button><Link to="/abilityScores">Next</Link></button>
   </div>
   );
 }

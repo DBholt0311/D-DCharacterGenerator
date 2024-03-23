@@ -39,14 +39,18 @@ function BackgroundsList() {
     <div>
     <h1>Backgrounds</h1>
     <table>
+      <thead>
       <tr>
         <th>Name</th>
       </tr>
+      </thead>
+      <tbody>
       {backgrounds.map((background) => (
         <tr key={background.id}>
           <td><button value={background.name} onClick={handleBackgroundSelect}>{background.name}</button></td>
         </tr>
       ))}
+      </tbody>
     </table>
   </div>
   );

@@ -68,7 +68,7 @@ function CharList() {
         </tbody>
       </table>
       <button onClick={createNewChar}>
-        <Link to="/Name">New Char</Link>
+        <Link to="/PgOne">New Char</Link>
       </button>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { abilityScoreGenerator } from "../../DiceRollers/DiceRoller";
 import { hitPointCalc } from "../../DiceRollers/DiceRoller";
@@ -143,7 +144,7 @@ const handleClickSubmitScores = () => {
           />
           <button onClick={handleHpRoll}>roll</button>
             </form>
-        <button type="submit" onClick={handleClickSubmitScores}>Accept</button>
+        <button type="submit" onClick={handleClickSubmitScores}><Link to="/CharConfirmation">Accept</Link>></button>
     </div>
   )
 }

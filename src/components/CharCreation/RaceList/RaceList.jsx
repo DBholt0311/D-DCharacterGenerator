@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./RaceList.css";
 
@@ -48,6 +49,7 @@ function RaceList() {
         </tr>
       ))}
     </table>
+    <button><Link to="/class">Next</Link></button>
   </div>
   );
 }

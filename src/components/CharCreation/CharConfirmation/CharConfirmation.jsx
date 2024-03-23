@@ -9,6 +9,7 @@ function CharConfirmation() {
     let currentAbilityScores = useSelector((store) => store.abilityScore);
     let currentHp = useSelector((store) => store.hitPoints);
     let user = useSelector((store) => store.user);
+    
     let [newChar, setNewChar] = useState({
       newClass: currentClass,
       race: currentRace,

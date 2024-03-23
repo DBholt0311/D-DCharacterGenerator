@@ -18,9 +18,10 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import Name from "../CharCreation/Name/Name";
-import PageOne from "../CharCreation/PageOne/PageOne";
-import PageTwo from "../CharCreation/PageTwo/PageTwo";
+import PgOne from "../CharCreation/PgOne/PgOne";
+import RaceList from "../CharCreation/RaceList/RaceList";
+import ClassList from "../CharCreation/ClassList/ClassList";
+import AbilityScores from "../CharCreation/AbilityScores/AbilityScores";
 import CharConfirmation from "../CharCreation/CharConfirmation/CharConfirmation";
 import "./App.css";
 
@@ -57,9 +58,30 @@ function App() {
 
           <ProtectedRoute
           exact
-          path="/name"
+          path="/PgOne"
           >
-            <Name />
+            <PgOne />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/race"
+          >
+            <RaceList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/class"
+          >
+            <ClassList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/abilityScores"
+          >
+            <AbilityScores />
           </ProtectedRoute>
 
           <ProtectedRoute
