@@ -61,7 +61,7 @@ function CharList() {
             <td>{char.race}</td>
             <td>{char.class}</td>
             <td>
-              <button>Select</button>
+              <button><Link to="/charSheet">Select</Link></button>
             </td>
           </tr>
         ))}

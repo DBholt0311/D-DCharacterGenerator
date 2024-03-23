@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function CharConfirmation() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function CharConfirmation() {
             <p>Intelligence: {currentAbilityScores.intelligence}</p>
             <p>Charisma: {currentAbilityScores.charisma}</p>
             <p>user: {user.id}</p>
-            <button onClick={createChar}>Accept</button>
+            <button onClick={createChar}><Link to="/charSheet">Accept</Link></button>
         </div>
     )
 }

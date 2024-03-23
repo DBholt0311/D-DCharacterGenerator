@@ -23,6 +23,8 @@ import RaceList from "../CharCreation/RaceList/RaceList";
 import ClassList from "../CharCreation/ClassList/ClassList";
 import AbilityScores from "../CharCreation/AbilityScores/AbilityScores";
 import CharConfirmation from "../CharCreation/CharConfirmation/CharConfirmation";
+import CharSheet from "../CharSheet/CharSheet";
+
 import "./App.css";
 
 function App() {
@@ -88,6 +90,12 @@ function App() {
           exact
           path="/CharConfirmation">
             <CharConfirmation />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/charSheet">
+            <CharSheet />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -10,8 +10,9 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+      <img className="img" src="images/Standin-header-img.jpeg" />
       </Link>
+        <h4 className="nav-title">Character Generator</h4>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -28,17 +29,9 @@ function Nav() {
               Character List
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
