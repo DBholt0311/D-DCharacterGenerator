@@ -53,7 +53,7 @@ CREATE TABLE "ability_score" (
     "modifier" INT
 );
 
-INSERT INTO "characters" ("character_name", "class", "level", "background", "race", "alignment", "experience_points", "Strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
+INSERT INTO "characters" ("character_name", "class", "level", "background", "race", "alignment", "experience_points", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
 )
 VALUES ('claude','ranger', 1, 'scholar', 'human', 'lawful good', 0, 11, 12, 13, 14, 15, 17, 10, 1),
 ('smeagle','barbarian', 1, 'scholar', 'human', 'lawful good', 0, 11, 12, 13, 14, 15, 17, 10, 3);
