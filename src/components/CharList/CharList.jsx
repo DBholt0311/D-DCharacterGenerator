@@ -10,6 +10,7 @@ import "./CharList.css";
 function CharList() {
   const [characters, setCharacters] = useState([]);
   const user = useSelector((store) => store.user)
+
   let newChar = {
     id: user.id,
   }
@@ -31,15 +32,6 @@ function CharList() {
   useEffect(() => {
     fetchCharacters();
   }, []);
-
-  const createNewChar = () => {
-    axios
-    .post("/api/characters", newChar)
-    .then((response) => {
-      console.log('response:', response.data)
-
-    })
-  };
 
   return (
     <div>
@@ -67,7 +59,7 @@ function CharList() {
         ))}
         </tbody>
       </table>
-      <button onClick={createNewChar}>
+      <button>
         <Link to="/PgOne">New Char</Link>
       </button>
     </div>

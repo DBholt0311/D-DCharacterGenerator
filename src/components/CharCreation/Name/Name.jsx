@@ -6,29 +6,21 @@ function Name() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
-  let newChar = {
-    column: "character_name",
-    newName: name,
-  }
 
   const handleNameChange = (event) => {
     setName(event.target.value)
     console.log(name);
+    dispatch({ type: "NAME_TO_ADD", payload: name})
   };
 
   useEffect(() => {
     setName();
   }, []);
 
-  const handleNameSubmit = (event) => {
-
-  }
-
   return (
     <div>
       <form>
         <input onChange={handleNameChange} placeholder="Name" />
-        <button onClick={handleNameSubmit} >Select</button>
       </form>
     </div>
   );

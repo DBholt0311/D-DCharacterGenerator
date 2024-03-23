@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function CharConfirmation() {
-  const dispatch = useDispatch();
+    let currentName = useSelector((store) => store.characterName)
     let currentClass = useSelector((store) => store.charClass)
     let currentRace = useSelector((store) => store.race);
     let currentBackground = useSelector((store) => store.background);
     let currentAbilityScores = useSelector((store) => store.abilityScore);
     let currentHp = useSelector((store) => store.hitPoints);
     let user = useSelector((store) => store.user);
+    let currentAlignment = useSelector((store) => store.alignment);
     
-    let [newChar, setNewChar] = useState({
+    let [Char, setChar] = useState({
+      name: currentName,
       newClass: currentClass,
       race: currentRace,
       background: currentBackground,
+      alignment: currentAlignment,
+      exp: 0,
+      lvl: 1,
       hp: currentHp,
       strength: currentAbilityScores.strength,
       dexterity: currentAbilityScores.dexterity,
@@ -22,21 +28,23 @@ function CharConfirmation() {
       wisdom: currentAbilityScores.wisdom,
       intelligence: currentAbilityScores.intelligence,
       charisma: currentAbilityScores.charisma,
-      user_id: user.id,
+      user: user.id,
     });
 
-    const createChar = (event) => {
-      event.preventDefault();
-  
-      dispatch({ type: 'CREATE_CHAR', payload: newChar});
-      console.log(newChar);
-    };
+const createNewChar = () => {
+  axios
+  .post("/api/characters", Char)
+  .then((response) => {
+    console.log('response:', response.data)
+
+  })};
 
     return (
         <div>
-            <p>Name: </p>
+            <p>Name: {currentName}</p>
             <p>Race: {currentRace}</p>
             <p>Class: {currentClass}</p>
+            <p>Alignment: {currentAlignment}</p>
             <p>Background: {currentBackground}</p>
             <p>Hp: {currentHp}</p>
             <p>Strength: {currentAbilityScores.strength}</p>
@@ -46,7 +54,7 @@ function CharConfirmation() {
             <p>Intelligence: {currentAbilityScores.intelligence}</p>
             <p>Charisma: {currentAbilityScores.charisma}</p>
             <p>user: {user.id}</p>
-            <button onClick={createChar}><Link to="/charSheet">Accept</Link></button>
+            <button onClick={createNewChar}><Link to="/charSheet">Accept</Link></button>
         </div>
     )
 }

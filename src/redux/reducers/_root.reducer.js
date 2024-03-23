@@ -6,6 +6,8 @@ import charClass from './class.reducer';
 import race from './races.reducer';
 import abilityScore from './abilityScore.reducer';
 import hitPoints from './hitPoints.reducer';
+import alignment from './alignment.reducer';
+import characterName from './characterName.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +23,8 @@ const rootReducer = combineReducers({
   charClass,
   abilityScore,
   hitPoints,
+  alignment,
+  characterName,
 });
 
 export default rootReducer;
