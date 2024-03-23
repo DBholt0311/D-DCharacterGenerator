@@ -12,12 +12,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+
+  let id = req.body;
   let query = `
   SELECT * FROM "characters"
   WHERE characters.user_id = $1
   && character.id = $2;`;
   pool
-  .query(query, [req.user.id])
+  .query(query, [req.user.id, id])
 })
 
 router.post('/', (req, res) => {

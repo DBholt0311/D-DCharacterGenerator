@@ -31,9 +31,8 @@ function RaceList() {
   }, []);
 
   const handleRaceSelect = (event) => {
-    setChosenRace(event.target.value);
-    console.log(chosenRace);
-    dispatch({type: "RACE_TO_ADD", payload: chosenRace });
+    const newRace = event.target.value;
+    dispatch({type: "RACE_TO_ADD", payload: newRace });
   }
 
   return (

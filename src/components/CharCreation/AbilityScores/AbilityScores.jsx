@@ -60,24 +60,25 @@ function AbilityScores() {
   };
 
   const handleRandomAbilities = () => {
-    setAbilityScores({
-        ...abilityScores,
-        strength: abilityScoreGenerator(),
-        dexterity: abilityScoreGenerator(),
-        constitution: abilityScoreGenerator(),
-        wisdom: abilityScoreGenerator(),
-        intelligence: abilityScoreGenerator(),
-        charisma: abilityScoreGenerator(),
-    });
+   const newAbilityScores = {
+    strength: abilityScoreGenerator(),
+    dexterity: abilityScoreGenerator(),
+    constitution: abilityScoreGenerator(),
+    wisdom: abilityScoreGenerator(),
+    intelligence: abilityScoreGenerator(),
+    charisma: abilityScoreGenerator(),
+  };
+    setAbilityScores(newAbilityScores);
     console.log(abilityScores);
   };
 
   const handleHpChange = (event) => {
-    setHitPoints(event.target.value);
+    const newHp = event.target.value; 
+    setHitPoints(newHp);
   };
 
   useEffect(() => {
-    setAbilityScores([]);
+    setAbilityScores({});
     setHitPoints([]);
   }, []);
 
@@ -144,7 +145,7 @@ const handleClickSubmitScores = () => {
           />
           <button onClick={handleHpRoll}>roll</button>
             </form>
-        <button type="submit" onClick={handleClickSubmitScores}><Link to="/CharConfirmation">Accept</Link>></button>
+        <button type="submit" onClick={handleClickSubmitScores}><Link to="/CharConfirmation">Accept</Link></button>
     </div>
   )
 }

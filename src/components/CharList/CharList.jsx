@@ -33,10 +33,11 @@ function CharList() {
 
   useEffect(() => {
     fetchCharacters([]);
-    setChar([])
   }, []);
 
   const selectChar = (event) => {
+    const id = event.target.innerHTML;
+    dispatch({ type: "CHAR_ID", payload: id});
   }
 
   return (
@@ -58,7 +59,7 @@ function CharList() {
             <td>{char.character_name}</td>
             <td>{char.race}</td>
             <td>{char.class}</td>
-            <td><Link to="/charSheet">Select</Link></td>
+            <td onClick={selectChar}><Link to="/charSheet">{char.id}</Link></td>
           </tr>
         ))}
         </tbody>

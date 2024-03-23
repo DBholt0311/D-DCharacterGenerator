@@ -8,9 +8,10 @@ function Name() {
   const [name, setName] = useState('');
 
   const handleNameChange = (event) => {
-    setName(event.target.value)
+    const newName = event.target.value;
+
     console.log(name);
-    dispatch({ type: "NAME_TO_ADD", payload: name})
+    dispatch({ type: "NAME_TO_ADD", payload: newName})
   };
 
   useEffect(() => {

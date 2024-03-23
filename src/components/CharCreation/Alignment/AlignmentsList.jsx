@@ -24,13 +24,13 @@ function AlignmentsList() {
 
   useEffect(() => {
     fetchAlignments();
-    setChosenAlignment([]);
+    setChosenAlignment('');
   }, []);
 
   const handleAlignmentSelect = (event) => {
-    setChosenAlignment(event.target.value);
-    console.log(chosenAlignment);
-    dispatch({type: "ALIGNMENT_TO_ADD", payload: chosenAlignment });
+    const alignment = event.target.value;
+    setChosenAlignment(alignment);
+    dispatch({type: "ALIGNMENT_TO_ADD", payload: alignment });
   }
 
   return (

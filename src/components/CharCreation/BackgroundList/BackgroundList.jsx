@@ -26,13 +26,13 @@ function BackgroundsList() {
 
   useEffect(() => {
     fetchBackGrounds();
-    setChosenBackground([]);
+    setChosenBackground('');
   }, []);
 
   const handleBackgroundSelect = (event) => {
-    setChosenBackground(event.target.value);
-    console.log(chosenBackground);
-    dispatch({type: "BACKGROUND_TO_ADD", payload: chosenBackground });
+    const newBackground = event.target.value;
+    setChosenBackground(newBackground);
+    dispatch({type: "BACKGROUND_TO_ADD", payload: newBackground });
   }
 
   return (

@@ -33,9 +33,8 @@ function ClassList() {
   }, []);
 
   const handleClassSelect = (event) => {
-    setChosenClass(event.target.value);
-    console.log(chosenClass);
-    dispatch({type: "CLASS_TO_ADD", payload: chosenClass });
+    const newClass = event.target.value;
+    dispatch({type: "CLASS_TO_ADD", payload: newClass });
   }
 
   return (
