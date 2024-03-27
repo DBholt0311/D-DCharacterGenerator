@@ -3,6 +3,29 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+// MUI
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
+];
+
+   
+
 import "./CharList.css";
 
 function CharList() {
@@ -39,6 +62,7 @@ function CharList() {
   };
 
   const deleteChar = (event) => {
+
     
     axios
       .delete(`/api/characters/${id}`, id)
@@ -53,33 +77,39 @@ function CharList() {
   return (
     <div>
       <h1>Characters</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>level</th>
-            <th>Name</th>
-            <th>race</th>
-            <th>class</th>
-          </tr>
-        </thead>
-        <tbody>
-          {characters.map((char) => (
-            <tr key={char.id}>
-              <td>{char.level}</td>
-              <td>{char.character_name}</td>
-              <td>{char.race}</td>
-              <td>{char.class}</td>
-              <td onClick={selectChar}>
-                <Link to="/charSheet">{char.id}</Link>
-              </td>
-              <td><button onClick={deleteChar}>Delete</button></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="right">Level</TableCell>
+              <TableCell align="right">Name</TableCell>
+              <TableCell align="right">Race</TableCell>
+              <TableCell align="right">ID</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {characters.map((char) => (
+              <TableRow
+                key={char.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {char.name}
+                </TableCell>
+                <TableCell align="right">{char.level}</TableCell>
+                <TableCell align="right">{char.character_name}</TableCell>
+                <TableCell align="right">{char.race}</TableCell>
+                <TableCell onClick={selectChar} align="right"><Link to="/charSheet">{char.id}</Link></TableCell>
+                <TableCell><button onClick={deleteChar}>Delete</button></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       <button>
         <Link to="/PgOne">New Char</Link>
       </button>
+      </TableContainer>
     </div>
   );
 }

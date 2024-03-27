@@ -24,13 +24,16 @@ router.get("/:id", (req, res) => {
 
 router.post('/', (req, res) => {
   const newChar = req.body;
-  const sqlText = `INSERT INTO "characters" ("character_name", "class", "level", "background", "race", "alignment", "experience_points", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
+  const sqlText = `
+  INSERT INTO "characters" ("character_name", "class", "level", "background", "race",
+   "alignment", "experience_points", "strength", "dexterity", "constitution", "wisdom",
+    "intelligence", "charisma", "hit_points", "user_id"
   )
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, 15);`;
   pool
-      .query(sqlText, [newChar.name, newChar.newClass, newChar.level,  newChar.race, newChar.background, 
-        newChar.alignment, newChar.exp, newChar.hp, newChar.strength, newChar.dexterity, newChar.constitution, 
-        newChar.wisdom, newChar.intelligence, newChar.charisma, newChar.user])
+      .query(sqlText, [newChar.name, newChar.newClass, newChar.level,  newChar.background, newChar.race, 
+        newChar.alignment, newChar.exp, newChar.strength, newChar.dexterity, newChar.constitution, 
+        newChar.wisdom, newChar.intelligence, newChar.charisma, newChar.hp, newChar.user])
       .then((result) => {
           console.log(`character created`, newChar);
           res.sendStatus(201);
@@ -40,6 +43,26 @@ router.post('/', (req, res) => {
           res.sendStatus(500);
       });
 });
+
+router.put('/:id', (req, res) => {
+  const newChar = req.body;
+  const charId= req.params.id;
+  const queryText = `UPDATE "characters" SET "character_name", "class", "level", "background", "race",
+  "alignment", "experience_points", "strength", "dexterity", "constitution", "wisdom",
+   "intelligence", "charisma", "hit_points" = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+  WHERE "id" = $15;`;
+  pool
+    .query(queryText, [newChar.name, newChar.newClass, newChar.level,  newChar.background, newChar.race, 
+      newChar.alignment, newChar.exp, newChar.strength, newChar.dexterity, newChar.constitution, 
+      newChar.wisdom, newChar.intelligence, newChar.charisma, newChar.hp, newChar.user, charId])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+})
 
 router.delete('/:id', (req, res) => {
   const CharId = req.params.id;

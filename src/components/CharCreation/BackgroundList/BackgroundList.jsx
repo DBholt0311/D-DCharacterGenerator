@@ -52,6 +52,7 @@ function BackgroundsList() {
       ))}
       </tbody>
     </table>
+    <p>Background: {chosenBackground}</p>
   </div>
   );
 }

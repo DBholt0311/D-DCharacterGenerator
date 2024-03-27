@@ -3,6 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+//MUI
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 function AlignmentsList() {
   const dispatch = useDispatch();
   const [alignments, setAlignments] = useState([]);
@@ -24,7 +31,7 @@ function AlignmentsList() {
 
   useEffect(() => {
     fetchAlignments();
-    setChosenAlignment('');
+    setChosenAlignment();
   }, []);
 
   const handleAlignmentSelect = (event) => {
@@ -35,21 +42,27 @@ function AlignmentsList() {
 
   return (
     <div>
-    <h1>Alignments</h1>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-      </thead>
-      <tbody>
-      {alignments.map((alignment) => (
-        <tr key={alignment.id}>
-          <td><button value={alignment.name} onClick={handleAlignmentSelect}>{alignment.name}</button></td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
+      <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Alignment</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    label="Alignment"
+    onChange={handleAlignmentSelect}
+  >
+    <MenuItem value={'Lawful Good'}>Lawful Good</MenuItem>
+    <MenuItem value={'Chaotic Good'}>Chaotic Good </MenuItem>
+    <MenuItem value={'Neutral Good'}>Neutral Good</MenuItem>
+    <MenuItem value={'Lawful Neutral'}>Lawful Neutral</MenuItem>
+    <MenuItem value={'True Neutral'}>True Neutral</MenuItem>
+    <MenuItem value={'Chaotic Neutral'}>Chaotic Neutral</MenuItem>
+    <MenuItem value={'Lawful Evil'}>Lawful Evil</MenuItem>
+    <MenuItem value={'Chaotic Evil'}>Chaotic Evil</MenuItem>
+    <MenuItem value={'Neutral Evil'}>Neutral Evil</MenuItem>
+
+  </Select>
+</FormControl>
+    <p> Alignment: {chosenAlignment}</p>
   </div>
   );
 }

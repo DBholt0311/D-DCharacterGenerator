@@ -32,6 +32,7 @@ function RaceList() {
 
   const handleRaceSelect = (event) => {
     const newRace = event.target.value;
+    setChosenRace(newRace);
     dispatch({type: "RACE_TO_ADD", payload: newRace });
   }
 
@@ -48,6 +49,7 @@ function RaceList() {
         </tr>
       ))}
     </table>
+    <p>Race: {chosenRace}</p>
     <button><Link to="/class">Next</Link></button>
   </div>
   );

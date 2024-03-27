@@ -34,6 +34,7 @@ function ClassList() {
 
   const handleClassSelect = (event) => {
     const newClass = event.target.value;
+    setChosenClass(newClass);
     dispatch({type: "CLASS_TO_ADD", payload: newClass });
   }
 
@@ -50,6 +51,7 @@ function ClassList() {
         </tr>
       ))}
     </table>
+    <p>Class: {chosenClass}</p>
     <button><Link to="/abilityScores">Next</Link></button>
   </div>
   );
