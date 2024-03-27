@@ -3,6 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+import styles from "./AlignmentsList.module.css";
+
 //MUI
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -42,11 +44,11 @@ function AlignmentsList() {
 
   return (
     <div>
-      <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Alignment</InputLabel>
+      <Box sx={{ maxWidth: 160}}>
+      <FormControl variant="standard" fullWidth>
+  <InputLabel id="Alignments">Alignment</InputLabel>
   <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
+    labelId="Alignments-label"
     label="Alignment"
     onChange={handleAlignmentSelect}
   >
@@ -63,6 +65,7 @@ function AlignmentsList() {
   </Select>
 </FormControl>
     <p> Alignment: {chosenAlignment}</p>
+      </Box>
   </div>
   );
 }
