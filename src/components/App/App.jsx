@@ -88,12 +88,6 @@ function App() {
 
           <ProtectedRoute
           exact
-          path="/CharConfirmation">
-            <CharConfirmation />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
           path="/charSheet">
             <CharSheet />
           </ProtectedRoute>
