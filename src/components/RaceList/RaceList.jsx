@@ -40,14 +40,18 @@ function RaceList() {
     <div>
     <h1>Races</h1>
     <table>
+      <thead>
       <tr>
         <th>Name</th>
       </tr>
+      </thead>
+      <tbody>
       {races.map((race) => (
         <tr key={race.id}>
           <td><button value={race.name} onClick={handleRaceSelect}>{race.name}</button></td>
         </tr>
       ))}
+      </tbody>
     </table>
     <p>Race: {chosenRace}</p>
     <button><Link to="/class">Next</Link></button>

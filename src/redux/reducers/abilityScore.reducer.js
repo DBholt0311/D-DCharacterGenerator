@@ -1,4 +1,4 @@
-const abilityScore = (state = [0], action) => {
+const abilityScore = (state = {}, action) => {
   if (action.type === 'ABILITY_SCORE') {
     return action.payload;
   }

@@ -18,11 +18,11 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import PgOne from "../CharCreation/PgOne/PgOne";
-import RaceList from "../CharCreation/RaceList/RaceList";
-import ClassList from "../CharCreation/ClassList/ClassList";
-import AbilityScores from "../CharCreation/AbilityScores/AbilityScores";
-import CharConfirmation from "../CharCreation/CharConfirmation/CharConfirmation";
+import PgOne from "../PgOne/PgOne";
+import RaceList from "../RaceList/RaceList";
+import ClassList from "../ClassList/ClassList";
+import AbilityScores from "../AbilityScores/AbilityScores";
+import CharConfirmation from "../CharConfirmation/CharConfirmation";
 import CharSheet from "../CharSheet/CharSheet";
 
 import "./App.css";
@@ -84,6 +84,12 @@ function App() {
           path="/abilityScores"
           >
             <AbilityScores />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/CharConfirmation">
+            <CharConfirmation />
           </ProtectedRoute>
 
           <ProtectedRoute

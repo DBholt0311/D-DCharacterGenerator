@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -14,25 +13,9 @@ import Select from '@mui/material/Select';
 
 function AlignmentsList() {
   const dispatch = useDispatch();
-  const [alignments, setAlignments] = useState([]);
   const [chosenAlignment, setChosenAlignment] = useState('');
 
-  const fetchAlignments = () => {
-    console.log("in fetchAlignments function");
-
-    axios
-      .get("/api/alignments")
-      .then((response) => {
-        console.log("RESPONSE:", response.data);
-        setAlignments(response.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   useEffect(() => {
-    fetchAlignments();
     setChosenAlignment();
   }, []);
 

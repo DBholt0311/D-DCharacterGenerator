@@ -32,6 +32,7 @@ function CharConfirmation() {
     });
 
 const createNewChar = () => {
+
   axios
   .post("/api/characters", Char)
   .then((response) => {

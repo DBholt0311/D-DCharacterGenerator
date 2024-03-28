@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-import { abilityScoreGenerator } from "../../DiceRollers/DiceRoller";
-import { hitPointCalc } from "../../DiceRollers/DiceRoller";
+import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
+import { hitPointCalc } from "../DiceRollers/DiceRoller";
 
 function AbilityScores() {
   const dispatch = useDispatch();
+  const className = useSelector((store) => store.charClass);
+  const raceName = useSelector((store) => store.race);
   let [abilityScores, setAbilityScores] = useState({
     strength: 0,
     dexterity: 0,
@@ -59,8 +62,9 @@ function AbilityScores() {
     });
   };
 
-  const handleRandomAbilities = () => {
-   const newAbilityScores = {
+  const handleRandomAbilities = (event) => {
+    event.preventDefault();
+   let newAbilityScores = {
     strength: abilityScoreGenerator(),
     dexterity: abilityScoreGenerator(),
     constitution: abilityScoreGenerator(),
@@ -68,8 +72,9 @@ function AbilityScores() {
     intelligence: abilityScoreGenerator(),
     charisma: abilityScoreGenerator(),
   };
-    setAbilityScores(newAbilityScores);
-    console.log(abilityScores);
+
+  setAbilityScores(newAbilityScores);
+  console.log(abilityScores);
   };
 
   const handleHpChange = (event) => {
@@ -83,9 +88,21 @@ function AbilityScores() {
   }, []);
 
 
-  const handleHpRoll = () => {
-    setHitPoints(hitPointCalc(8) + abilityScores.constitution);
-    console.log(abilityScores, hitPoints)
+  const handleHpRoll = (event) => {
+    event.preventDefault();
+    let hitDie = 0;
+    if (className === 'barbarian') {
+      hitDie = 12; 
+    } else if (className === 'ranger' || 'paladin' || 'fighter') {
+      hitDie = 10;
+    } else if (className === 'warlock' || 'rogue' || 'monk' || 'druid' || 'cleric' || 'bard') {
+      hitDie = 8;
+    } else if (className === 'wizard' || 'sorcerer') {
+      hitDie = 6;
+    }
+    setHitPoints(hitPointCalc(hitDie) + Math.floor((abilityScores.constitution-10)/2));
+    console.log("d",hitDie);
+    console.log(abilityScores, hitPoints);
 }
 
 const handleClickSubmitScores = () => {

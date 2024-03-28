@@ -14,4 +14,14 @@ router.get("/", (req, res) => {
     })    
 })
 
+router.get("/hit_die", (req, res) => {
+    const className = req.params.name;
+    let query = `
+    SELECT "hit_die" from "classes" where "name" = $1;`;
+    pool
+    .query(query, [className]).then((result) => {
+      res.send(result.rows);
+    });
+  });
+
 module.exports = router;

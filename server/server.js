@@ -13,7 +13,6 @@ const characterRouter = require('./routes/character.router');
 const racesRouter = require('./routes/races.router');
 const classesRouter = require('./routes/classes.router');
 const backgroundsRouter = require('./routes/backgrounds.router');
-const alignmentsRouter = require('./routes/alignments.router');
 
 // Express Middleware
 app.use(express.json());
@@ -33,7 +32,6 @@ app.use('/api/characters', characterRouter);
 app.use('/api/races', racesRouter);
 app.use('/api/classes', classesRouter);
 app.use('/api/backgrounds', backgroundsRouter);
-app.use('/api/alignments', alignmentsRouter);
 
 // Listen Server & Port
 app.listen(PORT, () => {

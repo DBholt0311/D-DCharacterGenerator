@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Input from "@mui/material/Input";
 
+import AlignmentsList from "../Alignment/AlignmentsList"
+
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
   const [char, setChar] = useState(newId);
@@ -59,48 +61,26 @@ function CharSheet() {
   };
 
   return (
-    <Box>
-      <Grid
-       container
-        spacing={2}
-        direction="row"
-        justifyContent="center"
-        alignItems="flex-start"
-        >
-        <Grid item xs={8} md={6} lg={3}>
-          <Box
-          sx={{
-            display: 'grid',
-            gridTemplateRows: 'repeat(3, 1fr'
-          }}
-          >
+    <div>
             <label>Name:</label>
             <Input placeholder={char.name}></Input>
             <p>class: {char.class}</p>
             <p>race: {char.race}</p>
-          </Box>
-          <Box>
             <p>background: {char.background}</p>
-            <p>alignment: {char.alignment}</p>
+            <AlignmentsList />
             <p>exp: {char.exp}</p>
             <p>lvl: {char.lvl}</p>
-          </Box>
-          <Box>
-            <p>hp: {char.hp}</p>
             <p>str: {char.strength}</p>
             <p>dex: {char.dexterity}</p>
             <p>con: {char.constitution}</p>
             <p>wis: {char.wisdom}</p>
             <p>int: {char.intelligence}</p>
             <p>char: {char.charisma}</p>
-          </Box>
-
+            <p>hp: {char.hp}</p>
           <button onClick={deleteChar}>
             <Link to="/user">Delete</Link>
           </button>
-        </Grid>
-      </Grid>
-    </Box>
+    </div>
   );
 }
 

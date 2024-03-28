@@ -9,6 +9,7 @@ import './ClassList.css';
 
 function ClassList() {
   const dispatch = useDispatch();
+  const [hitDie, setHitDie] = useState(0)
   const [chosenClass, setChosenClass] = useState('');
   const [classes, setClasses] = useState([]);
 
