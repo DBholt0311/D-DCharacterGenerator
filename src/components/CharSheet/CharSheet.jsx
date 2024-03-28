@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import Input from "@mui/material/Input";
 
 import AlignmentsList from "../Alignment/AlignmentsList"
+import BackgroundList from "../BackgroundList/BackgroundList";
 
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
@@ -66,7 +67,7 @@ function CharSheet() {
             <Input placeholder={char.name}></Input>
             <p>class: {char.class}</p>
             <p>race: {char.race}</p>
-            <p>background: {char.background}</p>
+            <BackgroundList />
             <AlignmentsList />
             <p>exp: {char.exp}</p>
             <p>lvl: {char.lvl}</p>
