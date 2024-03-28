@@ -1,11 +1,19 @@
 import React from "react";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
-import "./BackgroundsList.css";
+//MUI
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
-function BackgroundsList() {
+
+function BackgroundList() {
   const dispatch = useDispatch();
   const [backgrounds, setBackgrounds] = useState([]);
   const [chosenBackground, setChosenBackground] = useState('');
@@ -17,7 +25,8 @@ function BackgroundsList() {
       .get("/api/backgrounds")
       .then((response) => {
         console.log("RESPONSE:", response.data);
-        setBackgrounds(response.data);
+        let backgroundsList = response.data;
+        setBackgrounds(backgroundsList);
       })
       .catch((err) => {
         console.error(err);
@@ -33,27 +42,30 @@ function BackgroundsList() {
     const newBackground = event.target.value;
     setChosenBackground(newBackground);
     dispatch({type: "BACKGROUND_TO_ADD", payload: newBackground });
-  }
+}
 
   return (
     <div>
-    <h1>Backgrounds</h1>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-      </thead>
-      <tbody>
-      {backgrounds.map((background) => (
-        <tr key={background.id}>
-          <td><button value={background.name} onClick={handleBackgroundSelect}>{background.name}</button></td>
-        </tr>
+      <Box sx={{ maxWidth: 160}}>
+      <FormControl variant="standard" fullWidth>
+  <InputLabel value={chosenBackground} id="Backgrounds">Background</InputLabel>
+  <Select
+    labelId="Backgrounds-label"
+    label="Background"
+    value={''}
+    onChange={handleBackgroundSelect}
+  >
+          {backgrounds.map((background) => (
+        <div key={background.id}>
+          <MenuItem value={background.name}>{background.name}</MenuItem>
+        </div>
       ))}
-      </tbody>
-    </table>
-    <p>Background: {chosenBackground}</p>
+
+  </Select>
+</FormControl>
+    <p> Background: {chosenBackground}</p>
+      </Box>
   </div>
   );
 }
-export default BackgroundsList;
+export default BackgroundList;

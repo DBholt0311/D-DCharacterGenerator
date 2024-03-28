@@ -13,10 +13,10 @@ import Select from '@mui/material/Select';
 
 function AlignmentsList() {
   const dispatch = useDispatch();
-  const [chosenAlignment, setChosenAlignment] = useState('');
+  const [chosenAlignment, setChosenAlignment] = useState('Alignment');
 
   useEffect(() => {
-    setChosenAlignment();
+    setChosenAlignment('Alignment');
   }, []);
 
   const handleAlignmentSelect = (event) => {
@@ -29,10 +29,11 @@ function AlignmentsList() {
     <div>
       <Box sx={{ maxWidth: 160}}>
       <FormControl variant="standard" fullWidth>
-  <InputLabel id="Alignments">Alignment</InputLabel>
+  <InputLabel value={chosenAlignment} id="Alignments">{chosenAlignment}</InputLabel>
   <Select
     labelId="Alignments-label"
     label="Alignment"
+    value={''}
     onChange={handleAlignmentSelect}
   >
     <MenuItem value={'Lawful Good'}>Lawful Good</MenuItem>
