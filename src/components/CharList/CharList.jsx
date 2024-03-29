@@ -56,18 +56,19 @@ function CharList() {
   }, []);
 
   const selectChar = (event) => {
-    const id = Number.parseInt(event.target.innerHTML);
+    let id = event.target.value;
     dispatch({ type: "CHAR_ID", payload: id });
     console.log(id);
   };
 
   const deleteChar = (event) => {
-
+    let id = event.target.value;
     
     axios
       .delete(`/api/characters/${id}`, id)
       .then((response) => {
         console.log("RESPONSE:", response.data);
+        fetchCharacters();
       })
       .catch((err) => {
         console.error(err);
@@ -100,8 +101,8 @@ function CharList() {
                 <TableCell align="right">{char.level}</TableCell>
                 <TableCell align="right">{char.character_name}</TableCell>
                 <TableCell align="right">{char.race}</TableCell>
-                <TableCell onClick={selectChar} align="right"><Link to="/charSheet">{char.id}</Link></TableCell>
-                <TableCell><button onClick={deleteChar}>Delete</button></TableCell>
+                <TableCell align="right"><Link to="/charSheet"><button value={char.id} onClick={selectChar}>Select</button></Link></TableCell>
+                <TableCell><button value={char.id} onClick={deleteChar}>Delete</button></TableCell>
               </TableRow>
             ))}
           </TableBody>
