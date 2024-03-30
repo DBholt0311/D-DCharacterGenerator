@@ -19,6 +19,32 @@ import Name from "../Name/Name";
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
   const [char, setChar] = useState(newId);
+  let currentName = useSelector((store) => store.characterName)
+  let currentClass = useSelector((store) => store.charClass)
+  let currentRace = useSelector((store) => store.race);
+  let currentBackground = useSelector((store) => store.background);
+  let currentAbilityScores = useSelector((store) => store.abilityScore);
+  let currentHp = useSelector((store) => store.hitPoints);
+  let user = useSelector((store) => store.user);
+  let currentAlignment = useSelector((store) => store.alignment);
+  
+  let [newCharDisplay, setCharDisplay] = useState({
+    name: currentName,
+    newClass: currentClass,
+    race: currentRace,
+    background: currentBackground,
+    alignment: currentAlignment,
+    hp: currentHp,
+    level: 1,
+    exp: 0,
+    strength: currentAbilityScores.strength,
+    dexterity: currentAbilityScores.dexterity,
+    constitution: currentAbilityScores.constitution,
+    wisdom: currentAbilityScores.wisdom,
+    intelligence: currentAbilityScores.intelligence,
+    charisma: currentAbilityScores.charisma,
+    user: user.id,
+  });
 
   const fetchCharacters = () => {
     axios
@@ -66,6 +92,15 @@ function CharSheet() {
       });
   };
 
+  const createNewChar = () => {
+
+    axios
+    .post("/api/characters", newCharDisplay)
+    .then((response) => {
+      console.log('response:', response.data)
+  
+    })};
+
   return (
     <div>
             <Name />
@@ -76,6 +111,7 @@ function CharSheet() {
             <Input placeholder={char.exp}></Input>
             <Input placeholder={char.lvl}></Input>
             <AbilityScores />
+            <button onClick={createNewChar}>Accept</button>
           <button onClick={deleteChar}>
             <Link to="/user">Delete</Link>
           </button>
