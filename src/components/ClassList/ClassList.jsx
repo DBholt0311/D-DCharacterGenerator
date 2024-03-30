@@ -43,14 +43,18 @@ function ClassList() {
     <div>
     <h1>Classes</h1>
     <table>
+      <thead>
       <tr>
         <th>Name</th>
       </tr>
+      </thead>
+      <tbody>
       {classes.map((charClass) => (
         <tr key={charClass.id}>
           <td><button value={charClass.name} onClick={handleClassSelect}>{charClass.name}</button></td>
         </tr>
       ))}
+      </tbody>
     </table>
     <p>Class: {chosenClass}</p>
     <button><Link to="/abilityScores">Next</Link></button>

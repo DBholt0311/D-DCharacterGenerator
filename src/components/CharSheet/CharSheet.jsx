@@ -10,6 +10,11 @@ import Input from "@mui/material/Input";
 
 import AlignmentsList from "../Alignment/AlignmentsList"
 import BackgroundList from "../BackgroundList/BackgroundList";
+import AbilityScores from "../AbilityScores/AbilityScores";
+import ClassList from "../ClassList/ClassList";
+import RaceList from "../RaceList/RaceList";
+import Name from "../Name/Name";
+
 
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
@@ -63,21 +68,14 @@ function CharSheet() {
 
   return (
     <div>
-            <label>Name:</label>
-            <Input placeholder={char.name}></Input>
-            <p>class: {char.class}</p>
-            <p>race: {char.race}</p>
+            <Name />
+            <ClassList />
+            <RaceList />
             <BackgroundList />
             <AlignmentsList />
-            <p>exp: {char.exp}</p>
-            <p>lvl: {char.lvl}</p>
-            <p>str: {char.strength}</p>
-            <p>dex: {char.dexterity}</p>
-            <p>con: {char.constitution}</p>
-            <p>wis: {char.wisdom}</p>
-            <p>int: {char.intelligence}</p>
-            <p>char: {char.charisma}</p>
-            <p>hp: {char.hp}</p>
+            <Input placeholder={char.exp}></Input>
+            <Input placeholder={char.lvl}></Input>
+            <AbilityScores />
           <button onClick={deleteChar}>
             <Link to="/user">Delete</Link>
           </button>

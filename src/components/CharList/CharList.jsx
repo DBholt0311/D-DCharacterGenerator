@@ -108,7 +108,7 @@ function CharList() {
           </TableBody>
         </Table>
       <button>
-        <Link to="/PgOne">New Char</Link>
+        <Link to="/CharSheet">New Char</Link>
       </button>
       </TableContainer>
     </div>
