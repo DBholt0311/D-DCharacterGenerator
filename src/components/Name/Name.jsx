@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-function Name() {
+function Name({charName}) {
   const dispatch = useDispatch();
-
   const [name, setName] = useState('');
 
   const handleNameChange = (event) => {
@@ -15,13 +14,13 @@ function Name() {
   };
 
   useEffect(() => {
-    setName();
+    setName('');
   }, []);
 
   return (
     <div>
       <form>
-        <input onChange={handleNameChange} placeholder="Name" />
+        <input onChange={handleNameChange} placeholder={charName} />
       </form>
     </div>
   );

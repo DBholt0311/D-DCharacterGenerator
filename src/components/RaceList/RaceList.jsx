@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import "./RaceList.css";
 
-function RaceList() {
+function RaceList({charRace}) {
   const dispatch = useDispatch();
   const [races, setRaces] = useState([]);
   const [chosenRace, setChosenRace] = useState('');
@@ -53,7 +53,7 @@ function RaceList() {
       ))}
       </tbody>
     </table>
-    <p>Race: {chosenRace}</p>
+    <p>Race: {charRace}</p>
     <button><Link to="/class">Next</Link></button>
   </div>
   );

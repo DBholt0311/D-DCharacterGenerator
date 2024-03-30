@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function AlignmentsList() {
+function AlignmentsList({charAlignment}) {
   const dispatch = useDispatch();
   const [chosenAlignment, setChosenAlignment] = useState('');
 
@@ -33,7 +33,7 @@ function AlignmentsList() {
   <Select
     labelId="Alignments-label"
     label="Alignment"
-    value={chosenAlignment}
+    value={charAlignment}
     onChange={handleAlignmentSelect}
   >
     <MenuItem value={'Lawful Good'}>Lawful Good</MenuItem>

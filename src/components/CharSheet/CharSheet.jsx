@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 //MUI
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Input from "@mui/material/Input";
 
 import AlignmentsList from "../Alignment/AlignmentsList"
@@ -18,7 +16,6 @@ import Name from "../Name/Name";
 
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
-  const [char, setChar] = useState(newId);
   let currentName = useSelector((store) => store.characterName)
   let currentClass = useSelector((store) => store.charClass)
   let currentRace = useSelector((store) => store.race);
@@ -28,7 +25,7 @@ function CharSheet() {
   let user = useSelector((store) => store.user);
   let currentAlignment = useSelector((store) => store.alignment);
   
-  let [newCharDisplay, setCharDisplay] = useState({
+  let [char, setChar] = useState({
     name: currentName,
     newClass: currentClass,
     race: currentRace,
@@ -54,8 +51,8 @@ function CharSheet() {
         let newChar = {
           name: response.data[0].character_name,
           class: response.data[0].class,
-          race: response.data[0].race,
           background: response.data[0].background,
+          race: response.data[0].race,
           alignment: response.data[0].alignment,
           exp: response.data[0].experience_points,
           lvl: response.data[0].level,
@@ -103,14 +100,22 @@ function CharSheet() {
 
   return (
     <div>
-            <Name />
-            <ClassList />
-            <RaceList />
-            <BackgroundList />
-            <AlignmentsList />
+            <Name charName={char.name}/>
+            <ClassList charClass={char.class} />
+            <RaceList charRace={char.race}/>
+            <BackgroundList charBackground={char.background}/>
+            <AlignmentsList charAlignment={char.alignment}/>
             <Input placeholder='0'></Input>
             <Input placeholder='1'></Input>
-            <AbilityScores />
+            <AbilityScores
+              charStrength = {char.strength}
+              charDexterity = {char.dexterity}
+              charConstitution = {char.constitution}
+              charWisdom = {char.wisdom}
+              charIntelligence = {char.intelligence}
+              charCharisma = {char.charisma}
+              charHp = {char.hp}
+            />
             <button onClick={createNewChar}>Accept</button>
           <button onClick={deleteChar}>
             <Link to="/user">Delete</Link>

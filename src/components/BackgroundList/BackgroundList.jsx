@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function BackgroundList() {
+function BackgroundList({charBackground}) {
   const dispatch = useDispatch();
   const [chosenBackground, setChosenBackground] = useState("");
 
@@ -33,7 +33,7 @@ function BackgroundList() {
           <Select
             labelId="Backgrounds-label"
             label="Background"
-            value={chosenBackground}
+            value={charBackground}
             onChange={handleBackgroundSelect}
           >
             <MenuItem value={"acolyte"}>acolyte</MenuItem>

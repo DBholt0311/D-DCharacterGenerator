@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import './ClassList.css';
 
 
-function ClassList() {
+function ClassList({charClass}) {
   const dispatch = useDispatch();
   const [hitDie, setHitDie] = useState(0)
   const [chosenClass, setChosenClass] = useState('');
@@ -56,7 +56,7 @@ function ClassList() {
       ))}
       </tbody>
     </table>
-    <p>Class: {chosenClass}</p>
+    <p>Class: {charClass}</p>
     <button><Link to="/abilityScores">Next</Link></button>
   </div>
   );

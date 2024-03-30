@@ -6,7 +6,15 @@ import axios from "axios";
 import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
 import { hitPointCalc } from "../DiceRollers/DiceRoller";
 
-function AbilityScores() {
+function AbilityScores({
+  charStrength,
+  charDexterity,
+  charConstitution,
+  charWisdom,
+  charIntelligence,
+  charCharisma,
+  charHp,
+}) {
   const dispatch = useDispatch();
   const className = useSelector((store) => store.charClass);
   const raceName = useSelector((store) => store.race);
@@ -64,21 +72,21 @@ function AbilityScores() {
 
   const handleRandomAbilities = (event) => {
     event.preventDefault();
-   let newAbilityScores = {
-    strength: abilityScoreGenerator(),
-    dexterity: abilityScoreGenerator(),
-    constitution: abilityScoreGenerator(),
-    wisdom: abilityScoreGenerator(),
-    intelligence: abilityScoreGenerator(),
-    charisma: abilityScoreGenerator(),
-  };
+    let newAbilityScores = {
+      strength: abilityScoreGenerator(),
+      dexterity: abilityScoreGenerator(),
+      constitution: abilityScoreGenerator(),
+      wisdom: abilityScoreGenerator(),
+      intelligence: abilityScoreGenerator(),
+      charisma: abilityScoreGenerator(),
+    };
 
-  setAbilityScores(newAbilityScores);
-  console.log(abilityScores);
+    setAbilityScores(newAbilityScores);
+    console.log(abilityScores);
   };
 
   const handleHpChange = (event) => {
-    const newHp = event.target.value; 
+    const newHp = event.target.value;
     setHitPoints(newHp);
   };
 
@@ -87,28 +95,36 @@ function AbilityScores() {
     setHitPoints([]);
   }, []);
 
-
   const handleHpRoll = (event) => {
     event.preventDefault();
     let hitDie = 0;
-    if (className === 'barbarian') {
-      hitDie = 12; 
-    } else if (className === 'ranger' || 'paladin' || 'fighter') {
+    if (className === "barbarian") {
+      hitDie = 12;
+    } else if (className === "ranger" || "paladin" || "fighter") {
       hitDie = 10;
-    } else if (className === 'warlock' || 'rogue' || 'monk' || 'druid' || 'cleric' || 'bard') {
+    } else if (
+      className === "warlock" ||
+      "rogue" ||
+      "monk" ||
+      "druid" ||
+      "cleric" ||
+      "bard"
+    ) {
       hitDie = 8;
-    } else if (className === 'wizard' || 'sorcerer') {
+    } else if (className === "wizard" || "sorcerer") {
       hitDie = 6;
     }
-    setHitPoints(hitPointCalc(hitDie) + Math.floor((abilityScores.constitution-10)/2));
-    console.log("d",hitDie);
+    setHitPoints(
+      hitPointCalc(hitDie) + Math.floor((abilityScores.constitution - 10) / 2)
+    );
+    console.log("d", hitDie);
     console.log(abilityScores, hitPoints);
-}
+  };
 
-const handleClickSubmitScores = () => {
-  dispatch({ type: "HIT_POINTS", payload: hitPoints });
-  dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
-}
+  const handleClickSubmitScores = () => {
+    dispatch({ type: "HIT_POINTS", payload: hitPoints });
+    dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
+  };
 
   return (
     <div>
@@ -116,55 +132,57 @@ const handleClickSubmitScores = () => {
       <form>
         <input
           onChange={handleStrengthChange}
-          placeholder={abilityScores.strength}
+          placeholder={charStrength}
           id="strength"
         />
         <label>Strength</label>
         <input
           onChange={handleDexterityChange}
-          placeholder={abilityScores.dexterity}
+          placeholder={charDexterity}
           id="dexterity"
         />
         <label>Dexterity</label>
         <input
           onChange={handleConstitutionChange}
-          placeholder={abilityScores.constitution}
+          placeholder={charConstitution}
           id="constitution"
         />
         <label>Constitution</label>
         <input
           onChange={handleWisdomChange}
-          placeholder={abilityScores.wisdom}
+          placeholder={charWisdom}
           id="Wisdom"
         />
         <label>Wisdom</label>
         <input
           onChange={handleIntelligenceChange}
-          placeholder={abilityScores.intelligence}
+          placeholder={charIntelligence}
           id="intelligence"
         />
         <label>Intelligence</label>
         <input
           onChange={handleCharismaChange}
-          placeholder={abilityScores.charisma}
+          placeholder={charCharisma}
           id="charisma"
         />
         <label>Charisma</label>
         <button onClick={handleRandomAbilities}>Random</button>
       </form>
       <p>HP here</p>
-            <form>
-              <label>HP</label>
-            <input
-            onChange={handleHpChange}
-            placeholder={hitPoints}
-            id="hitPoints"
-          />
-          <button onClick={handleHpRoll}>roll</button>
-            </form>
-        <button type="submit" onClick={handleClickSubmitScores}><Link to="/CharConfirmation">Accept</Link></button>
+      <form>
+        <label>HP</label>
+        <input
+          onChange={handleHpChange}
+          placeholder={charHp}
+          id="hitPoints"
+        />
+        <button onClick={handleHpRoll}>roll</button>
+      </form>
+      <button type="submit" onClick={handleClickSubmitScores}>
+        <Link to="/CharConfirmation">Accept</Link>
+      </button>
     </div>
-  )
+  );
 }
 
 export default AbilityScores;
