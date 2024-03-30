@@ -95,7 +95,7 @@ function CharSheet() {
   const createNewChar = () => {
 
     axios
-    .post("/api/characters", newCharDisplay)
+    .post("/api/characters", newChar)
     .then((response) => {
       console.log('response:', response.data)
   
@@ -108,8 +108,8 @@ function CharSheet() {
             <RaceList />
             <BackgroundList />
             <AlignmentsList />
-            <Input placeholder={char.exp}></Input>
-            <Input placeholder={char.lvl}></Input>
+            <Input placeholder='0'></Input>
+            <Input placeholder='1'></Input>
             <AbilityScores />
             <button onClick={createNewChar}>Accept</button>
           <button onClick={deleteChar}>
