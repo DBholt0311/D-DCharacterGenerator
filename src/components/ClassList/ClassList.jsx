@@ -10,8 +10,9 @@ import './ClassList.css';
 function ClassList({charClass}) {
   const dispatch = useDispatch();
   const [hitDie, setHitDie] = useState(0)
-  const [chosenClass, setChosenClass] = useState('');
   const [classes, setClasses] = useState([]);
+  const [chosenClass, setChosenClass] = useState('');
+  let currentClass = charClass;
 
 
   const fetchClasses = () => {
@@ -30,7 +31,7 @@ function ClassList({charClass}) {
 
   useEffect(() => {
     fetchClasses();
-    setChosenClass([]);
+    setChosenClass([currentClass]);
   }, []);
 
   const handleClassSelect = (event) => {
@@ -56,8 +57,8 @@ function ClassList({charClass}) {
       ))}
       </tbody>
     </table>
-    <p>Class: {charClass}</p>
-    <button><Link to="/abilityScores">Next</Link></button>
+    <p>Class: {currentClass}</p>
+
   </div>
   );
 }

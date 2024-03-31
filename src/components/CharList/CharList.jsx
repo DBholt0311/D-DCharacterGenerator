@@ -95,7 +95,7 @@ function CharList() {
           </TableBody>
         </Table>
       <button>
-        <Link to="/CharSheet">New Char</Link>
+        <Link to="/Race">New Char</Link>
       </button>
       </TableContainer>
     </div>

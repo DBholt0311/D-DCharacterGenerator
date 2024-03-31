@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import "./RaceList.css";
 
-function RaceList({charRace}) {
+function RaceList({}) {
   const dispatch = useDispatch();
   const [races, setRaces] = useState([]);
   const [chosenRace, setChosenRace] = useState('');
@@ -15,7 +15,7 @@ function RaceList({charRace}) {
     console.log("in fetchRaces function");
 
     axios
-      .get("/api/races")
+      .get("https://api.open5e.com/races")
       .then((response) => {
         console.log("RESPONSE:", response.data);
         setRaces(response.data);
@@ -27,7 +27,7 @@ function RaceList({charRace}) {
 
   useEffect(() => {
     fetchRaces();
-    setChosenRace([]);
+    setChosenRace([charRace]);
   }, []);
 
   const handleRaceSelect = (event) => {
@@ -39,22 +39,7 @@ function RaceList({charRace}) {
   return (
     <div>
     <h1>Races</h1>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-      </thead>
-      <tbody>
-      {races.map((race) => (
-        <tr key={race.id}>
-          <td><button value={race.name} onClick={handleRaceSelect}>{race.name}</button></td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
-    <p>Race: {charRace}</p>
-    <button><Link to="/class">Next</Link></button>
+    
   </div>
   );
 }

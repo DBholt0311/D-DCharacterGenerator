@@ -130,42 +130,42 @@ function AbilityScores({
     <div>
       <h1>Ability Scores</h1>
       <form>
-        <input
-          onChange={handleStrengthChange}
-          placeholder={charStrength}
-          id="strength"
-        />
         <label>Strength</label>
         <input
-          onChange={handleDexterityChange}
-          placeholder={charDexterity}
-          id="dexterity"
+          onChange={handleStrengthChange}
+          placeholder={abilityScores.strength}
+          id="strength"
         />
         <label>Dexterity</label>
         <input
-          onChange={handleConstitutionChange}
-          placeholder={charConstitution}
-          id="constitution"
+          onChange={handleDexterityChange}
+          placeholder={abilityScores.dexterity}
+          id="dexterity"
         />
         <label>Constitution</label>
         <input
-          onChange={handleWisdomChange}
-          placeholder={charWisdom}
-          id="Wisdom"
+          onChange={handleConstitutionChange}
+          placeholder={abilityScores.constitution}
+          id="constitution"
         />
         <label>Wisdom</label>
         <input
-          onChange={handleIntelligenceChange}
-          placeholder={charIntelligence}
-          id="intelligence"
+          onChange={handleWisdomChange}
+          placeholder={abilityScores.wisdom}
+          id="Wisdom"
         />
         <label>Intelligence</label>
         <input
-          onChange={handleCharismaChange}
-          placeholder={charCharisma}
-          id="charisma"
+          onChange={handleIntelligenceChange}
+          placeholder={abilityScores.intelligence}
+          id="intelligence"
         />
         <label>Charisma</label>
+        <input
+          onChange={handleCharismaChange}
+          placeholder={abilityScores.charisma}
+          id="charisma"
+        />
         <button onClick={handleRandomAbilities}>Random</button>
       </form>
       <p>HP here</p>
@@ -178,9 +178,6 @@ function AbilityScores({
         />
         <button onClick={handleHpRoll}>roll</button>
       </form>
-      <button type="submit" onClick={handleClickSubmitScores}>
-        <Link to="/CharConfirmation">Accept</Link>
-      </button>
     </div>
   );
 }

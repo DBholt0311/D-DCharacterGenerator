@@ -12,9 +12,10 @@ import Select from "@mui/material/Select";
 function BackgroundList({charBackground}) {
   const dispatch = useDispatch();
   const [chosenBackground, setChosenBackground] = useState("");
+  let currentBackground = charBackground;
 
   useEffect(() => {
-    setChosenBackground("");
+    setChosenBackground(charBackground);
   }, []);
 
   const handleBackgroundSelect = (event) => {
@@ -33,7 +34,7 @@ function BackgroundList({charBackground}) {
           <Select
             labelId="Backgrounds-label"
             label="Background"
-            value={charBackground}
+            value={currentBackground}
             onChange={handleBackgroundSelect}
           >
             <MenuItem value={"acolyte"}>acolyte</MenuItem>

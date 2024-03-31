@@ -14,9 +14,10 @@ import Select from '@mui/material/Select';
 function AlignmentsList({charAlignment}) {
   const dispatch = useDispatch();
   const [chosenAlignment, setChosenAlignment] = useState('');
+  let currentAlignment = charAlignment;
 
   useEffect(() => {
-    setChosenAlignment('');
+    setChosenAlignment(charAlignment);
   }, []);
 
   const handleAlignmentSelect = (event) => {
@@ -33,7 +34,7 @@ function AlignmentsList({charAlignment}) {
   <Select
     labelId="Alignments-label"
     label="Alignment"
-    value={charAlignment}
+    value={currentAlignment}
     onChange={handleAlignmentSelect}
   >
     <MenuItem value={'Lawful Good'}>Lawful Good</MenuItem>

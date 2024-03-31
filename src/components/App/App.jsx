@@ -18,7 +18,6 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import PgOne from "../PgOne/PgOne";
 import RaceList from "../RaceList/RaceList";
 import ClassList from "../ClassList/ClassList";
 import AbilityScores from "../AbilityScores/AbilityScores";
@@ -56,13 +55,6 @@ function App() {
             path="/user"
           >
             <UserPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/PgOne"
-          >
-            <PgOne />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 function Name({charName}) {
   const dispatch = useDispatch();
+  let currentName = charName;
   const [name, setName] = useState('');
 
   const handleNameChange = (event) => {
@@ -14,13 +15,13 @@ function Name({charName}) {
   };
 
   useEffect(() => {
-    setName('');
+    setName(currentName);
   }, []);
 
   return (
     <div>
       <form>
-        <input onChange={handleNameChange} placeholder={charName} />
+        <input onChange={handleNameChange} placeholder={currentName} />
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 const express = require("express");
-const pool = require("../modules/pool");
 const router = express.Router();
+const pool = require("../modules/pool");
 
 router.get("/", (req, res) => {
   let query = `
