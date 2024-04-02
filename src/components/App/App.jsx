@@ -18,10 +18,6 @@ import InfoPage from "../InfoPage/InfoPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
-import RaceList from "../RaceList/RaceList";
-import ClassList from "../ClassList/ClassList";
-import AbilityScores from "../AbilityScores/AbilityScores";
-import CharConfirmation from "../CharConfirmation/CharConfirmation";
 import CharSheet from "../CharSheet/CharSheet";
 
 import "./App.css";
@@ -55,33 +51,6 @@ function App() {
             path="/user"
           >
             <UserPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/race"
-          >
-            <RaceList />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/class"
-          >
-            <ClassList />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/abilityScores"
-          >
-            <AbilityScores />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/CharConfirmation">
-            <CharConfirmation />
           </ProtectedRoute>
 
           <ProtectedRoute
