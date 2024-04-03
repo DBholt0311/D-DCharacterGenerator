@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 function Name() {
   const dispatch = useDispatch();
@@ -8,12 +7,13 @@ function Name() {
 
 
   function handleNameChange() {
-    setCurrentName(event.target.value)
+    setNewName(event.target.value)
+    dispatch({ type: "NAME_TO_ADD", payload: newName });
   }
   return (
     <div>
       <form>
-        <input onChange={handleNameChange} placeholder={currentName}/>
+        <input onChange={handleNameChange} placeholder={newName}/>
       </form>
     </div>
   );

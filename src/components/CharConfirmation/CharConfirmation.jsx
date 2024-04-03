@@ -14,12 +14,13 @@ function CharConfirmation() {
   const newRace = useSelector((store) => store.race);
 return(
   <div>
+    <Name />
     <p>Str: {newAbilityScores.strength}</p>
-    <p>Dex: {newAbilityScores.dex}</p>
-    <p>Con: {newAbilityScores.con}</p>
-    <p>Wis: {newAbilityScores.wis}</p>
-    <p>Int: {newAbilityScores.int}</p>
-    <p>Cha: {newAbilityScores.cha}</p>
+    <p>Dex: {newAbilityScores.dexterity}</p>
+    <p>Con: {newAbilityScores.constitution}</p>
+    <p>Wis: {newAbilityScores.wisdom}</p>
+    <p>Int: {newAbilityScores.intelligence}</p>
+    <p>Cha: {newAbilityScores.charisma}</p>
     <p>HP: {newHitPoints}</p>
     <p>Background: {newBackground}</p>
     <p>Class: {newClass}</p>

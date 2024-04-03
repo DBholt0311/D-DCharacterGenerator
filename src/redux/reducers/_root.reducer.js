@@ -6,6 +6,7 @@ import charClass from './class.reducer';
 import background from './background.reducer';
 import abilityScores from './abilityScores.reducer';
 import hitPoints from './hitPoints.reducer.js';
+import name from './name.reducer.js';
 import CharId from './charId.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   background,
   abilityScores,
   hitPoints,
+  name,
   CharId,
 });
 
