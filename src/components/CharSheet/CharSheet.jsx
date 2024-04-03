@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 //MUI
 import Input from "@mui/material/Input";
+
 import AlignmentsList from "../Alignment/AlignmentsList";
 import BackgroundList from "../BackgroundList/BackgroundList";
 import AbilityScores from "../AbilityScores/AbilityScores";
@@ -14,22 +15,33 @@ import Name from "../Name/Name";
 
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
-  const user = useSelector((store) => store.user.id);
-  const character = useSelector((store) => store.character)
-  const [currentChar, setCurrentChar] = useState({
-    name: character.name,
-    charClass: character.charClass,
-    background: character.background,
-    alignment: character.cha,
-    hp: character.hp,
-    str: character.str,
-    dex: character.dex,
-    con: character.con,
-    wis: character.wis,
-    int: character.int,
-    cha: character.cha,
-    user_id: user,
+  const [char, setChar] = useState();
+  let currentName = useSelector((store) => store.characterName);
+  let currentClass = useSelector((store) => store.charClass);
+  let currentRace = useSelector((store) => store.race);
+  let currentBackground = useSelector((store) => store.background);
+  let currentAbilityScores = useSelector((store) => store.abilityScore);
+  let currentHp = useSelector((store) => store.hitPoints);
+  let user = useSelector((store) => store.user);
+  let currentAlignment = useSelector((store) => store.alignment);
+  let [newCharDisplay, setNewCharDisplay] = useState({
+    name: currentName,
+    newClass: currentClass,
+    race: currentRace,
+    background: currentBackground,
+    alignment: currentAlignment,
+    hp: currentHp,
+    level: 1,
+    exp: 0,
+    strength: currentAbilityScores.strength,
+    dexterity: currentAbilityScores.dexterity,
+    constitution: currentAbilityScores.constitution,
+    wisdom: currentAbilityScores.wisdom,
+    intelligence: currentAbilityScores.intelligence,
+    charisma: currentAbilityScores.charisma,
+    user: user.id,
   });
+
   
   const fetchCharacters = () => {
     axios
@@ -37,8 +49,8 @@ function CharSheet() {
       .then((response) => {
         let newChar = {};
         if (newId === 0) {
-          newChar = currentChar;
-
+          console.log("NewChar", newId)
+          newChar = newCharDisplay;
         } else {
           console.log('existing char', newId)
           console.log("RESPONSE:", response.data);
@@ -60,6 +72,7 @@ function CharSheet() {
           };
         }
         setChar(newChar);
+        setNewCharDisplay()
       })
       .catch((err) => {
         console.error(err);
@@ -68,7 +81,7 @@ function CharSheet() {
 
   useEffect(() => {
     fetchCharacters();
-    setCurrentChar({});
+    setChar({});
   }, []);
 
   const deleteChar = (event) => {
@@ -86,19 +99,18 @@ function CharSheet() {
   const createNewChar = () => {
     axios.post("/api/characters", newCharDisplay).then((response) => {
       console.log("response:", response.data);
-      dispatchEvent({ type: action, payload: "CHARACTER_TO_ADD"})
     });
   };
 
   return (
     <div>
-      <Name charName={character.name}/>
-      <ClassList />
-      <RaceList />
-      <BackgroundList />
-      <AlignmentsList />
-      <Input />
-      <Input />
+      <Name charName={newCharDisplay.name}/>
+      <ClassList  charClass={newCharDisplay.newClass}/>
+      <RaceList charRace={newCharDisplay.race} />
+      <BackgroundList charBackground={newCharDisplay.background} />
+      <AlignmentsList charAlignment={newCharDisplay.alignment}/>
+      <Input placeholder={char.exp}></Input>
+      <Input placeholder={char.lvl}></Input>
       <AbilityScores />
       <button onClick={createNewChar}>Accept</button>
       <button onClick={deleteChar}>

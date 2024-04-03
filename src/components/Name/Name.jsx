@@ -5,9 +5,13 @@ function Name() {
   const dispatch = useDispatch();
   const [newName, setNewName] = useState('')
 
+  useEffect(() => {
+    setNewName('');
+  }, []);
 
   function handleNameChange() {
-    setNewName(event.target.value)
+    let name = event.target.value
+    setNewName(name)
     dispatch({ type: "NAME_TO_ADD", payload: newName });
   }
   return (

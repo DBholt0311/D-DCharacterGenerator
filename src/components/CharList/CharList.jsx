@@ -73,7 +73,6 @@ function CharList() {
               <TableCell align="right">Level</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Race</TableCell>
-              <TableCell align="right">ID</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -94,10 +93,10 @@ function CharList() {
             ))}
           </TableBody>
         </Table>
+      </TableContainer>
       <button>
         <Link to="/races">New Char</Link>
       </button>
-      </TableContainer>
     </div>
   );
 }

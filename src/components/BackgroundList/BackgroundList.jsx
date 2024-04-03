@@ -49,7 +49,7 @@ function BackgroundList() {
     <h1>Choose Your Background</h1>
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="background-menu">Class</InputLabel>
+        <InputLabel id="background-menu">Background</InputLabel>
         <Select
           labelId="select-background-label"
           id="select-background"
@@ -63,7 +63,7 @@ function BackgroundList() {
         </Select>
       </FormControl>
     </Box>
-    <p>Race: {chosenBackground}</p>
+    <p>Background: {chosenBackground}</p>
     <button><Link to="/abilityScores">Next</Link></button>
   </div>
   );

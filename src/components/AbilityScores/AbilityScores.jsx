@@ -8,6 +8,7 @@ import { hitPointCalc } from "../DiceRollers/DiceRoller";
 function AbilityScores() {
   const dispatch = useDispatch();
   const className = useSelector((store) => store.charClass)
+  let [hitPoints, setHitPoints] = useState([]);
   let [abilityScores, setAbilityScores] = useState({
     strength: 0,
     dexterity: 0,
@@ -16,7 +17,6 @@ function AbilityScores() {
     intelligence: 0,
     charisma: 0,
   });
-  let [hitPoints, setHitPoints] = useState();
 
   const handleStrengthChange = (event) => {
     setAbilityScores({

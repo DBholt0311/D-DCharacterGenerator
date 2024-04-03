@@ -1,4 +1,4 @@
-const charId = (state = 0, action) => {
+const charId = (state = [], action) => {
     if (action.type === 'CHAR_ID') {
       return action.payload;
     }

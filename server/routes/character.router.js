@@ -24,13 +24,13 @@ router.get("/:id", (req, res) => {
 
 router.post('/', (req, res) => {
   const newChar = req.body;
-  const sqlText = `INSERT INTO "characters" ("character_name", "class", "level", "background", "race", "alignment", "experience_points", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
+  const sqlText = `INSERT INTO "characters" ("character_name", "class", "background", "race", "alignment", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
   )
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);`;
   pool
-      .query(sqlText, [newChar.name, newChar.newClass, newChar.level,  newChar.background, newChar.race, 
-        newChar.alignment, newChar.exp, newChar.hp, newChar.strength, newChar.dexterity, newChar.constitution, 
-        newChar.wisdom, newChar.intelligence, newChar.charisma, newChar.user])
+      .query(sqlText, [newChar.name, newChar.charClass, newChar.background, newChar.race, 
+        newChar.alignment, newChar.hp, newChar.str, newChar.dex, newChar.con, 
+        newChar.wis, newChar.int, newChar.char, newChar.user_id])
       .then((result) => {
           console.log(`character created`, newChar);
           res.sendStatus(201);

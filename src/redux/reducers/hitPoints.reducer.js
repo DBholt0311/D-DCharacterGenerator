@@ -1,4 +1,4 @@
-const hitPoints = (state = 0, action) => {
+const hitPoints = (state = [], action) => {
     if (action.type === 'HP_TO_ADD') {
       return action.payload;
     }
