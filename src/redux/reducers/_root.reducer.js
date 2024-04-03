@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import background from './background.reducer';
+import race from './race.reducer';
 import charClass from './class.reducer';
-import race from './races.reducer';
-import abilityScore from './abilityScore.reducer';
-import hitPoints from './hitPoints.reducer';
-import alignment from './alignment.reducer';
-import characterName from './characterName.reducer';
+import background from './background.reducer';
+import abilityScores from './abilityScores.reducer';
+import hitPoints from './hitPoints.reducer.js';
 import CharId from './charId.reducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -20,12 +18,10 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   race,
-  background,
   charClass,
-  abilityScore,
+  background,
+  abilityScores,
   hitPoints,
-  alignment,
-  characterName,
   CharId,
 });
 

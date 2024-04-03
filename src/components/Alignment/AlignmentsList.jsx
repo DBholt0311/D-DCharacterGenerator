@@ -11,13 +11,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-function AlignmentsList({charAlignment}) {
+function AlignmentsList() {
   const dispatch = useDispatch();
   const [chosenAlignment, setChosenAlignment] = useState('');
-  let currentAlignment = charAlignment;
 
   useEffect(() => {
-    setChosenAlignment(charAlignment);
+    setChosenAlignment('');
   }, []);
 
   const handleAlignmentSelect = (event) => {

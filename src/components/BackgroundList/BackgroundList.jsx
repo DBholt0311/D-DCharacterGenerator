@@ -1,53 +1,71 @@
 import React from "react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 //MUI
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-function BackgroundList({charBackground}) {
+
+function BackgroundList() {
   const dispatch = useDispatch();
-  const [chosenBackground, setChosenBackground] = useState("");
-  let currentBackground = charBackground;
+  const [backgrounds, setBackgrounds] = useState([]);
+  const [chosenBackground, setChosenBackground] = useState('');
+
+
+  const fetchBackgrounds = () => {
+
+    axios
+      .get("/api/backgrounds")
+      .then((response) => {
+        console.log("RESPONSE:", response.data);
+        let backgroundList = response.data
+        setBackgrounds(backgroundList);
+        
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   useEffect(() => {
-    setChosenBackground(charBackground);
+    fetchBackgrounds([]);
+    setChosenBackground('');
   }, []);
 
   const handleBackgroundSelect = (event) => {
-    let newBackground = event.target.value;
+    const newBackground = event.target.value;
     setChosenBackground(newBackground);
-    dispatch({ type: "BACKGROUND_TO_ADD", payload: newBackground });
-  };
+    dispatch({type: "BACKGROUND_TO_ADD", payload: newBackground });
+  }
 
   return (
     <div>
-      <Box sx={{ maxWidth: 160 }}>
-        <FormControl variant="standard" fullWidth>
-          <InputLabel value={chosenBackground} id="Backgrounds">
-            Background
-          </InputLabel>
-          <Select
-            labelId="Backgrounds-label"
-            label="Background"
-            value={chosenBackground}
-            onChange={handleBackgroundSelect}
-          >
-            <MenuItem value={"acolyte"}>acolyte</MenuItem>
-            <MenuItem value={"criminal"}>criminal</MenuItem>
-            <MenuItem value={"folk hero"}>folk hero</MenuItem>
-            <MenuItem value={"nobel"}>nobel</MenuItem>
-            <MenuItem value={"sage"}>sage</MenuItem>
-            <MenuItem value={"soldier"}>soldier</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
-    </div>
+    <h1>Choose Your Background</h1>
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="background-menu">Class</InputLabel>
+        <Select
+          labelId="select-background-label"
+          id="select-background"
+          value={chosenBackground}
+          label="Background"
+          onChange={handleBackgroundSelect}
+        >
+          {backgrounds.map((background) => (
+              <MenuItem key={background.id} value={background.name}>{background.name}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
+    <p>Race: {chosenBackground}</p>
+    <button><Link to="/abilityScores">Next</Link></button>
+  </div>
   );
 }
-
 export default BackgroundList;

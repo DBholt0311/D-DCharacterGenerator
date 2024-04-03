@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
 import { hitPointCalc } from "../DiceRollers/DiceRoller";
 
-function AbilityScores({
-  charStrength,
-  charDexterity,
-  charConstitution,
-  charWisdom,
-  charIntelligence,
-  charCharisma,
-  charHp,
-}) {
+function AbilityScores() {
   const dispatch = useDispatch();
-  const className = useSelector((store) => store.charClass);
-  const raceName = useSelector((store) => store.race);
+  const className = useSelector((store) => store.charClass)
   let [abilityScores, setAbilityScores] = useState({
     strength: 0,
     dexterity: 0,
@@ -81,8 +71,15 @@ function AbilityScores({
       charisma: abilityScoreGenerator(),
     };
 
-    setAbilityScores(newAbilityScores);
-    console.log(abilityScores);
+    setAbilityScores({
+      str: newAbilityScores.strength,
+      dex: newAbilityScores.dexterity,
+      con: newAbilityScores.constitution,
+      wis: newAbilityScores.wisdom,
+      int: newAbilityScores.intelligence,
+      cha: newAbilityScores.charisma,
+    });
+    dispatch({ type: "ABS_TO_ADD", payload: newAbilityScores });
   };
 
   const handleHpChange = (event) => {
@@ -114,16 +111,11 @@ function AbilityScores({
     } else if (className === "wizard" || "sorcerer") {
       hitDie = 6;
     }
-    setHitPoints(
-      hitPointCalc(hitDie) + Math.floor((abilityScores.constitution - 10) / 2)
-    );
+    let HP = hitPointCalc(hitDie) + Math.floor((abilityScores.con - 10) / 2)
+    setHitPoints(HP);
+    dispatch({ type: "HP_TO_ADD", payload: HP });
     console.log("d", hitDie);
     console.log(abilityScores, hitPoints);
-  };
-
-  const handleClickSubmitScores = () => {
-    dispatch({ type: "HIT_POINTS", payload: hitPoints });
-    dispatch({ type: "ABILITY_SCORE", payload: abilityScores });
   };
 
   return (
@@ -133,37 +125,37 @@ function AbilityScores({
         <label>Strength</label>
         <input
           onChange={handleStrengthChange}
-          placeholder={abilityScores.strength}
+          placeholder={abilityScores.str}
           id="strength"
         />
         <label>Dexterity</label>
         <input
           onChange={handleDexterityChange}
-          placeholder={abilityScores.dexterity}
+          placeholder={abilityScores.dex}
           id="dexterity"
         />
         <label>Constitution</label>
         <input
           onChange={handleConstitutionChange}
-          placeholder={abilityScores.constitution}
+          placeholder={abilityScores.con}
           id="constitution"
         />
         <label>Wisdom</label>
         <input
           onChange={handleWisdomChange}
-          placeholder={abilityScores.wisdom}
+          placeholder={abilityScores.wis}
           id="Wisdom"
         />
         <label>Intelligence</label>
         <input
           onChange={handleIntelligenceChange}
-          placeholder={abilityScores.intelligence}
+          placeholder={abilityScores.int}
           id="intelligence"
         />
         <label>Charisma</label>
         <input
           onChange={handleCharismaChange}
-          placeholder={abilityScores.charisma}
+          placeholder={abilityScores.cha}
           id="charisma"
         />
         <button onClick={handleRandomAbilities}>Random</button>
@@ -178,6 +170,7 @@ function AbilityScores({
         />
         <button onClick={handleHpRoll}>roll</button>
       </form>
+      <button><Link to="/charConfirmation">Next</Link></button>
     </div>
   );
 }

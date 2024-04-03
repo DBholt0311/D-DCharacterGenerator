@@ -45,7 +45,7 @@ function CharList() {
   const selectChar = (event) => {
     let id = event.target.value;
     dispatch({ type: "CHAR_ID", payload: id });
-    console.log(id);
+    console.log('ID: ', id);
   };
 
   const deleteChar = (event) => {
@@ -94,8 +94,8 @@ function CharList() {
             ))}
           </TableBody>
         </Table>
-      <button value={0} onClick={selectChar} >
-        <Link to="/charSheet">New Char</Link>
+      <button>
+        <Link to="/races">New Char</Link>
       </button>
       </TableContainer>
     </div>
