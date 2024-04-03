@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
 import Name from "../Name/Name";
+import AlignmentsList from "../Alignment/AlignmentsList";
 
    
 
@@ -15,6 +17,7 @@ function CharConfirmation() {
 return(
   <div>
     <Name />
+    <AlignmentsList />
     <p>Str: {newAbilityScores.strength}</p>
     <p>Dex: {newAbilityScores.dexterity}</p>
     <p>Con: {newAbilityScores.constitution}</p>
