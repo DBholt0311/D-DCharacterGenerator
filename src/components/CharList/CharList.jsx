@@ -45,7 +45,6 @@ function CharList() {
   const selectChar = (event) => {
     let id = event.target.value;
     dispatch({ type: "CHAR_ID", payload: id });
-    console.log('ID: ', id);
   };
 
   const deleteChar = (event) => {
@@ -73,6 +72,8 @@ function CharList() {
               <TableCell align="right">Level</TableCell>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Race</TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

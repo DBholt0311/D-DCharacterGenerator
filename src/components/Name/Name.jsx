@@ -4,19 +4,24 @@ import { useDispatch } from "react-redux";
 function Name() {
   const dispatch = useDispatch();
   const [newName, setNewName] = useState('')
+  
+  
+    useEffect(() => {
+      setNewName('');
+    }, []);
 
-  useEffect(() => {
-    setNewName('');
-  }, []);
-
+  
   function handleNameChange(event) {
-    let name = event.target.value
-    setNewName(name)
-    dispatch({ type: "NAME_TO_ADD", payload: newName });
+    event.preventDefault();
+    let chosenName = event.target.value;
+    setNewName(chosenName);
+    dispatch({ type: "NAME_TO_ADD", payload: chosenName });
   }
+  
   return (
     <div>
       <form>
+        <label>Name:</label>
         <input onChange={handleNameChange} placeholder={newName}/>
       </form>
     </div>

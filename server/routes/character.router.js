@@ -25,12 +25,12 @@ router.get("/:id", (req, res) => {
 router.post('/', (req, res) => {
   const newChar = req.body;
   
-  const sqlText = `INSERT INTO "characters" ("character_name", "class", "background", "race", "alignment", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
+  const sqlText = `INSERT INTO "characters" ("character_name", "class", "background", "race", "alignment","experience_points", "level", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
   )
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
   pool
       .query(sqlText, [newChar.name, newChar.charClass, newChar.background, newChar.race, 
-        newChar.alignment, newChar.str, newChar.dex, newChar.con, 
+        newChar.alignment, newChar.exp, newChar.lvl, newChar.str, newChar.dex, newChar.con, 
         newChar.int, newChar.wis, newChar.cha, newChar.hp, newChar.user])
       .then((result) => {
           console.log(`character created`, newChar);
@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
           res.sendStatus(500);
       });
 });
+
 
 router.delete('/:id', (req, res) => {
   const CharId = req.params.id;
