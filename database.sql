@@ -42,10 +42,6 @@ CREATE TABLE "classes" (
     "hit_die" INT
 );
 
-CREATE TABLE "backgrounds" (
-    "id" SERIAL PRIMARY KEY,
-	"name" VARCHAR (15)
-);
 
 CREATE TABLE "ability_score" (
     "id" SERIAL PRIMARY KEY,

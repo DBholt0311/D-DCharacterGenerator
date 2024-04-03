@@ -1,4 +1,4 @@
-const characterName = (state = 'Name', action) => {
+const characterName = (state = '', action) => {
     if (action.type === 'NAME_TO_ADD') {
       return action.payload;
     }

@@ -173,7 +173,7 @@ function AbilityScores({
         <label>HP</label>
         <input
           onChange={handleHpChange}
-          placeholder={charHp}
+          placeholder={hitPoints}
           id="hitPoints"
         />
         <button onClick={handleHpRoll}>roll</button>

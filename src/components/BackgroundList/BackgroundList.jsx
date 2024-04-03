@@ -34,7 +34,7 @@ function BackgroundList({charBackground}) {
           <Select
             labelId="Backgrounds-label"
             label="Background"
-            value={currentBackground}
+            value={chosenBackground}
             onChange={handleBackgroundSelect}
           >
             <MenuItem value={"acolyte"}>acolyte</MenuItem>

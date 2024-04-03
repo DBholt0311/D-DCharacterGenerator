@@ -57,7 +57,7 @@ function ClassList({charClass}) {
       ))}
       </tbody>
     </table>
-    <p>Class: {currentClass}</p>
+    <p>Class: {chosenClass}</p>
 
   </div>
   );

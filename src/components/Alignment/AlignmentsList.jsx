@@ -34,7 +34,7 @@ function AlignmentsList({charAlignment}) {
   <Select
     labelId="Alignments-label"
     label="Alignment"
-    value={currentAlignment}
+    value={chosenAlignment}
     onChange={handleAlignmentSelect}
   >
     <MenuItem value={'Lawful Good'}>Lawful Good</MenuItem>

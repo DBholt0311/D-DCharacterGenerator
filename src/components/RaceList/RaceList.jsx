@@ -53,7 +53,7 @@ function RaceList({charRace}) {
       ))}
       </tbody>
     </table>
-    <p>Race: {charRace}</p>
+    <p>Race: {chosenRace}</p>
     <button><Link to="/class">Next</Link></button>
   </div>
   );

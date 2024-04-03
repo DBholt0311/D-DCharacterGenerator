@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
 const pool = require("../modules/pool");
+const router = express.Router();
 
 router.get("/", (req, res) => {
   let query = `
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
   )
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
   pool
-      .query(sqlText, [newChar.name, newChar.newClass, newChar.level,  newChar.race, newChar.background, 
+      .query(sqlText, [newChar.name, newChar.newClass, newChar.level,  newChar.background, newChar.race, 
         newChar.alignment, newChar.exp, newChar.hp, newChar.strength, newChar.dexterity, newChar.constitution, 
         newChar.wisdom, newChar.intelligence, newChar.charisma, newChar.user])
       .then((result) => {

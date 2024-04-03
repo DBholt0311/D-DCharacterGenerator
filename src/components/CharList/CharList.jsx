@@ -94,7 +94,7 @@ function CharList() {
             ))}
           </TableBody>
         </Table>
-      <button>
+      <button value={0} onClick={selectChar} >
         <Link to="/charSheet">New Char</Link>
       </button>
       </TableContainer>
