@@ -14,14 +14,17 @@ function CharConfirmation() {
   const newBackground = useSelector((store) => store.background);
   const newClass = useSelector((store) => store.charClass);
   const newRace = useSelector((store) => store.race);
-  const userId = useSelector((store) => store.user.id)
+  const userId = useSelector((store) => store.user);
   const newAlignment = useSelector((store) => store.alignment);
-  const newName = useSelector((store) => store.Name)
+  const newName = useSelector((store) => store.name)
+  let name=newName;
+  let alignment=newAlignment;
+
   const [newChar, setNewChar] = useState ({
-    name: newName,
+    name: name,
     charClass: newClass,
     background: newBackground,
-    alignment: newAlignment,
+    alignment: alignment,
     race: newRace,
     hp: newHitPoints,
     str: newAbilityScores.strength,
@@ -30,8 +33,10 @@ function CharConfirmation() {
     wis: newAbilityScores.wisdom,
     int: newAbilityScores.intelligence,
     cha: newAbilityScores.charisma,
-    user: userId.id,
+    user: userId.id
   })
+
+  console.log(newChar)
 
   const createNewChar = () => {
     axios.post("/api/characters", newChar).then((response) => {

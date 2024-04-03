@@ -20,7 +20,7 @@ function AlignmentsList() {
   }, []);
 
   const handleAlignmentSelect = (event) => {
-    const alignment = event.target.value;
+    let alignment = event.target.value;
     setChosenAlignment(alignment);
     dispatch({type: "ALIGNMENT_TO_ADD", payload: alignment });
   }

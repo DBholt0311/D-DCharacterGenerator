@@ -9,7 +9,7 @@ function Name() {
     setNewName('');
   }, []);
 
-  function handleNameChange() {
+  function handleNameChange(event) {
     let name = event.target.value
     setNewName(name)
     dispatch({ type: "NAME_TO_ADD", payload: newName });
