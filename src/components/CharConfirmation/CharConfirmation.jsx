@@ -15,9 +15,11 @@ function CharConfirmation() {
   const userId = useSelector((store) => store.user);
   const newAlignment = useSelector((store) => store.alignment);
   const newName = useSelector((store) => store.name);
+  let charName = newName;
+
 
   const [newChar, setNewChar] = useState({
-    name: newName,
+    name: charName,
     charClass: newClass,
     background: newBackground,
     alignment: newAlignment,

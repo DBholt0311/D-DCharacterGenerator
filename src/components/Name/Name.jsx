@@ -22,7 +22,7 @@ function Name() {
     <div>
       <form>
         <label>Name:</label>
-        <input onChange={handleNameChange} placeholder={newName}/>
+        <input onChange={handleNameChange} placeholder="Enter name"/>
       </form>
     </div>
   );
