@@ -1,4 +1,4 @@
-const charClass = (state = '', action) => {
+const charClass = (state = {}, action) => {
     if (action.type === 'CLASS_TO_ADD') {
       return action.payload;
     }

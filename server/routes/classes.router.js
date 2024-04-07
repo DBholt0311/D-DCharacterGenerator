@@ -12,7 +12,18 @@ router.get("/", (req, res) => {
     .then((result) => {
         res.send(result.rows);
     })    
-})
+});
+
+router.get("/:id", (req, res) => {
+  const classId = req.params.id;
+  let query = `
+  SELECT * FROM "classes"
+  WHERE id = $1;`;
+  pool
+  .query(query, [classId]).then((result) => {
+    res.send(result.rows);
+  });
+});
 
 router.get("/hit_die", (req, res) => {
     const className = req.params.name;

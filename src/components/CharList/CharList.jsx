@@ -20,10 +20,6 @@ function CharList() {
   const [characters, setCharacters] = useState([]);
   const user = useSelector((store) => store.user);
 
-  let newChar = {
-    id: user.id,
-  };
-
   const fetchCharacters = () => {
     console.log("in fetchOrders function");
 

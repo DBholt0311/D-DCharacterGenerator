@@ -65,7 +65,7 @@ VALUES ('dragonborn'),
 ('human'),
 ('tiefling');
 
-INSERT INTO "classes" ("name", "hit_die")
+INSERT INTO "classes" ("name", "hit_die", "proficiencies", ,"icon_url", "portrait_url")
 VALUES ('barbarian', 12),
 ('bard', 8),
 ('cleric', 8),

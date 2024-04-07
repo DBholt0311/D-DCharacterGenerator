@@ -14,4 +14,9 @@
     padding: 8px;
     text-align: center;
   }
+
+  .class_icon {
+    height: 40px;
+    width: 40px
+  }
   
