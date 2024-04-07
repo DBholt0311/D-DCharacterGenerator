@@ -129,6 +129,11 @@ function ClassList() {
       <button>
         <Link to="/background">Next</Link>
       </button>
+      <h2>{displayClass.displayName}</h2>
+      <p>Hit Die: D{displayClass.hd}</p>
+      <img src={displayClass.portrait} />
+      <p>{displayClass.desc}</p>
+      
     </div>
   );
 }
