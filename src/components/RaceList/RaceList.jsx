@@ -19,7 +19,7 @@ function RaceList({charRace}) {
   const dispatch = useDispatch();
   const [races, setRaces] = useState([]);
   const [chosenRace, setChosenRace] = useState('');
-
+  const [displayRace, setDisplayRace] = useState({});
 
   const fetchRaces = () => {
     console.log("in fetchRaces function");
@@ -43,9 +43,58 @@ function RaceList({charRace}) {
   }, []);
 
   const handleRaceSelect = (event) => {
+    let id = 0;
     const newRace = event.target.value;
     setChosenRace(newRace);
     dispatch({type: "RACE_TO_ADD", payload: newRace });
+
+    switch (newRace) {
+      case "Dragonborn":
+        id = 1;
+        break;
+      case "Dwarf":
+        id = 2;
+        break;
+      case "Elf":
+        id = 3;
+        break;
+      case "Gnome":
+        id = 4;
+        break;
+      case "Half-Elf":
+        id = 5;
+        break;
+      case "Halfling":
+        id = 6;
+        break;
+      case "Half-Orc":
+        id = 7;
+        break;
+      case "Human":
+        id = 8;
+        break;
+      case "Tiefling":
+        id = 9;
+        break;
+      default:
+    }
+
+    axios
+    .get(`/api/races/${id}`, id)
+    .then((response) => {
+      console.log("RESPONSE:", response.data);
+      const raceResponse = {
+        displayName: response.data[0].name,
+        desc: response.data[0].description,
+        portrait: response.data[0].portrait_url,
+ 
+      };
+      setDisplayRace(raceResponse);
+      console.log('Display:', displayRace);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   }
 
   return (
@@ -67,8 +116,10 @@ function RaceList({charRace}) {
         </Select>
       </FormControl>
     </Box>
-    <p>Race: {chosenRace}</p>
     <button><Link to="/class">Next</Link></button>
+    <h1>{displayRace.displayName}</h1>
+    <img src={displayRace.portrait} />
+    <p>{displayRace.desc}</p>
   </div>
   );
 }

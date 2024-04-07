@@ -14,6 +14,17 @@ router.get("/", (req, res) => {
     .then((result) => {
         res.send(result.rows);
     })    
-})
+});
+
+router.get("/:id", (req, res) => {
+    const raceId = req.params.id;
+    let query = `
+    SELECT * FROM "races"
+    WHERE id = $1;`;
+    pool
+    .query(query, [raceId]).then((result) => {
+      res.send(result.rows);
+    });
+  });
 
 module.exports = router;
