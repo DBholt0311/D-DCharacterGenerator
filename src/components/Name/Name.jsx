@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 
 function Name() {
@@ -12,10 +13,13 @@ function Name() {
 
   
   function handleNameChange(event) {
-    event.preventDefault();
-    let chosenName = event.target.value;
+    const chosenName = event.target.value;
     setNewName(chosenName);
     dispatch({ type: "NAME_TO_ADD", payload: chosenName });
+  }
+
+  function handleUpdate() {
+
   }
   
   return (
