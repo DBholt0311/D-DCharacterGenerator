@@ -90,10 +90,10 @@ function CharList() {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      <button>
-        <Link to="/races">New Char</Link>
+      <button className="next">
+        <Link to="/races">Create Character</Link>
       </button>
+      </TableContainer>
     </div>
   );
 }

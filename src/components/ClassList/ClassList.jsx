@@ -13,7 +13,6 @@ import Select from "@mui/material/Select";
 
 //Components
 import "./ClassList.css";
-import ClassDisplay from "../ClassDisplay/ClassDisplay";
 
 function ClassList() {
   const dispatch = useDispatch();
@@ -126,6 +125,7 @@ function ClassList() {
           </Select>
         </FormControl>
       </Box>
+      <button><Link to="/races">Back</Link></button>
       <button>
         <Link to="/background">Next</Link>
       </button>

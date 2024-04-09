@@ -64,6 +64,7 @@ function BackgroundList() {
       </FormControl>
     </Box>
     <p>Background: {chosenBackground}</p>
+    <button><Link to="/class">Back</Link></button>
     <button><Link to="/abilityScores">Next</Link></button>
   </div>
   );

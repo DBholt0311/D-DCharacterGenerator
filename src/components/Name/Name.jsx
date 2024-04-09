@@ -15,11 +15,7 @@ function Name() {
   function handleNameChange(event) {
     const chosenName = event.target.value;
     setNewName(chosenName);
-    dispatch({ type: "NAME_TO_ADD", payload: chosenName });
-  }
-
-  function handleUpdate() {
-
+    dispatch({ type: "NAME_TO_ADD", payload: newName });
   }
   
   return (

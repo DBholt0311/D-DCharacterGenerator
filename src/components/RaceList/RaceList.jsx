@@ -116,6 +116,7 @@ function RaceList({charRace}) {
         </Select>
       </FormControl>
     </Box>
+    <button><Link to="/user">Back</Link></button>
     <button><Link to="/class">Next</Link></button>
     <h1>{displayRace.displayName}</h1>
     <img src={displayRace.portrait} />
