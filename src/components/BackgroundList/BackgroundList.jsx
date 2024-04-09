@@ -15,8 +15,8 @@ import Select from '@mui/material/Select';
 function BackgroundList() {
   const dispatch = useDispatch();
   const [backgrounds, setBackgrounds] = useState([]);
-  const [chosenBackground, setChosenBackground] = useState('');
-
+  const [chosenBackground, setChosenBackground] = useState("");
+  const [displayBackground, setDisplayBackground] = useState({});
 
   const fetchBackgrounds = () => {
 
@@ -35,20 +35,58 @@ function BackgroundList() {
 
   useEffect(() => {
     fetchBackgrounds([]);
-    setChosenBackground('');
+    setChosenBackground("");
   }, []);
 
   const handleBackgroundSelect = (event) => {
+    let id = 0;
     const newBackground = event.target.value;
     setChosenBackground(newBackground);
-    dispatch({type: "BACKGROUND_TO_ADD", payload: newBackground });
-  }
+    dispatch({ type: "BACKGROUND_TO_ADD", payload: newBackground });
+
+    switch (newBackground) {
+      case "Acolyte":
+        id = 1;
+        break;
+      case "Criminal":
+        id = 2;
+        break;
+      case "Folk Hero":
+        id = 3;
+        break;
+      case "Nobel":
+        id = 4;
+        break;
+      case "Sage":
+        id = 5;
+        break;
+      case "Soldier":
+        id = 6;
+        break;
+      default:
+    }
+
+    axios
+    .get(`/api/backgrounds/${id}`, id)
+    .then((response) => {
+      console.log("RESPONSE:", response.data);
+      const backgroundResponse = {
+        displayName: response.data[0].name,
+        desc: response.data[0].description,
+      };
+      setDisplayBackground(backgroundResponse);
+      console.log('Display:', displayBackground);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 
   return (
     <div>
     <h1>Choose Your Background</h1>
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <InputLabel id="background-menu">Background</InputLabel>
         <Select
           labelId="select-background-label"
@@ -63,9 +101,10 @@ function BackgroundList() {
         </Select>
       </FormControl>
     </Box>
-    <p>Background: {chosenBackground}</p>
+    <p>{displayBackground.displayName}</p>
+    <p>{displayBackground.desc}</p>
     <button><Link to="/class">Back</Link></button>
-    <button className="next"><Link to="/abilityScores">Next</Link></button>
+    <button ><Link to="/abilityScores">Next</Link></button>
   </div>
   );
 }

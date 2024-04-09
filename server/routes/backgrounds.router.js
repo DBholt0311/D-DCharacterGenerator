@@ -14,5 +14,15 @@ router.get("/", (req, res) => {
     })    
 })
 
+router.get("/:id", (req, res) => {
+    const backgroundId = req.params.id;
+    let query = `
+    SELECT * FROM "backgrounds"
+    WHERE id = $1;`;
+    pool
+    .query(query, [backgroundId]).then((result) => {
+      res.send(result.rows);
+    });
+  });
 
 module.exports = router;
