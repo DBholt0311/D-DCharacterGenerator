@@ -126,7 +126,7 @@ function ClassList() {
         </FormControl>
       </Box>
       <button><Link to="/races">Back</Link></button>
-      <button>
+      <button className="next">
         <Link to="/background">Next</Link>
       </button>
       <h2>{displayClass.displayName}</h2>

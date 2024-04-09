@@ -101,7 +101,7 @@ function RaceList({charRace}) {
     <div>
     <h1>Choose Your Race</h1>
     <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
         <InputLabel id="race-menu">Race</InputLabel>
         <Select
           labelId="select-race-label"
@@ -117,7 +117,7 @@ function RaceList({charRace}) {
       </FormControl>
     </Box>
     <button><Link to="/user">Back</Link></button>
-    <button><Link to="/class">Next</Link></button>
+    <button className="next"><Link to="/class">Next</Link></button>
     <h1>{displayRace.displayName}</h1>
     <img src={displayRace.portrait} />
     <p>{displayRace.desc}</p>

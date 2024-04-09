@@ -171,7 +171,7 @@ function AbilityScores() {
         <button onClick={handleHpRoll}>roll</button>
       </form>
       <button><Link to="/background">Back</Link></button>
-      <button><Link to="/charConfirmation">Next</Link></button>
+      <button className="next"><Link to="/charConfirmation">Next</Link></button>
     </div>
   );
 }
