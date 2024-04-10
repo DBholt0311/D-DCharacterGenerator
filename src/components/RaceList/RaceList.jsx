@@ -10,6 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Grid  from "@mui/material/Grid";
 
 
 //Components
@@ -98,10 +99,12 @@ function RaceList({charRace}) {
   }
 
   return (
-    <div>
+    <div className="raceBody">
+
     <h1>Choose Your Race</h1>
-    <Box sx={{ minWidth: 120 }}>
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <Box 
+    sx={{ minWidth: 120 }}>
+    <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
         <InputLabel id="race-menu">Race</InputLabel>
         <Select
           labelId="select-race-label"
@@ -116,11 +119,33 @@ function RaceList({charRace}) {
         </Select>
       </FormControl>
     </Box>
-    <button><Link to="/user">Back</Link></button>
-    <button className="next"><Link to="/class">Next</Link></button>
-    <h1>{displayRace.displayName}</h1>
+    <Grid container spacing={6}>
+  <Grid item xs={4}>
+    <Box
+    marginTop={6}
+    height={500}
+    width={500}
+    display="flex"
+    alignItems="center"
+    >
     <img src={displayRace.portrait} />
+    </Box>
+  </Grid>
+  <Grid item xs={4}>
+    <Box 
+        marginTop={20}
+        height={300}
+        width={800}
+        display="flex"
+        alignItems="left"
+        fontSize={20}
+    >
     <p>{displayRace.desc}</p>
+    </Box>
+  </Grid>
+</Grid>
+<button><Link to="/user">Back</Link></button>
+<button className="next"><Link to="/class">Next</Link></button>
   </div>
   );
 }

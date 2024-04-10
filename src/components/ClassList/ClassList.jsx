@@ -10,6 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Grid  from "@mui/material/Grid";
 
 //Components
 import "./ClassList.css";
@@ -129,10 +130,33 @@ function ClassList() {
       <button className="next">
         <Link to="/background">Next</Link>
       </button>
-      <h2>{displayClass.displayName}</h2>
+      <Grid container spacing={0.5}
+      marginLeft={5}
+      >
+  <Grid item xs={4}>
+    <Box
+    marginTop={5}
+    height={400}
+    width={400}
+    display="flex"
+    alignItems="center"
+    >
       <img src={displayClass.portrait} />
+    </Box>
+  </Grid>
+  <Grid item xs={4}>
+    <Box 
+        marginTop={10}
+        height={300}
+        width={800}
+        display="flex"
+        alignItems="left"
+        fontSize={20}
+    >
       <p>{displayClass.desc}</p>
-      
+    </Box>
+  </Grid>
+</Grid>
     </div>
   );
 }

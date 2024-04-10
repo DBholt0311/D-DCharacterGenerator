@@ -1,6 +1,9 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 router.get("/", (req, res) => {
   let query = `
@@ -21,7 +24,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/", rejectUnauthenticated, (req, res) => {
   const newChar = req.body;
 
   const sqlText = `INSERT INTO "characters" ("character_name", "class", "background", "race", "alignment","experience_points", "level", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
@@ -43,7 +46,7 @@ router.post("/", (req, res) => {
       newChar.wis,
       newChar.cha,
       newChar.hp,
-      newChar.user,
+      req.user.id,
     ])
     .then((result) => {
       console.log(`character created`, newChar);

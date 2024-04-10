@@ -24,6 +24,8 @@ import AbilityScores from "../AbilityScores/AbilityScores";
 import CharConfirmation from "../CharConfirmation/CharConfirmation";
 import CharSheet from "../CharSheet/CharSheet";
 
+import Stack from "@mui/material/Stack";
+
 import "./App.css";
 
 function App() {
@@ -37,8 +39,12 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <Stack
+      direction="column"
+      spacing={1}
+      >
         <Nav />
+        <div>
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
@@ -136,8 +142,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        </div>
         <Footer />
-      </div>
+        </Stack>
     </Router>
   );
 }
