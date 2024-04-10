@@ -24,8 +24,6 @@
 
 .navLink {
   display: inline-block;
-  color: #f2f2f2;
-  background-color: #e76f51;
   text-align: center;
   padding: 10px 10px;
   text-decoration: none;
@@ -44,6 +42,6 @@
 
 .img {
 border-radius: 100px;
-width: 120px;
-height: 95px;
+width: 100px;
+height: 100px;
 }
