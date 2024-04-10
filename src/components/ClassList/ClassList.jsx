@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
 //Components
 import "./ClassList.css";
@@ -125,9 +126,9 @@ function ClassList() {
           </Select>
         </FormControl>
       </Box>
-      <Grid container spacing={0.5} marginLeft={5}>
+      <Grid container spacing={0.5} marginLeft={1}>
         <Grid item xs={4}>
-          <Box display="flex" alignItems="center">
+          <Box display="flex" alignItems="left">
             <img src={displayClass.portrait} />
           </Box>
         </Grid>
@@ -137,12 +138,12 @@ function ClassList() {
           </Box>
         </Grid>
       </Grid>
-      <button>
+      <Button>
         <Link to="/races">Back</Link>
-      </button>
-      <button className="next">
+      </Button>
+      <Button className="next">
         <Link to="/background">Next</Link>
-      </button>
+      </Button>
     </div>
   );
 }

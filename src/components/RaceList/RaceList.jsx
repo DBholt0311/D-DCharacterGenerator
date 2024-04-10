@@ -11,7 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Grid  from "@mui/material/Grid";
-
+import Button from "@mui/material/Button";
 
 //Components
 import "./RaceList.css";
@@ -137,8 +137,8 @@ function RaceList({charRace}) {
     </Box>
   </Grid>
 </Grid>
-<button><Link to="/user">Back</Link></button>
-<button className="next"><Link to="/class">Next</Link></button>
+<Button><Link to="/user">Back</Link></Button>
+<Button className="next"><Link to="/class">Next</Link></Button>
   </div>
   );
 }

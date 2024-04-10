@@ -6,6 +6,8 @@ import { Link, useHistory } from "react-router-dom";
 import Name from "../Name/Name";
 import AlignmentsList from "../Alignment/AlignmentsList";
 
+import Button from "@mui/material/Button";
+
 function CharConfirmation() {
   const history= useHistory();
   const dispatch = useDispatch();
@@ -53,9 +55,9 @@ function CharConfirmation() {
       <p>Background: {newBackground}</p>
       <p>Class: {newClass}</p>
       <p>Race: {newRace}</p>
-      <button onClick={createNewChar}>
+      <Button onClick={createNewChar}>
 Accept
-      </button>
+      </Button>
     </div>
   );
 }

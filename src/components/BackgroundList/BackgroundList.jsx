@@ -10,7 +10,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import Button from "@mui/material/Button";
 
 function BackgroundList() {
   const dispatch = useDispatch();
@@ -103,8 +103,8 @@ function BackgroundList() {
     </Box>
     <p>{displayBackground.displayName}</p>
     <p>{displayBackground.desc}</p>
-    <button><Link to="/class">Back</Link></button>
-    <button ><Link to="/abilityScores">Next</Link></button>
+    <Button><Link to="/class">Back</Link></Button>
+    <Button ><Link to="/abilityScores">Next</Link></Button>
   </div>
   );
 }

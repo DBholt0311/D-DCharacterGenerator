@@ -236,12 +236,12 @@ function AbilityScores() {
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}>
-      <button>
+      <Button>
         <Link to="/background">Back</Link>
-      </button>
-      <button className="next">
+      </Button>
+      <Button className="next">
         <Link to="/charConfirmation">Next</Link>
-      </button>
+      </Button>
       </Box>
     </div>
   );
