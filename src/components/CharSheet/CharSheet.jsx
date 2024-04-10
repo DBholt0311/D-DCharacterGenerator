@@ -152,7 +152,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.exp}
+            placeholder={char.exp}
             onChange={handleExpChange}
           />
           <TextField
@@ -163,7 +163,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.lvl}
+            placeholder={char.lvl}
             onChange={handleLvlChange}
           />
           <TextField
@@ -174,7 +174,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.hp}
+            placeholder={char.hp}
             onChange={handleHpChange}
           />
           <TextField
@@ -185,7 +185,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.strength}
+            placeholder={char.strength}
             onChange={handleStrChange}
           />
           <TextField
@@ -196,7 +196,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.dexterity}
+            placeholder={char.dexterity}
             onChange={handleDexChange}
           />
           <TextField
@@ -207,7 +207,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.constitution}
+            placeholder={char.constitution}
             onChange={handleConChange}
           />
           <TextField
@@ -218,7 +218,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.wisdom}
+            placeholder={char.wisdom}
             onChange={handleWisChange}
           />
           <TextField
@@ -229,7 +229,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.intelligence}
+            placeholder={char.intelligence}
             onChange={handleIntChange}
           />
           <TextField
@@ -240,7 +240,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.charisma}
+            placeholder={char.charisma}
             onChange={handleChaChange}
           />
         </Box>

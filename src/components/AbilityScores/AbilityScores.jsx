@@ -139,7 +139,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.str}
+          placeholder={abilityScores.str}
           onChange={handleStrengthChange}
         />
         <TextField
@@ -150,7 +150,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.dex}
+          placeholder={abilityScores.dex}
           onChange={handleDexterityChange}
         />
         <TextField
@@ -161,7 +161,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.con}
+          placeholder={abilityScores.con}
           onChange={handleConstitutionChange}
         />
         <TextField
@@ -172,7 +172,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.wis}
+          placeholder={abilityScores.wis}
           onChange={handleWisdomChange}
         />
         <TextField
@@ -183,7 +183,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.int}
+          placeholder={abilityScores.int}
           onChange={handleIntelligenceChange}
         />
         <TextField
@@ -194,7 +194,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={abilityScores.cha}
+          placeholder={abilityScores.cha}
           onChange={handleCharismaChange}
         />
       </Box>
@@ -218,7 +218,7 @@ function AbilityScores() {
           InputLabelProps={{
             shrink: true,
           }}
-          value={hitPoints}
+          placeholder={hitPoints}
           onChange={handleHpChange}
         />
       </Box>
