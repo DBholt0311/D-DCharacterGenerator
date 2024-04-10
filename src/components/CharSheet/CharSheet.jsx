@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+
 function CharSheet() {
   const newId = useSelector((store) => store.CharId);
   const [char, setChar] = useState({});
@@ -116,7 +120,6 @@ function CharSheet() {
     });
   };
 
-
   function handleCharUpdate() {
     axios
       .put(`/api/characters/${newId}`, char)
@@ -135,29 +138,115 @@ function CharSheet() {
       <p>Class: {char.charClass}</p>
       <p>Background: {char.background}</p>
       <p>Alignment: {char.alignment}</p>
-    <form>
-      <label>Exp:</label>
-      <input onChange={handleExpChange} placeholder={char.exp}/>
-      <label>Level</label>
-      <input onChange={handleLvlChange} placeholder={char.lvl} />
-      <label>HP:</label>
-      <input onChange={handleHpChange} placeholder={char.hp} />
-      <label>Str:</label>
-      <input onChange={handleStrChange} placeholder={char.strength} />
-      <label>Dex:</label>
-      <input onChange={handleDexChange} placeholder={char.dexterity} />
-      <label>Con:</label>
-      <input onChange={handleConChange} placeholder={char.constitution} />
-      <label>Wis:</label>
-      <input onChange={handleWisChange} placeholder={char.wisdom} />
-      <label>Int:</label>
-      <input onChange={handleIntChange} placeholder={char.intelligence} />
-      <label>Char:</label>
-      <input onChange={handleChaChange} placeholder={char.charisma} />
-      <button onClick={handleCharUpdate}>
-        <Link to="/user">Update</Link>
-      </button>
-    </form>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 2, width: "25ch" },
+          }}
+        >
+          <TextField
+            className="abilityScore"
+            label="Experience"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.exp}
+            onChange={handleExpChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Level"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.lvl}
+            onChange={handleLvlChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Hit Points"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.hp}
+            onChange={handleHpChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Strength"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.strength}
+            onChange={handleStrChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Dexterity"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.dex}
+            onChange={handleDexChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Constitution"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.constitution}
+            onChange={handleConChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Wisdom"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.wisdom}
+            onChange={handleWisChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Intelligence"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.intelligence}
+            onChange={handleIntChange}
+          />
+          <TextField
+            className="abilityScore"
+            label="Charisma"
+            type="number"
+            size="small"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={char.charisma}
+            onChange={handleChaChange}
+          />
+        </Box>
+        <Button onClick={handleCharUpdate}>
+          <Link to="/user">Update</Link>
+        </Button>
     </div>
   );
 }
