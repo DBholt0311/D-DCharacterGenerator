@@ -10,7 +10,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Grid  from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 
 //Components
 import "./ClassList.css";
@@ -86,27 +86,26 @@ function ClassList() {
     }
 
     axios
-    .get(`/api/classes/${id}`, id)
-    .then((response) => {
-      console.log("RESPONSE:", response.data);
-      const classResponse = {
-        displayName: response.data[0].name,
-        hd: response.data[0].hit_die,
-        desc: response.data[0].description,
-        portrait: response.data[0].portrait_url,
- 
-      };
-      setDisplayClass(classResponse);
-      console.log('Display:', displayClass);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+      .get(`/api/classes/${id}`, id)
+      .then((response) => {
+        console.log("RESPONSE:", response.data);
+        const classResponse = {
+          displayName: response.data[0].name,
+          hd: response.data[0].hit_die,
+          desc: response.data[0].description,
+          portrait: response.data[0].portrait_url,
+        };
+        setDisplayClass(classResponse);
+        console.log("Display:", displayClass);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <div>
-      <h1>Choose Your Class</h1>
+      <h1 class="title">Select Your Class</h1>
       <Box sx={{ minWidth: 120 }}>
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="class-menu">Class</InputLabel>
@@ -126,37 +125,24 @@ function ClassList() {
           </Select>
         </FormControl>
       </Box>
-      <button><Link to="/races">Back</Link></button>
+      <Grid container spacing={0.5} marginLeft={5}>
+        <Grid item xs={4}>
+          <Box display="flex" alignItems="center">
+            <img src={displayClass.portrait} />
+          </Box>
+        </Grid>
+        <Grid item xs={4}>
+          <Box display="flex" alignItems="left" fontSize={15}>
+            <p>{displayClass.desc}</p>
+          </Box>
+        </Grid>
+      </Grid>
+      <button>
+        <Link to="/races">Back</Link>
+      </button>
       <button className="next">
         <Link to="/background">Next</Link>
       </button>
-      <Grid container spacing={0.5}
-      marginLeft={5}
-      >
-  <Grid item xs={4}>
-    <Box
-    marginTop={5}
-    height={400}
-    width={400}
-    display="flex"
-    alignItems="center"
-    >
-      <img src={displayClass.portrait} />
-    </Box>
-  </Grid>
-  <Grid item xs={4}>
-    <Box 
-        marginTop={10}
-        height={300}
-        width="50%"
-        display="flex"
-        alignItems="left"
-        fontSize={20}
-    >
-      <p>{displayClass.desc}</p>
-    </Box>
-  </Grid>
-</Grid>
     </div>
   );
 }

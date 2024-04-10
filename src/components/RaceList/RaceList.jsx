@@ -99,9 +99,8 @@ function RaceList({charRace}) {
   }
 
   return (
-    <div className="raceBody">
-
-    <h1>Choose Your Race</h1>
+    <div>
+    <h1 class="title">Select Your Ancestry</h1>
     <Box 
     sx={{ minWidth: 120 }}>
     <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
@@ -122,9 +121,6 @@ function RaceList({charRace}) {
     <Grid container spacing={6}>
   <Grid item xs={4}>
     <Box
-    marginTop={6}
-    height={500}
-    width={500}
     display="flex"
     alignItems="center"
     >
@@ -133,12 +129,9 @@ function RaceList({charRace}) {
   </Grid>
   <Grid item xs={4}>
     <Box 
-        marginTop={20}
-        height={300}
-        width={800}
         display="flex"
         alignItems="left"
-        fontSize={20}
+        fontSize={15}
     >
     <p>{displayRace.desc}</p>
     </Box>

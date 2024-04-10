@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+
+import "./AbilityScores.css";
 import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
 import { hitPointCalc } from "../DiceRollers/DiceRoller";
 
 function AbilityScores() {
   const dispatch = useDispatch();
-  const className = useSelector((store) => store.charClass)
+  const className = useSelector((store) => store.charClass);
   let [hitPoints, setHitPoints] = useState([]);
   let [abilityScores, setAbilityScores] = useState({
     strength: 0,
@@ -111,7 +116,7 @@ function AbilityScores() {
     } else if (className === "wizard" || "sorcerer") {
       hitDie = 6;
     }
-    let HP = hitPointCalc(hitDie) + Math.floor((abilityScores.con - 10) / 2)
+    let HP = hitPointCalc(hitDie) + Math.floor((abilityScores.con - 10) / 2);
     setHitPoints(HP);
     dispatch({ type: "HP_TO_ADD", payload: HP });
     console.log("d", hitDie);
@@ -120,58 +125,124 @@ function AbilityScores() {
 
   return (
     <div>
-      <h1>Ability Scores</h1>
-      <form>
-        <label>Strength</label>
-        <input
+      <h1 className="title">Ability Scores</h1>
+      <Box       
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 2, width: '25ch' },
+      }}>
+        <TextField
+          className="abilityScore"
+          label="Strength"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.str}
           onChange={handleStrengthChange}
-          placeholder={abilityScores.str}
-          id="strength"
         />
-        <label>Dexterity</label>
-        <input
+        <TextField
+          className="abilityScore"
+          label="Dexterity"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.dex}
           onChange={handleDexterityChange}
-          placeholder={abilityScores.dex}
-          id="dexterity"
         />
-        <label>Constitution</label>
-        <input
+        <TextField
+          className="abilityScore"
+          label="Constitution"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.con}
           onChange={handleConstitutionChange}
-          placeholder={abilityScores.con}
-          id="constitution"
         />
-        <label>Wisdom</label>
-        <input
+        <TextField
+          className="abilityScore"
+          label="Wisdom"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.wis}
           onChange={handleWisdomChange}
-          placeholder={abilityScores.wis}
-          id="Wisdom"
         />
-        <label>Intelligence</label>
-        <input
+        <TextField
+          className="abilityScore"
+          label="Intelligence"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.int}
           onChange={handleIntelligenceChange}
-          placeholder={abilityScores.int}
-          id="intelligence"
         />
-        <label>Charisma</label>
-        <input
+        <TextField
+          className="abilityScore"
+          label="Charisma"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={abilityScores.cha}
           onChange={handleCharismaChange}
-          placeholder={abilityScores.cha}
-          id="charisma"
         />
-        <button onClick={handleRandomAbilities}>Random</button>
-      </form>
-      <p>HP here</p>
-      <form>
-        <label>HP</label>
-        <input
+      </Box>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={handleRandomAbilities}
+        >
+          Generate Ability Scores
+        </Button>
+      <Box 
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 2, width: '25ch' },
+      }}>
+        <TextField
+          className="abilityScore"
+          label="Hit Points"
+          type="number"
+          size="small"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={hitPoints}
           onChange={handleHpChange}
-          placeholder={hitPoints}
-          id="hitPoints"
         />
-        <button onClick={handleHpRoll}>roll</button>
-      </form>
-      <button><Link to="/background">Back</Link></button>
-      <button className="next"><Link to="/charConfirmation">Next</Link></button>
+      </Box>
+      <Box       
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 2, width: '25ch' },
+      }}>
+      <Button variant="contained" size="small" onClick={handleHpRoll}>
+        Generate Hit Points
+      </Button>
+      </Box>
+      <Box       
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}>
+      <button>
+        <Link to="/background">Back</Link>
+      </button>
+      <button className="next">
+        <Link to="/charConfirmation">Next</Link>
+      </button>
+      </Box>
     </div>
   );
 }
