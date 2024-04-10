@@ -41,7 +41,7 @@ function CharConfirmation() {
   };
   
   return (
-    <div>
+    <div className="charCon">
       <Name />
       <AlignmentsList />
       <p>Str: {newAbilityScores.strength}</p>
