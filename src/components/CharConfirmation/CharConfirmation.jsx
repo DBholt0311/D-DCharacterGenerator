@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Name from "../Name/Name";
 import AlignmentsList from "../Alignment/AlignmentsList";
@@ -55,9 +54,7 @@ function CharConfirmation() {
       <p>Background: {newBackground}</p>
       <p>Class: {newClass}</p>
       <p>Race: {newRace}</p>
-      <Button onClick={createNewChar}>
-Accept
-      </Button>
+      <Button onClick={createNewChar}>Accept</Button>
     </div>
   );
 }

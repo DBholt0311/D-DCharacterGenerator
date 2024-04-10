@@ -137,13 +137,13 @@ function CharSheet() {
       <p>Race: {char.race}</p>
       <p>Class: {char.charClass}</p>
       <p>Background: {char.background}</p>
-      <p>Alignment: {char.alignment}</p>
         <Box
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 2, width: "25ch" },
           }}
         >
+      <p>Alignment: {char.alignment}</p>
           <TextField
             className="abilityScore"
             label="Experience"
@@ -196,7 +196,7 @@ function CharSheet() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={char.dex}
+            value={char.dexterity}
             onChange={handleDexChange}
           />
           <TextField
