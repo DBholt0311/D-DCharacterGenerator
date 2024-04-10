@@ -56,7 +56,7 @@ function Nav() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem> <Link className="navLink" to="/user">
+        <MenuItem onClick={handleClose}>> <Link className="navLink" to="/user">
               Character List
             </Link></MenuItem>
         <MenuItem onClick={handleClose}> <LogOutButton className="navLink" /></MenuItem>

@@ -41,7 +41,7 @@ function App() {
     <Router>
       <Stack
       direction="column"
-      spacing={7}
+      spacing={11}
       >
         <Nav />
         <div>

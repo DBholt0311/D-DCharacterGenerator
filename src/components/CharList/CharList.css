@@ -5,12 +5,12 @@
   
   .table-style {
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 5px solid black;
   }
   
   .table-style th,
   .table-style td {
-    border: 1px solid black;
+    border: 5px solid black;
     padding: 8px;
     text-align: center;
   }
@@ -19,9 +19,6 @@
     margin: 10px;
   }
 
-  .userBody {
-    height: 537px;
-  }
   .charList {
     margin-bottom: 10px;
   }

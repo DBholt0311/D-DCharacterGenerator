@@ -10,7 +10,6 @@ function UserPage() {
   return (
     <div className="container">
       <CharList />
-      <LogOutButton className="btn" />
     </div>
   );
 }
