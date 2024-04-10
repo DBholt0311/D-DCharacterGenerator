@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // MUI
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-   
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
 
 import "./CharList.css";
 
@@ -45,7 +45,7 @@ function CharList() {
 
   const deleteChar = (event) => {
     let id = event.target.value;
-    
+
     axios
       .delete(`/api/characters/${id}`, id)
       .then((response) => {
@@ -59,7 +59,7 @@ function CharList() {
 
   return (
     <div className="userBody">
-      <h1>Characters</h1>
+      <h1 className="title">Choose Your Hero</h1>
       <TableContainer className="charList" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -76,7 +76,7 @@ function CharList() {
             {characters.map((char) => (
               <TableRow
                 key={char.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
                   {char.name}
@@ -84,16 +84,40 @@ function CharList() {
                 <TableCell align="right">{char.level}</TableCell>
                 <TableCell align="right">{char.character_name}</TableCell>
                 <TableCell align="right">{char.race}</TableCell>
-                <TableCell align="right"><Link to="/charSheet"><button value={char.id} onClick={selectChar}>Select</button></Link></TableCell>
-                <TableCell><button value={char.id} onClick={deleteChar}>Delete</button></TableCell>
+                <TableCell align="right">
+                  <Link to="/charSheet">
+                    <Button
+                      size="small"
+                      variant="text"
+                      value={char.id}
+                      onClick={selectChar}
+                    >
+                      Select
+                    </Button>
+                  </Link>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    size="small"
+                    variant="text"
+                    value={char.id}
+                    onClick={deleteChar}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      <button className="next">
-        <Link to="/races">Create Character</Link>
-      </button>
       </TableContainer>
+      <Link to="/races">
+      <Button
+      size="small"
+      variant="contained">
+        Create Character
+      </Button>
+      </Link>
     </div>
   );
 }
