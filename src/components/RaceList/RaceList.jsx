@@ -103,7 +103,7 @@ function RaceList({charRace}) {
     <h1 class="title">Select Your Ancestry</h1>
     <Box 
     sx={{ minWidth: 120 }}>
-    <FormControl sx={{ m: 1, minWidth: 200 }} size="small">
+    <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
         <InputLabel id="race-menu">Race</InputLabel>
         <Select
           labelId="select-race-label"

@@ -5,12 +5,13 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 //MUI
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 function BackgroundList() {
   const dispatch = useDispatch();
@@ -19,14 +20,12 @@ function BackgroundList() {
   const [displayBackground, setDisplayBackground] = useState({});
 
   const fetchBackgrounds = () => {
-
     axios
       .get("/api/backgrounds")
       .then((response) => {
         console.log("RESPONSE:", response.data);
-        let backgroundList = response.data
+        let backgroundList = response.data;
         setBackgrounds(backgroundList);
-        
       })
       .catch((err) => {
         console.error(err);
@@ -67,45 +66,56 @@ function BackgroundList() {
     }
 
     axios
-    .get(`/api/backgrounds/${id}`, id)
-    .then((response) => {
-      console.log("RESPONSE:", response.data);
-      const backgroundResponse = {
-        displayName: response.data[0].name,
-        desc: response.data[0].description,
-      };
-      setDisplayBackground(backgroundResponse);
-      console.log('Display:', displayBackground);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-};
+      .get(`/api/backgrounds/${id}`, id)
+      .then((response) => {
+        console.log("RESPONSE:", response.data);
+        const backgroundResponse = {
+          displayName: response.data[0].name,
+          desc: response.data[0].description,
+        };
+        setDisplayBackground(backgroundResponse);
+        console.log("Display:", displayBackground);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <div>
-    <h1 class="title">Choose Your Background</h1>
-    <Box sx={{ minWidth: 120 }}>
-    <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
-        <InputLabel id="background-menu">Background</InputLabel>
-        <Select
-          labelId="select-background-label"
-          id="select-background"
-          value={chosenBackground}
-          label="Background"
-          onChange={handleBackgroundSelect}
-        >
-          {backgrounds.map((background) => (
-              <MenuItem key={background.id} value={background.name}>{background.name}</MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
-    <p>{displayBackground.displayName}</p>
-    <p>{displayBackground.desc}</p>
-    <Button><Link to="/class">Back</Link></Button>
-    <Button ><Link to="/abilityScores">Next</Link></Button>
-  </div>
+      <h1 className="title">Choose Your Background</h1>
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
+          <InputLabel id="background-menu">Background</InputLabel>
+          <Select
+            labelId="select-background-label"
+            id="select-background"
+            value={chosenBackground}
+            label="Background"
+            onChange={handleBackgroundSelect}
+          >
+            {backgrounds.map((background) => (
+              <MenuItem key={background.id} value={background.name}>
+                {background.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+      <Grid marginLeft={5} container spacing={6}>
+        <Grid item xs={10}>
+          <Box display="flex" alignItems="left" fontSize={15}>
+          <p>{displayBackground.desc}</p>
+          </Box>
+        </Grid>
+      </Grid>
+      <Button>
+        <Link to="/class">Back</Link>
+      </Button>
+      <Button>
+        <Link to="/abilityScores">Next</Link>
+      </Button>
+    </div>
   );
 }
 export default BackgroundList;
