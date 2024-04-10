@@ -58,7 +58,7 @@ function CharList() {
   };
 
   return (
-    <div className="userBody">
+    <div>
       <h1 className="title">Choose Your Hero</h1>
       <TableContainer className="charList" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

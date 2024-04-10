@@ -86,7 +86,7 @@ function BackgroundList() {
     <div>
     <h1 class="title">Choose Your Background</h1>
     <Box sx={{ minWidth: 120 }}>
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
         <InputLabel id="background-menu">Background</InputLabel>
         <Select
           labelId="select-background-label"
