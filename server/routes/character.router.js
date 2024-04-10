@@ -5,7 +5,7 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
   let query = `
     SELECT * FROM "characters"
     WHERE characters.user_id = $1;`;
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", rejectUnauthenticated, (req, res) => {
   const charID = req.params.id;
   let query = `
   SELECT * FROM "characters"
@@ -58,7 +58,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", rejectUnauthenticated, (req, res) => {
   const charId = req.params.id;
   const updateChar = req.body;
   const query = `
@@ -84,7 +84,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", rejectUnauthenticated, (req, res) => {
   const CharId = req.params.id;
   const queryText = `DELETE FROM "characters" WHERE id = $1;`;
 

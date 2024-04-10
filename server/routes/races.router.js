@@ -5,7 +5,7 @@ const router = express.Router();
 const { rejectUnauthenticated, } = require('../modules/authentication-middleware');
 
 
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
     let query = `
     SELECT * FROM "races";
     `;
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     })    
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", rejectUnauthenticated, (req, res) => {
     const raceId = req.params.id;
     let query = `
     SELECT * FROM "races"

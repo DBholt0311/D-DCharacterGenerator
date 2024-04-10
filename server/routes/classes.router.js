@@ -1,9 +1,12 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
-router.get("/", (req, res) => {
+router.get("/", rejectUnauthenticated, (req, res) => {
     let query = `
     SELECT * FROM "classes";
     `;
@@ -14,7 +17,7 @@ router.get("/", (req, res) => {
     })    
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", rejectUnauthenticated, (req, res) => {
   const classId = req.params.id;
   let query = `
   SELECT * FROM "classes"
@@ -25,7 +28,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.get("/hit_die", (req, res) => {
+router.get("/hit_die", rejectUnauthenticated, (req, res) => {
     const className = req.params.name;
     let query = `
     SELECT "hit_die" from "classes" where "name" = $1;`;

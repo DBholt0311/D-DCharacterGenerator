@@ -148,7 +148,7 @@ function ClassList() {
     <Box 
         marginTop={10}
         height={300}
-        width={800}
+        width="50%"
         display="flex"
         alignItems="left"
         fontSize={20}
