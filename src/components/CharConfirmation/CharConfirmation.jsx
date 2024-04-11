@@ -18,27 +18,6 @@ function CharConfirmation() {
   const userId = useSelector((store) => store.user);
   const newAlignment = useSelector((store) => store.alignment);
   const newName = useSelector((store) => store.name);
-
-  const createNewChar = () => {
-    dispatch({ type: "CREATE_CHAR", payload: {
-      name: newName,
-      charClass: newClass,
-      background: newBackground,
-      alignment: newAlignment,
-      exp: 0,
-      lvl: 1,
-      race: newRace,
-      hp: newHitPoints,
-      str: newAbilityScores.strength,
-      dex: newAbilityScores.dexterity,
-      con: newAbilityScores.constitution,
-      wis: newAbilityScores.wisdom,
-      int: newAbilityScores.intelligence,
-      cha: newAbilityScores.charisma,
-      user: userId.id,
-    }})
-    history.push('/user');
-  };
   
   return (
     <div>

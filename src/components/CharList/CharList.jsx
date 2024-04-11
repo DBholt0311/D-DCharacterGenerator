@@ -57,6 +57,27 @@ function CharList() {
       });
   };
 
+  const createNewChar = () => {
+    dispatch({ type: "CREATE_CHAR", payload: {
+      name: '',
+      charClass: '',
+      background: '',
+      alignment: '',
+      exp: 0,
+      lvl: 1,
+      race: '',
+      hp: 0,
+      str: 0,
+      dex: 0,
+      con: 0,
+      wis: 0,
+      int: 0,
+      cha: 0,
+      user: user.id,
+    }})
+    history.push('/user');
+  };
+
   return (
     <div>
       <h1 className="title">Choose Your Hero</h1>
@@ -114,7 +135,9 @@ function CharList() {
       <Link to="/races">
       <Button
       size="small"
-      variant="contained">
+      variant="contained"
+      onClick={createNewChar}
+      >
         Create Character
       </Button>
       </Link>
