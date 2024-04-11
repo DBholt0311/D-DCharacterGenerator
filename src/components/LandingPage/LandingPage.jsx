@@ -6,7 +6,7 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState('Welcome To The Forge of Heroes');
   const history = useHistory();
 
   const onLogin = (event) => {
@@ -16,7 +16,9 @@ function LandingPage() {
   return (
     <div className="container">
       <h2>{heading}</h2>
-
+      <p> Forge of heroes is an application dedicated to generating a 5th
+        edition dungeons and dragons character.
+      </p>
       <div className="grid">
         <div className="grid-col grid-col_8">
         </div>
