@@ -67,38 +67,6 @@ function AbilityScores() {
 
   const handleRandomAbilities = (event) => {
     event.preventDefault();
-    let newAbilityScores = {
-      strength: abilityScoreGenerator(),
-      dexterity: abilityScoreGenerator(),
-      constitution: abilityScoreGenerator(),
-      wisdom: abilityScoreGenerator(),
-      intelligence: abilityScoreGenerator(),
-      charisma: abilityScoreGenerator(),
-    };
-
-    setAbilityScores({
-      str: newAbilityScores.strength,
-      dex: newAbilityScores.dexterity,
-      con: newAbilityScores.constitution,
-      wis: newAbilityScores.wisdom,
-      int: newAbilityScores.intelligence,
-      cha: newAbilityScores.charisma,
-    });
-    dispatch({ type: "ABS_TO_ADD", payload: newAbilityScores });
-  };
-
-  const handleHpChange = (event) => {
-    const newHp = event.target.value;
-    setHitPoints(newHp);
-  };
-
-  useEffect(() => {
-    setAbilityScores({});
-    setHitPoints([]);
-  }, []);
-
-  const handleHpRoll = (event) => {
-    event.preventDefault();
     let hitDie = 0;
     if (className === "barbarian") {
       hitDie = 12;
@@ -116,12 +84,36 @@ function AbilityScores() {
     } else if (className === "wizard" || "sorcerer") {
       hitDie = 6;
     }
-    let HP = hitPointCalc(hitDie) + Math.floor((abilityScores.con - 10) / 2);
+    let newAbilityScores = {
+      strength: abilityScoreGenerator(),
+      dexterity: abilityScoreGenerator(),
+      constitution: abilityScoreGenerator(),
+      wisdom: abilityScoreGenerator(),
+      intelligence: abilityScoreGenerator(),
+      charisma: abilityScoreGenerator(),
+    };
+
+    let HP = hitDie;
+
     setHitPoints(HP);
     dispatch({ type: "HP_TO_ADD", payload: HP });
-    console.log("d", hitDie);
-    console.log(abilityScores, hitPoints);
+
+
+    setAbilityScores({
+      str: newAbilityScores.strength,
+      dex: newAbilityScores.dexterity,
+      con: newAbilityScores.constitution,
+      wis: newAbilityScores.wisdom,
+      int: newAbilityScores.intelligence,
+      cha: newAbilityScores.charisma,
+    });
+    dispatch({ type: "ABS_TO_ADD", payload: newAbilityScores });
   };
+
+  useEffect(() => {
+    setAbilityScores({});
+    setHitPoints([]);
+  }, []);
 
   return (
     <div>
