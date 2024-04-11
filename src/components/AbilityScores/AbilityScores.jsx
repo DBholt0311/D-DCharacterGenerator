@@ -198,6 +198,12 @@ function AbilityScores() {
           onChange={handleCharismaChange}
         />
       </Box>
+      <Box
+      marginLeft={2}
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 2, width: '25ch' },
+      }}>
         <Button
           variant="contained"
           size="small"
@@ -205,31 +211,6 @@ function AbilityScores() {
         >
           Generate Ability Scores
         </Button>
-      <Box 
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 2, width: '25ch' },
-      }}>
-        <TextField
-          className="abilityScore"
-          label="Hit Points"
-          type="number"
-          size="small"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          placeholder={hitPoints}
-          onChange={handleHpChange}
-        />
-      </Box>
-      <Box       
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 2, width: '25ch' },
-      }}>
-      <Button variant="contained" size="small" onClick={handleHpRoll}>
-        Generate Hit Points
-      </Button>
       </Box>
       <Box       
       component="form"
