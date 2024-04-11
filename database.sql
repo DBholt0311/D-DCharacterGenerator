@@ -33,13 +33,17 @@ CREATE TABLE "characters" (
 
 CREATE TABLE "races" (
     "id" SERIAL PRIMARY KEY,
-	"name" VARCHAR (15)
+	"name" VARCHAR (15),
+    "description" VARCHAR,
+    "portrait_url" VARCHAR,
 );
 
 CREATE TABLE "classes" (
     "id" SERIAL PRIMARY KEY,
 	"name" VARCHAR (15),
-    "hit_die" INT
+    "description" VARCHAR,
+    "portrait_url" VARCHAR,
+    "hit_die" INT,
 );
 
 
