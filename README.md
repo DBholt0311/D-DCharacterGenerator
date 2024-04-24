@@ -35,6 +35,19 @@ This generator is intended for personal use and entertainment purposes only. Dun
 Acknowledgement
 The D&D Character Generator was created by Daniel Holt. Special thanks to Prime Digital Academy who equipped and helped me to make this application a reality.
 
+Built With
+JS
+CSS
+HTML
+Nodejs
+Express
+React
+Redux
+Heroku
+Material-UI
+PostgreSQL
+
+
 Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
