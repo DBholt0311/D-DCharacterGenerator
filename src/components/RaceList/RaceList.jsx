@@ -100,7 +100,7 @@ function RaceList({charRace}) {
 
   return (
     <div>
-    <h1 class="title">Select Your Ancestry</h1>
+    <h1 className="title">Select Your Ancestry</h1>
     <Box 
     sx={{ minWidth: 120 }}>
     <FormControl sx={{ m: 1, minWidth: 140 }} size="small">

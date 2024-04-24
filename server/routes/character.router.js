@@ -26,7 +26,6 @@ router.get("/:id", rejectUnauthenticated, (req, res) => {
 
 router.post("/", rejectUnauthenticated, (req, res) => {
   const newChar = req.body;
-
   const sqlText = `INSERT INTO "characters" ("character_name", "class", "background", "race", "alignment","experience_points", "level", "strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma", "hit_points", "user_id"
   )
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);`;
@@ -48,6 +47,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       newChar.hp,
       req.user.id,
     ])
+
     .then((result) => {
       console.log(`character created`, newChar);
       res.sendStatus(201);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // MUI
 import Table from "@mui/material/Table";
@@ -16,13 +16,12 @@ import Button from "@mui/material/Button";
 import "./CharList.css";
 
 function CharList() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [characters, setCharacters] = useState([]);
   const user = useSelector((store) => store.user);
 
   const fetchCharacters = () => {
-    console.log("in fetchOrders function");
-
     axios
       .get("/api/characters")
       .then((response) => {
@@ -75,7 +74,7 @@ function CharList() {
       cha: 0,
       user: user.id,
     }})
-    history.push('/user');
+    history.push('/races');
   };
 
   return (
@@ -132,7 +131,6 @@ function CharList() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Link to="/races">
       <Button
       size="small"
       variant="contained"
@@ -140,7 +138,6 @@ function CharList() {
       >
         Create Character
       </Button>
-      </Link>
     </div>
   );
 }
