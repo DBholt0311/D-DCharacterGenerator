@@ -14,7 +14,6 @@ Installation
 5.Run npm run client in your terminal
 
 Usage
-How to Use
 Select Race and Class: Choose the race and class for your character. The generator provides a list of options to choose from, including standard races like humans, elves, dwarves, and more, as well as a variety of classes such as fighter, wizard, rogue, and cleric.
 Choose Background: Select a background for your character to add depth and backstory. Background options include noble, criminal, acolyte, folk hero, and more. Each background provides specific skills, tools, and personality traits.
 background, and any additional details.
