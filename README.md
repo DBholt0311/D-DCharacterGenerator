@@ -21,10 +21,12 @@ Customize: Feel free to customize your character further by adding unique detail
 Roll Ability Scores: Roll dice to determine your character's ability scores. You can roll for each ability individually or use a standard array if you prefer. The abilities include Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.
 Generate Character: Once you've made your selections, click the "Generate Character" button to create your character. The generator will compile all the chosen options into a character sheet, complete with name, race, class, ability scores, 
 Save and Share: Save your character sheet for future reference or share it with your gaming group. You can also use the character sheet as a basis for creating character tokens or miniatures for your tabletop sessions.
+
 Features
 Random Generation: Quickly generate ability scores.
 Customization: Tailor your character by selecting specific race, class, background, and other details to suit your preferences.
 Character Sheet: View and print a detailed character sheet containing all the essential information about your character.
+
 Feedback
 We are constantly striving to improve the D&D Character Generator to better serve the needs of players and Dungeon Masters alike. If you have any feedback, suggestions, or feature requests, please don't hesitate to contact us. Your input is invaluable in helping us enhance this tool for the D&D community.
 
@@ -50,3 +52,5 @@ PostgreSQL
 Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
+Current Objectives
+Updating routes to update routes instead of saving the char data until the end of char creation. (this will allow users to leave and come back and update the char).

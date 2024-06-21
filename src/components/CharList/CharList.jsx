@@ -55,7 +55,6 @@ function CharList() {
         console.error(err);
       });
   };
-// change to post route
   const createNewChar = () => {
     dispatch({ type: "CREATE_CHAR", payload: {
       name: '',
@@ -74,7 +73,8 @@ function CharList() {
       cha: 0,
       user: user.id,
     }})
-    history.push('/races');
+    fetchCharacters([]);
+    // create pop up to add character name upon click
   };
 
   return (
