@@ -55,6 +55,7 @@ function CharList() {
         console.error(err);
       });
   };
+  
   const createNewChar = () => {
     dispatch({ type: "CREATE_CHAR", payload: {
       name: '',

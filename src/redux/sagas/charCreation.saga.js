@@ -7,7 +7,7 @@ function* createChar(action) {
     yield axios.post('/api/characters', action.payload);
 
   } catch (error) {
-    console.log('User get request failed', error);
+    console.log('Chararacter creation failed', error);
   }
 }
 
