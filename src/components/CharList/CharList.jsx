@@ -55,7 +55,7 @@ function CharList() {
         console.error(err);
       });
   };
-
+// change to post route
   const createNewChar = () => {
     dispatch({ type: "CREATE_CHAR", payload: {
       name: '',
