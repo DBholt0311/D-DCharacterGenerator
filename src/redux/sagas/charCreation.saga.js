@@ -1,18 +1,26 @@
-import axios from 'axios';
-import { takeLatest } from 'redux-saga/effects';
+import axios from "axios";
+import { takeLatest, select } from "redux-saga/effects";
 
 function* createChar(action) {
   try {
-
-    yield axios.post('/api/characters', action.payload);
-
+    yield axios.post("/api/characters", action.payload);
   } catch (error) {
-    console.log('Chararacter creation failed', error);
+    console.log("Character creation failed", error);
   }
 }
 
-function* charCreationSaga() {
-  yield takeLatest('CREATE_CHAR', createChar);
+function* updateChar(action) {
+  const charId = yield select(state => state.CharId)
+  try {
+    yield axios.put(`/api/characters/${charId}`, action.payload);
+  } catch (error) {
+    console.log("Character update failed", error);
+  }
 }
 
-export default charCreationSaga;
+function* characterSaga() {
+  yield takeLatest("CREATE_CHAR", createChar);
+  yield takeLatest("UPDATE_CHAR", updateChar);
+}
+
+export default characterSaga;

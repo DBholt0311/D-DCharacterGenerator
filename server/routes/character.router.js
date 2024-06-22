@@ -59,22 +59,14 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 
 router.put("/:id", rejectUnauthenticated, (req, res) => {
-  const charId = req.params.id;
+  const CharId = req.params.id;
   const updateChar = req.body;
   const query = `
   UPDATE characters SET 
-  "experience_points" = $1,
-  "level" = $2,
-  "strength" = $3,
-  "dexterity" = $4,
-  "constitution" = $5,
-  "wisdom" = $6,
-  "intelligence" = $7,
-  "charisma" = $8,
-  "hit_points" = $9 WHERE id = $10;`;
+$1 = $2 where id = $3;`;
 
   pool
-  .query(query, [updateChar.exp, updateChar.lvl, updateChar.strength, updateChar.dexterity, updateChar.constitution, updateChar.wisdom, updateChar.intelligence, updateChar.charisma, updateChar.hp, charId])
+  .query(query, [updateChar.column, updateChar.data, CharId])
   .then((response) => {
     res.sendStatus(200);
   })

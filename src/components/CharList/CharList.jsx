@@ -106,6 +106,16 @@ function CharList() {
                 <TableCell align="right">{char.character_name}</TableCell>
                 <TableCell align="right">{char.race}</TableCell>
                 <TableCell align="right">
+                  <Link to="races">
+                  <Button
+                      size="small"
+                      variant="text"
+                      value={char.id}
+                      onClick={selectChar}
+                    >
+                      Update
+                    </Button>
+                  </Link>
                   <Link to="/charSheet">
                     <Button
                       size="small"
@@ -113,7 +123,7 @@ function CharList() {
                       value={char.id}
                       onClick={selectChar}
                     >
-                      Select
+                      Play
                     </Button>
                   </Link>
                 </TableCell>

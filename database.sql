@@ -61,3 +61,21 @@ VALUES
 ('Sage', 'You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.'),
 ('Soldier', 'War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war. When you choose this background, work with your DM to determine which military organization you were a part of, how far through its ranks you progressed, and what kind of experiences you had during your military career. Was it a standing army, a town guard, or a village militia? Or it might have been a noble’s or merchant’s private army, or a mercenary company.');
 
+CREATE TABLE "characters" (
+    "id" SERIAL PRIMARY KEY,
+	"character_name" VARCHAR (15),
+    "class" VARCHAR,
+    "level" INT,
+    "background" VARCHAR,
+    "race" VARCHAR,
+    "alignment" VARCHAR,
+    "experience" INT,
+    "strength" INT,
+    "dexterity" INT,
+    "constitution" INT,
+    "intelligence" INT,
+    "wisdom" INT,
+    "charisma" INT,
+    "hit_points" INT,
+    "user_id" INT
+);

@@ -53,4 +53,6 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-Updating routes to update routes instead of saving the char data until the end of char creation. (this will allow users to leave and come back and update the char).
+1) create sagas for char creation
+2) Update routes to update routes instead of saving the char data until the end of char creation. (this will allow users to leave and come back and update the char).
+
