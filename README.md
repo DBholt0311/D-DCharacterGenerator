@@ -57,4 +57,8 @@ Current Objectives
 2) update character database to have a char created column, this will be used to remove the update option on the char list screen.
 3) update char confirmation page to update all columns if needed, and update the char created column, upon confirmation it will lead user back to char select page (or char sheet).
 4) add styling to all pages.
+5) update routes and DB to pull from 3rd party API.
+6) add weapons, armor, and gear selection.
+7) add spell selection.
+8) add feat selection.
 
