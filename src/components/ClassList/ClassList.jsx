@@ -104,6 +104,16 @@ function ClassList() {
       });
   };
 
+  const handleUpdateClass = (event) => {
+    dispatch({
+      type: "UPDATE_CHAR",
+      payload: {
+        column: "class",
+        data: chosenClass,
+      },
+    });
+  };
+
   return (
     <div>
       <h1 class="title">Select Your Class</h1>
@@ -141,7 +151,7 @@ function ClassList() {
       <Button>
         <Link to="/races">Back</Link>
       </Button>
-      <Button className="next">
+      <Button onClick={handleUpdateClass} className="next">
         <Link to="/background">Next</Link>
       </Button>
     </div>
