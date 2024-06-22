@@ -100,7 +100,6 @@ function RaceList({ charRace }) {
     dispatch({
       type: "UPDATE_CHAR",
       payload: {
-        column: "race",
         data: chosenRace,
       },
     });

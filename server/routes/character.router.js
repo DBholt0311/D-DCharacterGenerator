@@ -62,11 +62,10 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
   const CharId = req.params.id;
   const updateChar = req.body;
   const query = `
-  UPDATE characters SET 
-$1 = $2 where id = $3;`;
+  UPDATE "characters" SET race = $1 where id = $2;`;
 
   pool
-  .query(query, [updateChar.column, updateChar.data, CharId])
+  .query(query, [updateChar.data, CharId])
   .then((response) => {
     res.sendStatus(200);
   })
