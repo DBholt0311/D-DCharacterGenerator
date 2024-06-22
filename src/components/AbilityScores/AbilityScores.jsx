@@ -115,6 +115,16 @@ function AbilityScores() {
     setHitPoints([]);
   }, []);
 
+  const handleUpdateAbilityScores = (event) => {
+    dispatch({
+      type: "UPDATE_CHAR",
+      payload: {
+        column: "strength",
+        data: chosenRace,
+      },
+    });
+  };
+
   return (
     <div>
       <h1 className="title">Ability Scores</h1>
@@ -213,7 +223,7 @@ function AbilityScores() {
         <Link to="/background">Back</Link>
       </Button>
       <Button className="next">
-        <Link to="/charConfirmation">Next</Link>
+        <Link to="/alignment">Next</Link>
       </Button>
       </Box>
     </div>

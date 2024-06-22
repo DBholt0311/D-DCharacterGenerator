@@ -81,6 +81,16 @@ function BackgroundList() {
       });
   };
 
+  const handleUpdateBackground = (event) => {
+    dispatch({
+      type: "UPDATE_CHAR",
+      payload: {
+        column: "background",
+        data: chosenBackground,
+      },
+    });
+  };
+
   return (
     <div>
       <h1 className="title">Choose Your Background</h1>
@@ -112,7 +122,7 @@ function BackgroundList() {
       <Button>
         <Link to="/class">Back</Link>
       </Button>
-      <Button>
+      <Button onClick={handleUpdateBackground}>
         <Link to="/abilityScores">Next</Link>
       </Button>
     </div>

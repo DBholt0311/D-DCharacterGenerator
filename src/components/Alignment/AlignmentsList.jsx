@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import styles from "./AlignmentsList.module.css";
 
@@ -10,6 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Button } from "@mui/material";
 
 function AlignmentsList() {
   const dispatch = useDispatch();
@@ -24,6 +26,16 @@ function AlignmentsList() {
     setChosenAlignment(alignment);
     dispatch({type: "ALIGNMENT_TO_ADD", payload: alignment });
   }
+
+  const handleUpdateAlignment = (event) => {
+    dispatch({
+      type: "UPDATE_CHAR",
+      payload: {
+        column: "alignment",
+        data: chosenAlignment,
+      },
+    });
+  };
 
   return (
     <div>
@@ -49,6 +61,8 @@ function AlignmentsList() {
   </Select>
 </FormControl>
       </Box>
+      <Button><Link to="abilityscores">Back</Link></Button>
+      <Button onClick={handleUpdateAlignment}><Link to="name">Next</Link></Button>
   </div>
   );
 }

@@ -21,6 +21,9 @@ import RaceList from "../RaceList/RaceList";
 import ClassList from "../ClassList/ClassList";
 import BackgroundList from "../BackgroundList/BackgroundList";
 import AbilityScores from "../AbilityScores/AbilityScores";
+import AlignmentsList from "../Alignment/AlignmentsList";
+import Name from "../Name/Name";
+import CharConfirmation from "../CharConfirmation/CharConfirmation";
 import CharSheet from "../CharSheet/CharSheet";
 
 import Stack from "@mui/material/Stack";
@@ -88,6 +91,27 @@ function App() {
           path="/abilityScores"
           >
             <AbilityScores />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/alignment"
+          >
+            <AlignmentsList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/name"
+          >
+            <Name />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/charConfirmation"
+          >
+            <CharConfirmation />
           </ProtectedRoute>
 
           <ProtectedRoute
