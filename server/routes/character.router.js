@@ -62,7 +62,7 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
   const CharId = req.params.id;
   const updateChar = req.body;
   const query = `
-  UPDATE "characters" SET race = $1 where id = $2;`;
+  UPDATE "characters" SET ${updateChar.column} = $1 where id = $2;`;
 
   pool
   .query(query, [updateChar.data, CharId])
