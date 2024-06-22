@@ -53,6 +53,8 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) create sagas for char creation
-2) Update routes to update routes instead of saving the char data until the end of char creation. (this will allow users to leave and come back and update the char).
+1) Update ability scores and hp routes, (try to find a way to use same route if possible). Then re read code and ensure redundant code has been removed.
+2) update character database to have a char created column, this will be used to remove the update option on the char list screen.
+3) update char confirmation page to update all columns if needed, and update the char created column, upon confirmation it will lead user back to char select page (or char sheet).
+4) add styling to all pages.
 
