@@ -22,6 +22,8 @@ else {
         host: 'localhost',
         port: 5432,
         database: 'character_generator',
+        password: 'RedWolf0311', 
+        //move this into .env file for security
     });
 }
 

@@ -53,12 +53,6 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) Update ability scores and hp routes, (try to find a way to use same route if possible). Then re read code and ensure redundant code has been removed.
-2) update character database to have a char created column, this will be used to remove the update option on the char list screen.
-3) update char confirmation page to update all columns if needed, and update the char created column, upon confirmation it will lead user back to char select page (or char sheet).
-4) add styling to all pages.
-5) update routes and DB to pull from 3rd party API.
-6) add weapons, armor, and gear selection.
-7) add spell selection.
-8) add feat selection.
-
+1) fix create char button to refresh page (saga), fix pull and put routes for abilities scores, fix hp generator,
+2) switch from hard coded DB for character selections to pull from 3rd party API on selection screens.
+3) add ability score bonuses from races.
