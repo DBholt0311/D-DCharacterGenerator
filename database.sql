@@ -1,10 +1,16 @@
+CREATE TABLE "user" (
+    "id" SERIAL PRIMARY KEY,
+    "username" VARCHAR (80) UNIQUE NOT NULL,
+    "password" VARCHAR (1000) NOT NULL
+);
+
 CREATE TABLE "classes" (
     "id" SERIAL PRIMARY KEY,
 	"name" VARCHAR (15),
-    "hit_die" INT
+    "hit_die" INT,
     "description" VARCHAR,
     "icon_url" VARCHAR,
-    "portrait_url" VARCHAR,
+    "portrait_url" VARCHAR
 );
 
 INSERT INTO "classes" ("name", "hit_die", "description", "icon_url", "portrait_url")
@@ -53,7 +59,6 @@ CREATE TABLE "backgrounds" (
 
 INSERT INTO "backgrounds"("name","description")
 VALUES
-
 ('Acolyte', 'You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. The Gods of the Multiverse section contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.'),
 ('Criminal', 'You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.'),
 ('Folk Hero', 'You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.'),
