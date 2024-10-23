@@ -17,7 +17,16 @@ import "./RaceList.css";
 function RaceList() {
   const dispatch = useDispatch();
   const [chosenRace, setChosenRace] = useState("");
-  const [displayRace, setDisplayRace] = useState({ name: '' });
+  const [displayRace, setDisplayRace] = useState({ 
+    name: '',
+    speed: '',
+    alignment: '',
+    age: '',
+    size: '',
+    size_description: '',
+    languages: ''
+
+  });
 
   useEffect(() => {
     if (chosenRace) {
@@ -25,7 +34,15 @@ function RaceList() {
         .get(`https://www.dnd5eapi.co/api/races/${chosenRace}`)
         .then((response) => {
           console.log("RESPONSE:", response.data);
-          setDisplayRace({ name: response.data.name });
+          setDisplayRace({ 
+            name: response.data.name,
+            speed: response.data.speed,
+            alignment: response.data.alignment,
+            age: response.data.age,
+            size: response.data.size,
+            size_description: response.data.size_description,
+            languages: response.data.language_desc
+          });
         })
         .catch((err) => {
           console.error(err);
@@ -76,6 +93,11 @@ function RaceList() {
       </Box>
       <Box>
         <p>Race: {displayRace.name}</p>
+        <p>Speed: {displayRace.speed}</p>
+        <p>Alignment: {displayRace.alignment}</p>
+        <p>Age: {displayRace.age}</p>
+        <p>Size: {displayRace.size_description}</p>
+        <p>Languages: {displayRace.languages}</p>
       </Box>
       <Button>
         <Link to="/user">Back</Link>
