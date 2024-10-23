@@ -53,4 +53,4 @@ Current Objectives
 3) fix race selection page to display all pertinent racial info.
 4) fix class selection page to display all pertinent class info.
 5) fix background selection page to display all pertinent background info.
-6) fully update bacground in DB to include everything needed not just description (api only has acolyte)
+6) fully update background in DB to include everything needed not just description (api only has acolyte)
