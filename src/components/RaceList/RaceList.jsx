@@ -24,7 +24,9 @@ function RaceList() {
     age: '',
     size: '',
     size_description: '',
-    languages: ''
+    languages: '',
+    starting_proficiencies: '',
+    starting_proficiencies_options: '',
 
   });
 
@@ -41,7 +43,8 @@ function RaceList() {
             age: response.data.age,
             size: response.data.size,
             size_description: response.data.size_description,
-            languages: response.data.language_desc
+            languages: response.data.language_desc,
+            starting_proficiencies: response.data.starting_proficiencies,
           });
         })
         .catch((err) => {
@@ -98,6 +101,13 @@ function RaceList() {
         <p>Age: {displayRace.age}</p>
         <p>Size: {displayRace.size_description}</p>
         <p>Languages: {displayRace.languages}</p>
+        <p>Proficiencies: <ul>
+        {displayRace.starting_proficiencies && displayRace.starting_proficiencies.map(proficiency => (
+          <li key={proficiency.index}>
+            {proficiency.name}
+          </li>
+        ))}
+      </ul></p>
       </Box>
       <Button>
         <Link to="/user">Back</Link>
