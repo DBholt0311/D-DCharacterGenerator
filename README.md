@@ -4,14 +4,9 @@ Duration: 3 weeks
 
 Welcome to the D&D Character Generator! This tool is designed to help you quickly create unique and exciting characters for your Dungeons & Dragons adventures. Whether you're a seasoned player looking for inspiration or a Dungeon Master in need of NPCs, this generator has you covered.
 
-to see the fully functional site, please visit: https://cryptic-spire-50176-a27bdd8c1984.herokuapp.com/#/home
 
 Installation
-1.Create a database named character_generator
-2.The queries in database.sql are set up to create all required tables. The project is built on Postgres, so you will need to make sure you have that installed. I recommend using Postico to run those queries as that was what I used to create them.
-3.Open your editor of choice and run npm install
-4. Run npm run server in your terminal
-5.Run npm run client in your terminal
+
 
 Usage
 Select Race and Class: Choose the race and class for your character. The generator provides a list of options to choose from, including standard races like humans, elves, dwarves, and more, as well as a variety of classes such as fighter, wizard, rogue, and cleric.
