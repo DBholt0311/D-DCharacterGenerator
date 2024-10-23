@@ -18,91 +18,28 @@ import "./ClassList.css";
 
 function ClassList() {
   const dispatch = useDispatch();
-  const [classes, setClasses] = useState([]);
   const [chosenClass, setChosenClass] = useState("");
-  const [displayClass, setDisplayClass] = useState({});
 
-  const fetchClasses = () => {
-    axios
-      .get("/api/classes")
-      .then((response) => {
-        console.log("RESPONSE:", response.data);
-        let classList = response.data;
-        setClasses(classList);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
   useEffect(() => {
-    fetchClasses([]);
     setChosenClass("");
   }, []);
 
   const handleClassSelect = (event) => {
-    let id = 0;
     const newClass = event.target.value;
     setChosenClass(newClass);
     dispatch({ type: "CLASS_TO_ADD", payload: newClass });
 
-    switch (newClass) {
-      case "Barbarian":
-        id = 1;
-        break;
-      case "Bard":
-        id = 2;
-        break;
-      case "Cleric":
-        id = 3;
-        break;
-      case "Druid":
-        id = 4;
-        break;
-      case "Fighter":
-        id = 5;
-        break;
-      case "Monk":
-        id = 6;
-        break;
-      case "Paladin":
-        id = 7;
-        break;
-      case "Ranger":
-        id = 8;
-        break;
-      case "Rogue":
-        id = 9;
-        break;
-      case "Sorcerer":
-        id = 10;
-        break;
-      case "Warlock":
-        id = 11;
-        break;
-      case "Wizard":
-        id = 12;
-        break;
-      default:
-    }
+  }
 
-    axios
-      .get(`/api/classes/${id}`, id)
-      .then((response) => {
-        console.log("RESPONSE:", response.data);
-        const classResponse = {
-          displayName: response.data[0].name,
-          hd: response.data[0].hit_die,
-          desc: response.data[0].description,
-          portrait: response.data[0].portrait_url,
-        };
-        setDisplayClass(classResponse);
-        console.log("Display:", displayClass);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  axios
+  .get(`https://www.dnd5eapi.co/api/classes/${chosenClass}`, chosenClass)
+  .then ((response) => {
+    console.log("RESPONSE:", response.data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
   const handleUpdateClass = (event) => {
     dispatch({
@@ -127,27 +64,21 @@ function ClassList() {
             label="Class"
             onChange={handleClassSelect}
           >
-            {classes.map((classItem) => (
-              <MenuItem key={classItem.id} value={classItem.name}>
-                <img className="class_icon" src={classItem.icon_url} />
-                {classItem.name}
-              </MenuItem>
-            ))}
+              <MenuItem value={"barbarian"}>Barbarian</MenuItem>
+              <MenuItem value={"bard"}>Bard</MenuItem>
+              <MenuItem value={"cleric"}>Cleric</MenuItem>
+              <MenuItem value={"druid"}>Druid</MenuItem>
+              <MenuItem value={"fighter"}>Fighter</MenuItem>
+              <MenuItem value={"monk"}>Monk</MenuItem>
+              <MenuItem value={"paladin"}>Paladin</MenuItem>
+              <MenuItem value={"ranger"}>Ranger</MenuItem>
+              <MenuItem value={"rogue"}>Rogue</MenuItem>
+              <MenuItem value={"sorcerer"}>Sorcerer</MenuItem>
+              <MenuItem value={"warlock"}>Warlock</MenuItem>
+              <MenuItem value={"wizard"}>Wizard</MenuItem>
           </Select>
         </FormControl>
       </Box>
-      <Grid container spacing={0.5} marginLeft={1}>
-        <Grid item xs={4}>
-          <Box display="flex" alignItems="left">
-            <img src={displayClass.portrait} />
-          </Box>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" alignItems="left" fontSize={15}>
-            <p>{displayClass.desc}</p>
-          </Box>
-        </Grid>
-      </Grid>
       <Button>
         <Link to="/races">Back</Link>
       </Button>

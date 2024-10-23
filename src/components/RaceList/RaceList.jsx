@@ -19,7 +19,6 @@ import "./RaceList.css";
 function RaceList({ charRace }) {
   const dispatch = useDispatch();
   const [chosenRace, setChosenRace] = useState("");
-  const raceIndex = chosenRace.toLowerCase();
 
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function RaceList({ charRace }) {
 
 
   axios
-    .get(`https://www.dnd5eapi.co/api/races/${raceIndex}`, raceIndex)
+    .get(`https://www.dnd5eapi.co/api/races/${chosenRace}`, chosenRace)
     .then ((response) => {
       console.log("RESPONSE:", response.data);
     })

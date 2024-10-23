@@ -48,10 +48,9 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) Incorporate 3rd party for API classes.
-2) Incorporate 3rd party for API background.
-3) Incorporate HP generator.
-4) fix put routes for character creation.
-5) fix race selection page to display all pertinent racial info.
-6) fix class selection page to display all pertinent class info.
-7) fix background selection page to display all pertinent background info.
+1) Incorporate HP generator.
+2) fix put routes for character creation.
+3) fix race selection page to display all pertinent racial info.
+4) fix class selection page to display all pertinent class info.
+5) fix background selection page to display all pertinent background info.
+6) fully update bacground in DB to include everything needed not just description (api only has acolyte)
