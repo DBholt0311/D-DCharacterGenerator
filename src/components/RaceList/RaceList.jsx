@@ -1,48 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-//MUI
+// MUI
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-//Components
+// Components
 import "./RaceList.css";
 
-function RaceList({ charRace }) {
+function RaceList() {
   const dispatch = useDispatch();
   const [chosenRace, setChosenRace] = useState("");
-
+  const [displayRace, setDisplayRace] = useState({ name: '' });
 
   useEffect(() => {
-    setChosenRace("");
-  }, []);
+    if (chosenRace) {
+      axios
+        .get(`https://www.dnd5eapi.co/api/races/${chosenRace}`)
+        .then((response) => {
+          console.log("RESPONSE:", response.data);
+          setDisplayRace({ name: response.data.name });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [chosenRace]);
 
   const handleRaceSelect = (event) => {
     const newRace = event.target.value;
     setChosenRace(newRace);
     dispatch({ type: "RACE_TO_ADD", payload: newRace });
- }
+  };
 
-
-  axios
-    .get(`https://www.dnd5eapi.co/api/races/${chosenRace}`, chosenRace)
-    .then ((response) => {
-      console.log("RESPONSE:", response.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-
-
-  const handleUpdateRace = (event) => {
+  const handleUpdateRace = () => {
     dispatch({
       type: "UPDATE_CHAR",
       payload: {
@@ -69,13 +66,16 @@ function RaceList({ charRace }) {
             <MenuItem value={"dwarf"}>Dwarf</MenuItem>
             <MenuItem value={"elf"}>Elf</MenuItem>
             <MenuItem value={"gnome"}>Gnome</MenuItem>
-            <MenuItem vlaue={"half-elf"}>Half-Elf</MenuItem>
+            <MenuItem value={"half-elf"}>Half-Elf</MenuItem> {/* Corrected typo */}
             <MenuItem value={"half-orc"}>Half-Orc</MenuItem>
             <MenuItem value={"halfling"}>Halfling</MenuItem>
             <MenuItem value={"human"}>Human</MenuItem>
             <MenuItem value={"tiefling"}>Tiefling</MenuItem>
           </Select>
         </FormControl>
+      </Box>
+      <Box>
+        <p>Race: {displayRace.name}</p>
       </Box>
       <Button>
         <Link to="/user">Back</Link>
@@ -86,4 +86,5 @@ function RaceList({ charRace }) {
     </div>
   );
 }
+
 export default RaceList;
