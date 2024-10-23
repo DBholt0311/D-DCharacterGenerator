@@ -41,14 +41,17 @@ React
 Redux
 Material-UI
 PostgreSQL
+5e-bits API
 
 
 Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) Incorporate 3rd party API for races.
-2) Incorporate 3rd party for API classes.
-3) Incorporate 3rd party for API background.
-5) Incorporate HP generator.
-6) fix put routes for character creation.
+1) Incorporate 3rd party for API classes.
+2) Incorporate 3rd party for API background.
+3) Incorporate HP generator.
+4) fix put routes for character creation.
+5) fix race selection page to display all pertinent racial info.
+6) fix class selection page to display all pertinent class info.
+7) fix background selection page to display all pertinent background info.
