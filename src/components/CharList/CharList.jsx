@@ -142,6 +142,7 @@ function CharList() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Link to="races">
       <Button
       size="small"
       variant="contained"
@@ -149,6 +150,7 @@ function CharList() {
       >
         Create Character
       </Button>
+      </Link>
     </div>
   );
 }
