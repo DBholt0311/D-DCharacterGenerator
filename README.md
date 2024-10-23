@@ -39,7 +39,6 @@ Nodejs
 Express
 React
 Redux
-Heroku
 Material-UI
 PostgreSQL
 
@@ -48,6 +47,8 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) fix create char button to refresh page (saga), fix pull and put routes for abilities scores, fix hp generator,
-2) switch from hard coded DB for character selections to pull from 3rd party API on selection screens.
-3) add ability score bonuses from races.
+1) Incorporate 3rd party for races.
+2) Incorporate 3rd party for classes.
+3) Incorporate 3rd party for background.
+5) Incorporate HP generator.
+6) fix put routes for character creation.
