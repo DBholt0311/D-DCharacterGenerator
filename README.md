@@ -47,8 +47,8 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) Incorporate 3rd party for races.
-2) Incorporate 3rd party for classes.
-3) Incorporate 3rd party for background.
+1) Incorporate 3rd party API for races.
+2) Incorporate 3rd party for API classes.
+3) Incorporate 3rd party for API background.
 5) Incorporate HP generator.
 6) fix put routes for character creation.
