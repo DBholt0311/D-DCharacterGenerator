@@ -60,7 +60,6 @@ function CharList() {
     dispatch({ type: "CREATE_CHAR", payload: {
       name: '',
       charClass: '',
-      background: '',
       alignment: '',
       exp: 0,
       lvl: 1,

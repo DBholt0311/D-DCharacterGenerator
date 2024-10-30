@@ -1,12 +1,13 @@
 import axios from "axios";
-import { takeLatest, put } from "redux-saga/effects";
+import { takeLatest, put, select } from "redux-saga/effects";
 
 function* selectRace(action) {
+  
   //fetch races from Database
+  yield put({ type: 'SET_DISPLAY_RACE', payload: '' });
   try {
     const racesResponse = yield axios.get("/api/races");
     const races = racesResponse.data;
-    
     yield put({ type: 'SET_RACE_LIST', payload: races });
 
   } catch (error){
@@ -27,10 +28,21 @@ try {
 }
 }
 
+function* updateRace(action) {
+  //updates character race in DB
+  const charId = yield select(state => state.charId)
+  try {
+    yield axios.put(`/api/characters/${charId}`, action.payload);
+  } catch (error) {
+    console.log('Character update failed', error);
+  }
+}
+
 
 function* raceSaga() {
   yield takeLatest("FETCH_RACES", selectRace);
   yield takeLatest("FETCH_DISPLAY_RACE", displayRace);
+  yield takeLatest("UPDATE_RACE", updateRace);
 }
 
 export default raceSaga;

@@ -8,12 +8,10 @@ CREATE TABLE "classes" (
     "id" SERIAL PRIMARY KEY,
 	"name" VARCHAR (15),
     "hit_die" INT,
-    "description" VARCHAR,
-    "icon_url" VARCHAR,
-    "portrait_url" VARCHAR
+    "description" VARCHAR
 );
 
-INSERT INTO "classes" ("name", "hit_die", "description", "icon_url", "portrait_url")
+INSERT INTO "classes" ("name", "description")
 VALUES
 ('Barbarian', 'One of the primary meat shield classes, barbarians are marked by their speed and their ability to rage, boosting their power and toughness. Barbarians rely on high HP to survive combat rather than heavy armor.'),
 ('Bard', 'Often highlighted as the classic 5th wheel class, a bard has some arcane casting ability, significant skill ability (especially social skills), can wear some armor, and has some combat skill. They are also able to use their musical abilities to assist their comrades. If built correctly, bards can fill almost any party role.'),
@@ -49,7 +47,6 @@ CREATE TABLE "characters" (
 	"character_name" VARCHAR (15),
     "class" VARCHAR,
     "level" INT,
-    "background" VARCHAR,
     "race" VARCHAR,
     "alignment" VARCHAR,
     "experience" INT,

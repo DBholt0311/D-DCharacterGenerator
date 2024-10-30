@@ -11,8 +11,9 @@ import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 
-const RacesComponent = () => {
+const RaceList = () => {
   const dispatch = useDispatch();
+  const charId = useSelector((store) => store.charId)
   const raceList = useSelector((store) => store.raceList);
   const displayRace = useSelector((store) => store.displayRace);
   const [chosenRace, setChosenRace] = useState("");
@@ -25,6 +26,15 @@ const RacesComponent = () => {
     const newRace = event.target.value;
     setChosenRace(newRace);
     dispatch({ type: "FETCH_DISPLAY_RACE", payload: newRace });
+  };
+
+  const handleUpdateRace = (event) => {
+    const data = {
+      id: charId,
+      column: 'race',
+      update: chosenRace,
+    };
+    dispatch({ type: "UPDATE_CHAR", payload: data });
   };
 
   return (
@@ -57,13 +67,13 @@ const RacesComponent = () => {
         </Grid>
       </Grid>
       <Button>
-        <p>back</p>
+        <p>BACK</p>
       </Button>
-      <Button>
-      <Link to="/class">Next</Link>
+      <Button onClick={handleUpdateRace}>
+      <Link to="/class">NEXT</Link>
       </Button>
     </div>
   );
 };
 
-export default RacesComponent;
+export default RaceList;
