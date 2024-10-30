@@ -16,13 +16,13 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     })    
 });
 
-router.get("/:id", rejectUnauthenticated, (req, res) => {
-    const raceId = req.params.id;
+router.get("/:name", rejectUnauthenticated, (req, res) => {
+    const raceName = req.params.name;
     let query = `
     SELECT * FROM "races"
-    WHERE id = $1;`;
+    WHERE name = $1;`;
     pool
-    .query(query, [raceId]).then((result) => {
+    .query(query, [raceName]).then((result) => {
       res.send(result.rows);
     });
   });

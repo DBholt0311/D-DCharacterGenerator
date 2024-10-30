@@ -17,25 +17,15 @@ router.get("/", rejectUnauthenticated, (req, res) => {
     })    
 });
 
-router.get("/:id", rejectUnauthenticated, (req, res) => {
-  const classId = req.params.id;
+router.get("/:name", rejectUnauthenticated, (req, res) => {
+  const className = req.params.name;
   let query = `
   SELECT * FROM "classes"
-  WHERE id = $1;`;
+  WHERE name = $1;`;
   pool
-  .query(query, [classId]).then((result) => {
+  .query(query, [className]).then((result) => {
     res.send(result.rows);
   });
 });
-
-router.get("/hit_die", rejectUnauthenticated, (req, res) => {
-    const className = req.params.name;
-    let query = `
-    SELECT "hit_die" from "classes" where "name" = $1;`;
-    pool
-    .query(query, [className]).then((result) => {
-      res.send(result.rows);
-    });
-  });
 
 module.exports = router;

@@ -1,8 +1,8 @@
 const displayClass = (state = {}, action) => {
-    if (action.type === 'CLASS_TO_DISPLAY') {
-      return action.payload;
-    }
-    return state;
+    if (action.type === 'SET_DISPLAY_CLASS') {
+        return action.payload;
+      }
+      return state;
   };
-
+  
   export default displayClass;

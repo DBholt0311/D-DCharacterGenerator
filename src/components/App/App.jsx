@@ -19,7 +19,6 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import RaceList from "../RaceList/RaceList";
 import ClassList from "../ClassList/ClassList";
-import BackgroundList from "../BackgroundList/BackgroundList";
 import AbilityScores from "../AbilityScores/AbilityScores";
 import AlignmentsList from "../Alignment/AlignmentsList";
 import Name from "../Name/Name";
@@ -77,13 +76,6 @@ function App() {
           path="/class"
           >
             <ClassList />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-          exact
-          path="/background"
-          >
-            <BackgroundList />
           </ProtectedRoute>
 
           <ProtectedRoute

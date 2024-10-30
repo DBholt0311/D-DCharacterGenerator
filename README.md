@@ -1,7 +1,5 @@
 D&D Character Generator
 
-Duration: 3 weeks
-
 Welcome to the D&D Character Generator! This tool is designed to help you quickly create unique and exciting characters for your Dungeons & Dragons adventures. Whether you're a seasoned player looking for inspiration or a Dungeon Master in need of NPCs, this generator has you covered.
 
 
@@ -41,7 +39,6 @@ React
 Redux
 Material-UI
 PostgreSQL
-5e-bits API https://5e-bits.github.io/docs/
 
 
 Support
