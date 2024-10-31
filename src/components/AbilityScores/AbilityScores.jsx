@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
 
 //MUI
-import Button from "@mui/material/Button";
+import { Button, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const AbilityScores = () => {
   const dispatch = useDispatch();
@@ -14,6 +14,8 @@ const AbilityScores = () => {
   const scoreBonus = useSelector((store) => store.abilityScoreBonus);
   const [randomScores, setRandomScores] = useState({});
   const [scoreTotals, setScoreTotals] = useState({});
+  const [selectedAbilities, setSelectedAbilities] = useState(Array(6).fill(''));
+  const abilities = ['Strength', 'Dexterity', 'Constitution', 'Wisdom', 'Intelligence', 'Charisma'];
 
 
 
@@ -27,6 +29,13 @@ const AbilityScores = () => {
       six: abilityScoreGenerator(),
     }
     setRandomScores(scores);
+  }
+
+  const handleChange = (index) => (event) => {
+    const newAbility = event.target.value;
+    const newSelectedAbilities = [...selectedAbilities];
+    newSelectedAbilities[index] = newAbility;
+    setSelectedAbilities(newSelectedAbilities);
   }
   
   const handleUpdateScores = (event) => {
@@ -81,28 +90,27 @@ const AbilityScores = () => {
   return (
     <div>
       <h1>Ability Scores</h1>
-      <button onClick={handleRandomScores}>click here</button>
-      <h2>Bonuses</h2>
-      <p>str: {scoreBonus.strength}</p>
-      <p>dex: {scoreBonus.dexterity}</p>
-      <p>con: {scoreBonus.constitution}</p>
-      <p>wis: {scoreBonus.wisdom}</p>
-      <p>int: {scoreBonus.intelligence}</p>
-      <p>cha: {scoreBonus.charisma}</p>
-      <h2>Generated Scores</h2>
-      <p>str: {randomScores.one}</p>
-      <p>dex: {randomScores.two}</p>
-      <p>con: {randomScores.three}</p>
-      <p>wis: {randomScores.four}</p>
-      <p>int: {randomScores.five}</p>
-      <p>cha: {randomScores.six}</p>
-      <h2>Score total</h2>
-      <p>str: {scoreTotals.strength}</p>
-      <p>dex: {scoreTotals.dexterity}</p>
-      <p>con: {scoreTotals.constitution}</p>
-      <p>wis: {scoreTotals.wisdom}</p>
-      <p>int: {scoreTotals.intelligence}</p>
-      <p>cha: {scoreTotals.charisma}</p>
+      <Box sx={{ minWidth: 120 }}>
+      {selectedAbilities.map((selected, index) => (
+        <FormControl key={index} sx={{ m: 1, minWidth: 140 }} size="small">
+          <InputLabel id={`attribute-label-${index}`}>Select Attribute</InputLabel>
+          <Select
+            labelId={`attribute-label-${index}`}
+            id={`attribute-${index}`}
+            value={selected}
+            label="Select Attribute"
+            onChange={handleChange(index)}
+          >
+            {abilities.map((ability) => (
+              !selectedAbilities.includes(ability) || ability === selected ? (
+                <MenuItem key={ability} value={ability}>{ability}</MenuItem>
+              ) : null
+            ))}
+          </Select>
+        </FormControl>
+      ))}
+      <button onClick={handleRandomScores}>GENERATE</button>
+    </Box>
       <Button>
       <Link to="/class">BACK</Link>
       </Button>
