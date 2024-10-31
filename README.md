@@ -45,8 +45,4 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-1) fix class selection page to display all pertinent class info.
-2) fix race selection page to display all pertinent racial info.
-3) fix put routes for character creation.
-3) fully update background in DB to include everything needed not just description (api only has acolyte)
-5) fix background selection page to display all pertinent background info.
+Finish ability score generation, still need to allow user to set scores to specific stats, and then apply the racial modifiers to the stat when selected.
