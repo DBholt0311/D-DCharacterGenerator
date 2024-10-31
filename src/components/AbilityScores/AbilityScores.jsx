@@ -58,9 +58,6 @@ const AbilityScores = () => {
         },
       });
     });
-
-    // Optional: Provide feedback to the user
-    alert('Ability scores updated successfully!');
   };
 
   return (
@@ -68,7 +65,7 @@ const AbilityScores = () => {
       <h1>Ability Scores</h1>
       <Box sx={{ minWidth: 120 }}>
         {selectedAbilities.map((selected, index) => {
-          const abilityKey = abilities[index].toLowerCase(); // e.g., 'strength'
+          const abilityKey = abilities[index].toLowerCase();
           return (
             <FormControl key={index} sx={{ m: 1, minWidth: 140 }} size="small">
               <InputLabel id={`attribute-label-${index}`}>
