@@ -4,9 +4,7 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 import { useSelector } from "react-redux";
 
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { Button, Menu, MenuItem } from "@mui/material";
 
 function Nav() {
   const user = useSelector((store) => store.user);

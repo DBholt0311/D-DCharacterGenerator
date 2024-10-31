@@ -3,13 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
 //MUI
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
+import { Box, InputLabel, MenuItem, FormControl, Select, Button, Grid } from "@mui/material";
 
 const RaceList = () => {
   const dispatch = useDispatch();

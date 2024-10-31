@@ -1,18 +1,10 @@
 import React, { useEffect } from "react";
-import {
-  HashRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
-
+import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Nav from "../Nav/Nav";
 import Footer from "../Footer/Footer";
-
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
 import UserPage from "../UserPage/UserPage";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -24,10 +16,10 @@ import AlignmentsList from "../Alignment/AlignmentsList";
 import Name from "../Name/Name";
 import CharConfirmation from "../CharConfirmation/CharConfirmation";
 import CharSheet from "../CharSheet/CharSheet";
+import "./App.css";
 
 import Stack from "@mui/material/Stack";
 
-import "./App.css";
 
 function App() {
   const dispatch = useDispatch();

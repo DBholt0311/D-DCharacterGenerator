@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import { Button, Box, TextField } from "@mui/material";
 
 function CharConfirmation() {
   const newId = useSelector((store) => store.CharId);

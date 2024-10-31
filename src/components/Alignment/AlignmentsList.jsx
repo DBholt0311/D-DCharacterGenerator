@@ -2,16 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
-import styles from "./AlignmentsList.module.css";
-
-//MUI
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { Button } from "@mui/material";
+import { Button, Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
 
 function AlignmentsList() {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { takeLatest, put, select } from "redux-saga/effects";
+import { takeLatest, select } from "redux-saga/effects";
 
 function* updateAbilityScores(action) {
     //updates character ability scores in DB
