@@ -45,4 +45,4 @@ Support
 If you have suggestion or issues, please email me at holt.daniel.b@gmail.com
 
 Current Objectives
-Finish ability score generation, still need to allow user to set scores to specific stats, and then apply the racial modifiers to the stat when selected.
+mutually exclusive menus to select which abilities go with what scores has been implemented. Next steps are to have the ability selection actually change the appropriate data.
