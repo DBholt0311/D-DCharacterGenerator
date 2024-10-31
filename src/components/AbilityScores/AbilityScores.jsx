@@ -31,7 +31,7 @@ const AbilityScores = () => {
     setRandomScores(scores);
   }
 
-  const handleChange = (index) => (event) => {
+  const handleAbilityChange = (index) => (event) => {
     const newAbility = event.target.value;
     const newSelectedAbilities = [...selectedAbilities];
     newSelectedAbilities[index] = newAbility;
@@ -99,7 +99,7 @@ const AbilityScores = () => {
             id={`attribute-${index}`}
             value={selected}
             label="Select Attribute"
-            onChange={handleChange(index)}
+            onChange={handleAbilityChange(index)}
           >
             {abilities.map((ability) => (
               !selectedAbilities.includes(ability) || ability === selected ? (
