@@ -7,6 +7,7 @@ import displayRace from './displayRace.reducer';
 import classList from './classList.reducer';
 import displayClass from './displayClass.reducer';
 import abilityScoreBonus from './abilityScoreBonus.reducer';
+import abilityScores from './abilityScores.reducer';
 
 const rootReducer = combineReducers({
   errors,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   classList,
   displayClass,
   abilityScoreBonus,
+  abilityScores,
 });
 
 export default rootReducer;
