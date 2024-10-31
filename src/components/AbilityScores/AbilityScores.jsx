@@ -17,7 +17,7 @@ const AbilityScores = () => {
     charisma: 0,
   });
   const [selectedAbilities, setSelectedAbilities] = useState(Array(6).fill(''));
-  const abilities = ['Strength', 'Dexterity', 'Constitution', 'Wisdom', 'Intelligence', 'Charisma'];
+  const abilities = ['Strength', 'Dexterity', 'Constitution', 'Wisdom', 'Intelligence', 'Charisma', 'none'];
 
   const handleRandomScores = () => {
     const scores = {
