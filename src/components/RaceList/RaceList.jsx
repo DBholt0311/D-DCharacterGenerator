@@ -61,8 +61,13 @@ const RaceList = () => {
       <Grid marginLeft={5} container spacing={6}>
         <Grid item xs={10}>
           <Box>
-          <p>{displayRace.name}</p>
-          <p>{displayRace.description}</p>
+          <h4>Ability Score Bonuses</h4>
+          <p>Strength: {displayRace.strength}</p>
+          <p>Dexterity: {displayRace.dexterity}</p>
+          <p>Constitution: {displayRace.constitution}</p>
+          <p>Wisdom: {displayRace.wisdom}</p>
+          <p>Intelligence: {displayRace.intelligence}</p>
+          <p>Charisma: {displayRace.charisma}</p>
           </Box>
         </Grid>
       </Grid>

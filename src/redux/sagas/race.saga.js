@@ -20,8 +20,16 @@ function* displayRace(action) {
 try {
   const raceResponse = yield axios.get(`/api/races/${action.payload}`)
   const displayRace = raceResponse.data[0];
-  console.log(`DISPLAY:`, displayRace);
+  const abilityBonus = {
+    strength: displayRace.strength,
+    dexterity: displayRace.dexterity,
+    constitution: displayRace.constitution,
+    wisdom: displayRace.wisdom,
+    intelligence: displayRace.intelligence,
+    charisma: displayRace.charisma,
+  }
 
+  yield put({ type: 'SET_SCORE_BONUS', payload: abilityBonus });
   yield put({ type: 'SET_DISPLAY_RACE', payload: displayRace });
 } catch (error){
   console.log('Error displaying chosen race:', error);

@@ -25,7 +25,7 @@ const ClassList = () => {
   const handleDisplayClass = (event) => {
     const newClass = event.target.value;
     setChosenClass(newClass);
-    dispatch({ type: "FETCH_DISPLAY_Class", payload: newClass });
+    dispatch({ type: "FETCH_DISPLAY_CLASS", payload: newClass });
   };
 
   const handleUpdateClass = (event) => {
@@ -62,7 +62,7 @@ const ClassList = () => {
         <Grid item xs={10}>
           <Box>
           <p>{displayClass.name}</p>
-          <p>{displayClass.description}</p>
+          <p>Hit Die: D{displayClass.hit_die}</p>
           </Box>
         </Grid>
       </Grid>
@@ -70,7 +70,7 @@ const ClassList = () => {
       <Link to="/race">BACK</Link>
       </Button>
       <Button onClick={handleUpdateClass}>
-        <p>NEXT</p>
+      <Link to="/abilityScores">NEXT</Link>
       </Button>
     </div>
   );
