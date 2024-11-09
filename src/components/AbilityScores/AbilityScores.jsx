@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { abilityScoreGenerator } from "../DiceRollers/DiceRoller";
-import { Button, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, Box, FormControl, InputLabel, Select, MenuItem, Typography } from '@mui/material';
 
 const AbilityScores = () => {
   const dispatch = useDispatch();
@@ -31,21 +31,17 @@ const AbilityScores = () => {
       abilityScoreGenerator(),
       abilityScoreGenerator(),
       abilityScoreGenerator(),
-    ].map((score, index) => ({ id: index + 1, value: score })); // Starting from 1 for score IDs
+    ].map((score, index) => ({ id: index + 1, value: score })); // Use 1-6 for IDs
     setRandomScores(scores);
   };
 
   // Handle score selection for each ability
   const handleScoreChange = (ability) => (event) => {
-    const selectedId = event.target.value;  // Get selected score's id
-    const selectedScore = randomScores.find(score => score.id === selectedId);
-
-    if (!selectedScore) return;
-
+    const selectedScoreId = event.target.value;
+    const selectedScore = randomScores.find(score => score.id === selectedScoreId);
+    
     // If the selected score is already assigned to an ability, swap it
-    const prevAbility = Object.keys(selectedScores).find(
-      (key) => selectedScores[key] === selectedScore.id
-    );
+    const prevAbility = Object.keys(selectedScores).find((key) => selectedScores[key] === selectedScoreId);
 
     if (prevAbility && prevAbility !== ability) {
       // Swap the score value in the selectedScores object
@@ -61,7 +57,7 @@ const AbilityScores = () => {
       // Otherwise, just assign the score to the current ability
       setSelectedScores((prevScores) => ({
         ...prevScores,
-        [ability]: selectedScore.id,
+        [ability]: selectedScoreId,
       }));
     }
   };
@@ -129,12 +125,14 @@ const AbilityScores = () => {
               <MenuItem value={''}>Select Score</MenuItem>
 
               {/* Render the available random scores in the dropdown */}
-              {randomScores.map((score) => (
-                <MenuItem key={score.id} value={score.id}> {/* Use score.id as the value */}
-                  {/* Display both value and id next to the score */}
-                  {score.value}
-                </MenuItem>
-              ))}
+              {randomScores.map((score) => {
+                const totalValue = score.value + scoreBonus[ability]; // Calculate total value (score + bonus)
+                return (
+                  <MenuItem key={score.id} value={score.id}>
+                    {totalValue} {/* Display the total value (score + bonus) */}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         ))}
