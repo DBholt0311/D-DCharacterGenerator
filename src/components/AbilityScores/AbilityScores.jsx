@@ -126,14 +126,20 @@ const AbilityScores = () => {
 
               {/* Render the available random scores in the dropdown */}
               {randomScores.map((score) => {
-                const totalValue = score.value + scoreBonus[ability]; // Calculate total value (score + bonus)
                 return (
                   <MenuItem key={score.id} value={score.id}>
-                    {totalValue} {/* Display the total value (score + bonus) */}
+                    {score.value} {/* Display just the generated score */}
                   </MenuItem>
                 );
               })}
             </Select>
+
+            {/* Display the total value (selected score + bonus) */}
+            {selectedScores[ability] && (
+              <Typography variant="caption" sx={{ marginTop: 1 }}>
+                Total: {randomScores.find(score => score.id === selectedScores[ability]).value + scoreBonus[ability]} {/* Show total value (score + bonus) */}
+              </Typography>
+            )}
           </FormControl>
         ))}
       </Box>
